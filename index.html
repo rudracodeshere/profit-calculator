@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy, Shopify, Amazon &amp; eBay Fee and Profit Calculator (2026)</title>
+<meta name="description" content="Free seller fee calculator. See exactly what Etsy, Shopify, Amazon or eBay takes from a sale, your real profit after costs and shipping, and the price you need to hit your target margin.">
+<link rel="canonical" href="BASE_URL/">
+<meta property="og:title" content="Free Etsy, Shopify, Amazon & eBay Profit Calculator">
+<meta property="og:description" content="What does the platform take, and what do you actually keep? Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="BASE_URL/">
+<meta property="og:image" content="BASE_URL/pins/pin-01.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>Seller fee &amp; profit calculator</h1>
+<p class="lead">Type one sale. See what Etsy, Shopify, Amazon or eBay takes, what you actually keep, and the price you need. Free, no signup, nothing leaves your browser.</p>
+
+<div class="card">
+  <div class="tabs" role="group" aria-label="Platform">
+    <button type="button" data-p="etsy" aria-pressed="true">Etsy</button>
+    <button type="button" data-p="shopify" aria-pressed="false">Shopify</button>
+    <button type="button" data-p="amazon" aria-pressed="false">Amazon</button>
+    <button type="button" data-p="ebay" aria-pressed="false">eBay</button>
+  </div>
+  <div class="grid">
+    <div>
+      <label for="price">Item price <small>(what the buyer pays for the item)</small></label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="28"></div>
+      <label for="ship">Shipping charged to buyer</label>
+      <div class="in"><span>$</span><input id="ship" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+      <label for="cost">Your cost per item <small>(materials, packaging)</small></label>
+      <div class="in"><span>$</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="7.50"></div>
+      <label for="label">Shipping label you pay</label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="5.20"></div>
+      <div id="opt-etsy">
+        <label class="check"><input id="offsite" type="checkbox"> Sale came from Etsy Offsite Ads (15%)</label>
+      </div>
+      <div id="opt-shopify" hidden>
+        <label for="splan">Shopify plan (online card rate)</label>
+        <select id="splan" class="full">
+          <option value="0.029,0.30">Basic: 2.9% + 30¢</option>
+          <option value="0.027,0.30">Shopify / Grow: 2.7% + 30¢</option>
+          <option value="0.025,0.30">Advanced: 2.5% + 30¢</option>
+        </select>
+      </div>
+      <div id="opt-amazon" hidden>
+        <label for="aref">Referral fee %</label>
+        <div class="in"><input id="aref" type="number" min="0" step="0.5" value="15" style="padding-left:10px"><span>%</span></div>
+        <label for="fba">FBA fulfillment fee per unit <small>(0 if you ship it)</small></label>
+        <div class="in"><span>$</span><input id="fba" type="number" min="0" step="0.01" value="0"></div>
+      </div>
+      <label for="target">Target profit margin</label>
+      <div class="in"><input id="target" type="number" min="0" max="90" step="1" value="30" style="padding-left:10px"><span>%</span></div>
+    </div>
+    <div>
+      <table aria-live="polite">
+        <tbody id="rows"></tbody>
+      </table>
+      <div id="verdict" class="verdict"></div>
+      <p id="need" class="note"></p>
+    </div>
+  </div>
+  <p class="note">US seller rates as of October 2026. Sales tax is left out (marketplaces collect and pay it for you). Rates change; check your platform's fee page for your country.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one sale. Which of your products lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export, type in Amazon or eBay sales, and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>How each platform's fees work</h2>
+<h3>Etsy fees</h3>
+<p>Etsy charges a <strong>6.5% transaction fee</strong> on the item price plus the shipping you charge, <strong>payment processing of 3% + $0.25</strong> per order (US), and a <strong>$0.20 listing fee</strong> each time an item sells and auto-renews. If the sale came through Offsite Ads, add <strong>15%</strong> (12% if your shop made over $10,000 in the last year), capped at $100 per order. Free shipping doesn't avoid the 6.5%; it just moves the shipping into the item price, where the fee applies anyway.</p>
+<h3>Shopify fees</h3>
+<p>With Shopify Payments you pay the card rate for your plan (Basic: <strong>2.9% + 30¢</strong> online, US) and no transaction fee. Using an outside payment gateway adds a further 2% on Basic. Your monthly plan fee is overhead, so spread it across your products rather than counting it per sale.</p>
+<h3>Amazon fees</h3>
+<p>Most categories pay a <strong>15% referral fee</strong> on the total sale price, including shipping. If you use FBA, the per-unit fulfillment fee depends on size and weight; enter it above. Professional sellers also pay $39.99 a month.</p>
+<h3>eBay fees</h3>
+<p>Most categories pay a <strong>13.6% final value fee</strong> on the total amount (item plus shipping), plus <strong>$0.40 per order</strong> ($0.30 if the order is $10 or less).</p>
+
+<h2>How to price so the fees don't eat you</h2>
+<p>Fees are a percentage of your <em>sale price</em>, not your cost, so "cost times two" can still lose money once fees, a free-shipping label and a few returns come out. The price that hits a target margin is:</p>
+<p><strong>Price = (cost + label + fixed fees) ÷ (1 − fee % − target margin)</strong></p>
+<p>The calculator above uses this formula for the "price you need" line.</p>
+
+<h2>Questions</h2>
+<h3>Does Etsy charge fees on shipping?</h3>
+<p>Yes. The 6.5% transaction fee and the 3% processing fee both apply to the shipping you charge, not just the item.</p>
+<h3>What percentage does Etsy take in total?</h3>
+<p>For a typical US sale, about 9.5% of the order plus $0.45, or roughly 24.5% plus $0.45 when the sale came from Offsite Ads.</p>
+<h3>Is my data stored?</h3>
+<p>No. Everything is calculated in your browser.</p>
+
+<footer>Independent tool, not affiliated with Etsy, Shopify, Amazon or eBay. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>.</footer>
+</main>
+<script>
+(function(){
+  var P='etsy';
+  var $=function(id){return document.getElementById(id)};
+  var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+  var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toFixed(2)};
+  // pct: share of (price+ship) taken; fixed: per-order fixed fees
+  function fees(price,ship){
+    var t=price+ship,f=[];
+    if(P==='etsy'){
+      f.push(['Transaction fee (6.5%)',t*0.065]);
+      f.push(['Payment processing (3% + $0.25)',t*0.03+0.25]);
+      f.push(['Listing renewal',0.20]);
+      if($('offsite').checked) f.push(['Offsite Ads (15%)',Math.min(t*0.15,100)]);
+    }else if(P==='shopify'){
+      var s=$('splan').value.split(',').map(Number);
+      f.push(['Card processing ('+(s[0]*100).toFixed(1)+'% + 30¢)',t*s[0]+s[1]]);
+    }else if(P==='amazon'){
+      var r=n('aref')/100;
+      f.push(['Referral fee ('+(r*100)+'%)',t*r]);
+      if(n('fba')) f.push(['FBA fulfillment',n('fba')]);
+    }else{
+      f.push(['Final value fee (13.6%)',t*0.136]);
+      f.push(['Per-order fee',t>10?0.40:0.30]);
+    }
+    return f;
+  }
+  function calc(){
+    var price=n('price'),ship=n('ship'),cost=n('cost'),label=n('label'),tgt=n('target')/100;
+    var f=fees(price,ship),feeTot=f.reduce(function(a,b){return a+b[1]},0);
+    var rev=price+ship,profit=rev-feeTot-cost-label,margin=rev?profit/rev:0;
+    var h='<tr><td>Buyer pays</td><td>'+m(rev)+'</td></tr>';
+    f.forEach(function(x){h+='<tr><td>− '+x[0]+'</td><td>'+m(-x[1])+'</td></tr>'});
+    h+='<tr><td>− Your cost</td><td>'+m(-cost)+'</td></tr>';
+    h+='<tr><td>− Shipping label</td><td>'+m(-label)+'</td></tr>';
+    h+='<tr class="total"><td>You keep</td><td>'+m(profit)+'</td></tr>';
+    h+='<tr><td>Margin</td><td>'+(margin*100).toFixed(1)+'%</td></tr>';
+    h+='<tr><td>Platform takes</td><td>'+(rev?(feeTot/rev*100).toFixed(1):'0.0')+'%</td></tr>';
+    $('rows').innerHTML=h;
+    var v=$('verdict');
+    if(profit<0){v.className='verdict bad';v.textContent='LOSING MONEY: '+m(profit)+' on every sale.'}
+    else if(margin<tgt){v.className='verdict bad';v.textContent='Profitable, but under your '+Math.round(tgt*100)+'% target.'}
+    else{v.className='verdict ok';v.textContent='On target: '+(margin*100).toFixed(0)+'% margin.'}
+    // Solve for item price that hits target margin, holding shipping charged fixed.
+    var lo=0,hi=100000;
+    for(var i=0;i<60;i++){var mid=(lo+hi)/2,ff=fees(mid,ship).reduce(function(a,b){return a+b[1]},0),p=mid+ship-ff-cost-label;
+      if(p>=tgt*(mid+ship))hi=mid;else lo=mid;}
+    $('need').textContent=hi>=99999?'No price reaches that margin with these fees; lower the target.':
+      'Item price you need for a '+Math.round(tgt*100)+'% margin: '+m(hi)+'.';
+  }
+  document.querySelectorAll('.tabs button').forEach(function(b){
+    b.addEventListener('click',function(){
+      P=b.dataset.p;
+      document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+      ['etsy','shopify','amazon'].forEach(function(k){$('opt-'+k).hidden=k!==P});
+      calc();
+    });
+  });
+  document.querySelectorAll('input,select').forEach(function(e){e.addEventListener('input',calc)});
+  calc();
+})();
+</script>
+</body>
+</html>
