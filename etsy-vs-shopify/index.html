@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy vs Shopify Fees: Break-Even Calculator (2026)</title>
+<meta name="description" content="Etsy or Shopify? Enter your average order and orders per month to see what each platform costs you a month, and how many orders you need before Shopify's plan fee pays for itself. Free, no signup.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-vs-shopify/">
+<meta property="og:title" content="Etsy vs Shopify: which costs you less?">
+<meta property="og:description" content="Monthly fees side by side and the break-even order count. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-vs-shopify/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-13.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.vs div{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+.vs b{display:block;font-size:1.5rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.vs .win{border-color:var(--green);background:var(--greenbg)}
+nav{font-size:.9rem;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; Full fee &amp; profit calculator</a></nav>
+<h1>Etsy vs Shopify: which costs you less?</h1>
+<p class="lead">Enter your typical order and how many you sell a month. See what each platform takes per month and how many orders it takes before Shopify's plan fee pays for itself. Free, nothing leaves your browser.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="aov">Average order <small>(item price + shipping charged)</small></label>
+      <div class="in"><span>$</span><input id="aov" type="number" inputmode="decimal" min="0" step="0.01" value="30"></div>
+      <label for="orders">Orders per month</label>
+      <div class="in"><input id="orders" type="number" inputmode="numeric" min="0" step="1" value="20" style="padding-left:10px"></div>
+      <label for="items">Items per order <small>(Etsy charges $0.20 per item sold)</small></label>
+      <div class="in"><input id="items" type="number" inputmode="decimal" min="1" step="0.1" value="1" style="padding-left:10px"></div>
+      <label for="offsite">Etsy orders from Offsite Ads <small>(15% fee on those)</small></label>
+      <div class="in"><input id="offsite" type="number" min="0" max="100" step="1" value="0" style="padding-left:10px"><span>%</span></div>
+      <label for="plan">Shopify plan <small>(monthly billing, US)</small></label>
+      <select id="plan" class="full">
+        <option value="39,0.029">Basic: $39/mo, 2.9% + 30&cent;</option>
+        <option value="105,0.027">Grow: $105/mo, 2.7% + 30&cent;</option>
+        <option value="399,0.025">Advanced: $399/mo, 2.5% + 30&cent;</option>
+      </select>
+      <label for="apps">Shopify apps, theme, domain <small>(per month)</small></label>
+      <div class="in"><span>$</span><input id="apps" type="number" inputmode="decimal" min="0" step="1" value="0"></div>
+    </div>
+    <div>
+      <div class="vs" aria-live="polite">
+        <div id="e"><span>Etsy / month</span><b id="et">$0</b></div>
+        <div id="s"><span>Shopify / month</span><b id="st">$0</b></div>
+      </div>
+      <table><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+      <p class="note">Shopify's number assumes you already have the buyers. Etsy's fee pays for its marketplace traffic; on Shopify, finding buyers (ads, social, search) is on you.</p>
+    </div>
+  </div>
+  <p class="note">US rates as of October 2026: Etsy 6.5% transaction + 3% + $0.25 processing + $0.20 listing per item sold; Shopify Payments card rates by plan. Sales tax left out. Rates change; check each platform's fee page.</p>
+</div>
+
+<div class="cta">
+  <h2>Whichever you pick, know which products make money</h2>
+  <p>The <strong>Seller Profit Sheet</strong> reads your Etsy or Shopify sales export and shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Selling on both? It handles both in one sheet. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-vs-shopify" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>The short answer</h2>
+<p>Per sale, Shopify is much cheaper: on a $30 order Etsy takes about <strong>$3.30</strong> (9.5% + $0.45) and Shopify Basic about <strong>$1.17</strong> (2.9% + 30&cent;). But Shopify charges a monthly plan fee whether you sell or not. Divide the plan fee by the per-order saving and you get the break-even: on a $30 order with Basic at $39 a month, that's about <strong>19 orders a month</strong>. Below that, Etsy is cheaper even before counting traffic.</p>
+
+<h2>What the break-even leaves out</h2>
+<h3>Traffic</h3>
+<p>Etsy's fees buy you a marketplace full of people already searching for handmade and vintage goods. A Shopify store starts with zero visitors. If getting those 19 orders means spending $50 a month on ads, Etsy is still cheaper. Most small sellers who switch keep Etsy running and add Shopify for repeat customers.</p>
+<h3>Offsite Ads</h3>
+<p>Etsy's Offsite Ads fee is 15% of the order (12% once your shop passes $10,000 in yearly sales, when the ads also become mandatory), capped at $100. If a large share of your orders come from Offsite Ads, Etsy gets expensive fast, and the break-even drops. Set the share above to see it.</p>
+<h3>Apps and extras</h3>
+<p>Shopify stores often add paid apps (reviews, email, upsells) and a domain. Add them in the apps box; they raise the break-even the same way the plan fee does.</p>
+
+<h2>Questions</h2>
+<h3>Is Shopify cheaper than Etsy?</h3>
+<p>Per order, yes. Per month, only once you sell enough to cover the plan fee, and only if those buyers find your store without paid ads.</p>
+<h3>Can I sell on both?</h3>
+<p>Yes, and many sellers do. The catch is tracking profit across both, since each platform reports fees differently. That's what the Seller Profit Sheet above is for.</p>
+<h3>Does Etsy charge fees on shipping?</h3>
+<p>Yes. The 6.5% transaction fee and the 3% processing fee apply to the shipping you charge, not just the item. That's why this calculator uses the order total.</p>
+
+<footer>Independent tool, not affiliated with Etsy or Shopify. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../">Etsy, Shopify, Amazon &amp; eBay fee calculator</a>.</footer>
+</main>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+  var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toFixed(2)};
+  function calc(){
+    var aov=n('aov'),o=n('orders'),items=Math.max(1,n('items')),off=Math.min(n('offsite'),100)/100;
+    var pl=$('plan').value.split(',').map(Number),apps=n('apps'),fixed=pl[0]+apps;
+    var ePer=aov*0.095+0.25+0.20*items+off*Math.min(aov*0.15,100);
+    var sPer=aov*pl[1]+0.30;
+    var eM=ePer*o,sM=sPer*o+fixed,save=ePer-sPer;
+    $('et').textContent=m(eM);$('st').textContent=m(sM);
+    $('e').className=eM<=sM?'win':'';$('s').className=sM<eM?'win':'';
+    var h='<tr><td>Etsy fees per order</td><td>'+m(ePer)+'</td></tr>';
+    h+='<tr><td>Shopify card fee per order</td><td>'+m(sPer)+'</td></tr>';
+    h+='<tr><td>Shopify plan + extras</td><td>'+m(fixed)+' / mo</td></tr>';
+    h+='<tr class="total"><td>Break-even</td><td>'+(save>0?Math.ceil(fixed/save)+' orders/mo':'never')+'</td></tr>';
+    $('rows').innerHTML=h;
+    var v=$('verdict');
+    if(sM<eM){v.className='verdict ok';v.textContent='Shopify saves you '+m(eM-sM)+' a month at '+o+' orders, if the buyers come without ads.'}
+    else{v.className='verdict bad';v.textContent='Etsy is cheaper by '+m(sM-eM)+' a month at '+o+' orders.'}
+  }
+  document.querySelectorAll('input,select').forEach(function(e){e.addEventListener('input',calc)});
+  calc();
+})();
+</script>
+</body>
+</html>
