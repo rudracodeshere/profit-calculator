@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Pricing Calculator: How to Price Handmade Items (2026)</title>
+<meta name="description" content="Enter materials, packaging, your time and shipping. Get the Etsy price that pays you for your hours and hits your target profit after every Etsy fee. Free, no signup.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-pricing-calculator/">
+<meta property="og:title" content="Etsy pricing calculator: what should you charge?">
+<meta property="og:description" content="The price that covers materials, your time and every Etsy fee, and still leaves profit. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-pricing-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-12.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.vs div{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+.vs b{display:block;font-size:1.5rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.vs .win{border-color:var(--green);background:var(--greenbg)}
+nav{font-size:.9rem;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; Full fee &amp; profit calculator</a></nav>
+<h1>Etsy pricing calculator: what should you charge?</h1>
+<p class="lead">Most handmade pricing formulas forget that Etsy's fees are a percentage of your price, and that your time is a cost. Enter what one item costs you to make and ship. Get the price that pays you for your hours and still leaves the profit you want. Free, nothing leaves your browser.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="mat">Materials per item</label>
+      <div class="in"><span>$</span><input id="mat" type="number" inputmode="decimal" min="0" step="0.01" value="6"></div>
+      <label for="pack">Packaging per order</label>
+      <div class="in"><span>$</span><input id="pack" type="number" inputmode="decimal" min="0" step="0.01" value="1"></div>
+      <label for="mins">Your time per item <small>(minutes)</small></label>
+      <div class="in"><input id="mins" type="number" inputmode="numeric" min="0" step="1" value="30" style="padding-left:10px"></div>
+      <label for="rate">Pay yourself <small>(per hour)</small></label>
+      <div class="in"><span>$</span><input id="rate" type="number" inputmode="decimal" min="0" step="1" value="15"></div>
+      <label for="label">Shipping label you pay</label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="5"></div>
+      <label for="ship">Shipping you charge the buyer <small>(0 for free shipping)</small></label>
+      <div class="in"><span>$</span><input id="ship" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+      <label for="margin">Profit you want <small>(% of the order, on top of your wage)</small></label>
+      <div class="in"><input id="margin" type="number" min="0" max="80" step="1" value="20" style="padding-left:10px"><span>%</span></div>
+      <label class="check"><input id="offsite" type="checkbox"> Price for an Offsite Ads sale <small>(extra 15%)</small></label>
+    </div>
+    <div>
+      <div class="vs" aria-live="polite">
+        <div class="win"><span>Charge for the item</span><b id="price">$0</b></div>
+        <div><span>You keep per sale</span><b id="keep">$0</b></div>
+      </div>
+      <table><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US Etsy rates as of October 2026: 6.5% transaction fee and 3% + $0.25 payment processing on the order total (item + shipping), $0.20 listing fee per item sold, Offsite Ads 15%. Sales tax left out. Rates change; check Etsy's fee page.</p>
+</div>
+
+<div class="cta">
+  <h2>Priced right on paper. Is it profitable in practice?</h2>
+  <p>Discounts, ad spend, refunds and label price changes eat the margin you priced in. The <strong>Seller Profit Sheet</strong> reads your monthly Etsy sales export and shows real net profit per product, with a red LOSING MONEY flag on anything underwater, plus a price calculator for every product you sell. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-pricing-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>The Etsy pricing formula</h2>
+<p>Add up what one sale costs you: materials, packaging, the shipping label and your time at an hourly wage. Call that <strong>cost</strong>. Etsy then takes about 9.5% of the order total plus $0.45 a sale. If you want a profit margin <strong>m</strong> on top, the order total has to be:</p>
+<p><strong>order total = (cost + $0.45) &divide; (1 &minus; 0.095 &minus; m)</strong></p>
+<p>Subtract the shipping you charge the buyer, and what's left is your item price. With $6 materials, $1 packaging, 30 minutes at $15 an hour, a $5 label, free shipping and a 20% margin, cost is $19.50, so the order total is $19.95 &divide; 0.705 = <strong>$28.30</strong>. You keep $5.66 profit after paying yourself $7.50 for the half hour.</p>
+
+<h2>Why "materials &times; 3" loses money</h2>
+<p>The popular rule of thumb (materials times 2 or 3) ignores your time, the shipping label and the fact that fees grow with the price. In the example above, materials &times; 3 is $18, which leaves you $3.84 for 30 minutes of work, under $8 an hour. The calculator shows what the rule gives for your numbers.</p>
+
+<h2>Free shipping or charge shipping?</h2>
+<p>For your profit it barely matters: Etsy charges its 9.5% on shipping too, so $5 moved from the shipping line into the item price costs the same in fees. What changes is how the listing looks. Etsy favors US listings with free shipping on orders over $35 in search, so many sellers build the label into the price.</p>
+
+<h2>Questions</h2>
+<h3>Should I pay myself in the price?</h3>
+<p>Yes. If your time isn't in the cost, your "profit" is really your wage, and you'll find you can't afford to hire help or take a week off. Set a modest hourly rate and treat it as a cost like materials.</p>
+<h3>What profit margin should an Etsy shop aim for?</h3>
+<p>Many handmade sellers aim for 15 to 30% after paying themselves. Below 10% there's no room for a discount, a refund or a month of Etsy Ads.</p>
+<h3>How do I check my real margin after a month of sales?</h3>
+<p>Your pricing assumes every sale goes to plan. Your sales export shows what really happened. The Seller Profit Sheet above turns that export into profit per product.</p>
+
+<footer>Independent tool, not affiliated with Etsy. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../">Etsy, Shopify, Amazon &amp; eBay fee calculator</a> &middot; <a href="../etsy-vs-shopify/">Etsy vs Shopify break-even</a>.</footer>
+</main>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+  var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toFixed(2)};
+  function fees(total,off){return total*0.095+0.45+(off?Math.min(total*0.15,100):0)}
+  function calc(){
+    var mat=n('mat'),pack=n('pack'),wage=n('mins')/60*n('rate'),lab=n('label'),ship=n('ship');
+    var mg=Math.min(n('margin'),80)/100,off=$('offsite').checked;
+    var cost=mat+pack+wage+lab,den=1-0.095-mg-(off?0.15:0);
+    var rows=$('rows'),v=$('verdict');
+    if(den<=0.05){$('price').textContent='-';$('keep').textContent='-';rows.innerHTML='';v.className='verdict bad';v.textContent='That margin is too high to reach after fees. Lower it.';return}
+    var total=(cost+0.45)/den;
+    if(off&&total*0.15>100){total=(cost+0.45+100)/(1-0.095-mg)}
+    var price=Math.max(0,total-ship),f=fees(price+ship,off),profit=price+ship-f-cost;
+    $('price').textContent=m(price);$('keep').textContent=m(profit+wage);
+    var h='<tr><td>Materials + packaging</td><td>'+m(mat+pack)+'</td></tr>';
+    h+='<tr><td>Your time</td><td>'+m(wage)+'</td></tr>';
+    h+='<tr><td>Shipping label</td><td>'+m(lab)+'</td></tr>';
+    h+='<tr><td>Etsy fees</td><td>'+m(f)+'</td></tr>';
+    h+='<tr class="total"><td>Profit after your wage</td><td>'+m(profit)+'</td></tr>';
+    rows.innerHTML=h;
+    var x3=mat*3,p3=x3+ship-fees(x3+ship,off)-(mat+pack+lab),hr=n('mins')>0?p3/(n('mins')/60):0;
+    if(x3<price){v.className='verdict bad';v.textContent='"Materials x 3" would be '+m(x3)+': you\'d keep '+m(p3)+' for your time'+(n('mins')>0?', '+m(hr)+' an hour.':'.')}
+    else{v.className='verdict ok';v.textContent='"Materials x 3" ('+m(x3)+') covers it here. Your materials are a big share of the price.'}
+  }
+  document.querySelectorAll('input').forEach(function(e){e.addEventListener('input',calc);e.addEventListener('change',calc)});
+  calc();
+})();
+</script>
+</body>
+</html>
