@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>eBay Fee Calculator 2026: Final Value Fee, Ads and What You Keep</title>
+<meta name="description" content="Free eBay fee calculator: final value fee on item, shipping and tax, per-order fee, promoted listing ad rate and Top Rated Plus discount, plus your profit.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/ebay-fee-calculator/">
+<meta property="og:title" content="eBay fee calculator">
+<meta property="og:description" content="Free eBay fee calculator: final value fee on item, shipping and tax, per-order fee, promoted listing ad rate and Top Rated Plus discount, plus your profit.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/ebay-fee-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-03.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "eBay fee calculator", "url": "https://rudracodeshere.github.io/profit-calculator/ebay-fee-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free eBay fee calculator: final value fee on item, shipping and tax, per-order fee, promoted listing ad rate and Top Rated Plus discount, plus your profit."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does eBay charge fees on sales tax?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The final value fee is calculated on the total amount of the sale, which includes sales tax. On a $48 order with 8% tax, you pay the fee on $51.84."}}, {"@type": "Question", "name": "How much does eBay take from a $40 sale?", "acceptedAnswer": {"@type": "Answer", "text": "With $8 shipping and 8% tax, $7.45 in total: $7.05 final value fee plus the $0.40 per-order fee, at the 13.6% rate. Your category rate may differ."}}, {"@type": "Question", "name": "How is the promoted listing fee calculated?", "acceptedAnswer": {"@type": "Answer", "text": "It is your ad rate times the same total the final value fee uses, item plus shipping plus tax. A 5% ad rate on a $51.84 order costs $2.59, charged only when the sale is attributed to the ad."}}, {"@type": "Question", "name": "What is the eBay per-order fee?", "acceptedAnswer": {"@type": "Answer", "text": "$0.40 per order, or $0.30 when the order total is $10 or less. On an $8 order with free shipping and no tax, fees come to $1.39 including the $0.30."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "eBay fee calculator", "item": "https://rudracodeshere.github.io/profit-calculator/ebay-fee-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>eBay fee calculator</h1>
+<p class="lead">Enter one eBay sale. The calculator applies the final value fee to the full amount the buyer pays, sales tax included, adds the per-order fee and any promoted listing fee, then takes off your item cost and shipping label to show what you keep.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="item">Sold price of the item</label>
+      <div class="in"><span>$</span><input id="item" type="number" inputmode="decimal" min="0" step="0.01" value="40"></div>
+      <label for="ship">Shipping you charge the buyer</label>
+      <div class="in"><span>$</span><input id="ship" type="number" inputmode="decimal" min="0" step="0.01" value="8"></div>
+      <label for="tax">Buyer's sales tax rate <small>(eBay collects and remits it)</small></label>
+      <div class="in"><input id="tax" type="number" inputmode="decimal" min="0" step="0.1" value="8"><span>%</span></div>
+      <label for="ad">Promoted listing ad rate <small>(0 if not promoted, or the sale didn't come from the ad)</small></label>
+      <div class="in"><input id="ad" type="number" inputmode="decimal" min="0" step="0.1" value="0"><span>%</span></div>
+      <label for="cost">What the item cost you</label>
+      <div class="in"><span>$</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="12"></div>
+      <label for="label">Shipping label you pay</label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="6"></div>
+      <label class="check"><input id="trs" type="checkbox"> I'm Top Rated with a Top Rated Plus listing (10% off the final value fee)</label>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="fvf">Final value fee for your category</label>
+      <div class="in"><input id="fvf" type="number" min="0" step="0.1" value="13.6"><span>%</span></div>
+      <label for="po">Per-order fee</label>
+      <div class="in"><span>$</span><input id="po" type="number" min="0" step="0.01" value="0.40"></div>
+      <label for="pos">Per-order fee on small orders</label>
+      <div class="in"><span>$</span><input id="pos" type="number" min="0" step="0.01" value="0.30"></div>
+      <label for="thr">Small order means a total of up to</label>
+      <div class="in"><span>$</span><input id="thr" type="number" min="0" step="0.01" value="10"></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>You keep</span><b id="keep"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US eBay rates as of October 2026: final value fee 13.6% for most categories, charged on the total the buyer pays including shipping and sales tax, plus $0.40 per order ($0.30 if the order total is $10 or less). Some categories charge more or less, and higher rates can apply above a price cap, so set your category's rate under Edit fee rates. The Top Rated Plus discount is applied to the percentage part of the final value fee only.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=ebay-fee-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>How eBay fees work</h2>
+<p><strong>Final value fee.</strong> eBay takes a percentage of the whole order: the item price, the shipping you charge and the sales tax the buyer pays. For most categories that is 13.6%. You don't keep the tax, but you still pay the fee on it.</p>
+<p><strong>Per-order fee.</strong> A fixed $0.40 on every order, or $0.30 if the order total is $10 or less.</p>
+<p><strong>Promoted listings.</strong> If you promote a listing at a chosen ad rate and the sale comes through the ad, eBay charges that rate on the same order total. A 5% ad rate costs you more than a third of the final value fee again.</p>
+<p><strong>Top Rated Plus.</strong> Top Rated sellers get 10% off the final value fee on listings that qualify (fast handling and free 30-day returns). It is a discount on the fee, not 10% of the sale.</p>
+<h2>The formula</h2>
+<p class="formula">eBay fees = (item + shipping + tax) x (FVF % + ad %) + per-order fee</p>
+<p>Example: a $40 item with $8 shipping to a buyer who pays 8% sales tax. The buyer pays $51.84, of which $3.84 is tax. The final value fee is $7.05 and the per-order fee $0.40, so eBay keeps $7.45, which is 15.5% of the $48 you charged. After a $12 item cost and a $6 label you keep <strong>$22.55</strong>.</p>
+<p>Promote the same listing at 5% and the ad adds $2.59, leaving $19.96. Without the ad but with Top Rated Plus, the final value fee drops by $0.71 and you keep $23.25.</p>
+<h2>Pricing tips</h2>
+<p>Because the fee is charged on shipping too, moving cost from the item price into the shipping charge does not save fees. Price your item so it still makes money after roughly 15% to 16% of the total goes to eBay, more if you promote. On small sales the fixed fee hurts most: an $8 item with free shipping pays $1.39 in fees, over 17% of the sale.</p>
+
+<h2>Questions</h2>
+<h3>Does eBay charge fees on sales tax?</h3>
+<p>Yes. The final value fee is calculated on the total amount of the sale, which includes sales tax. On a $48 order with 8% tax, you pay the fee on $51.84.</p>
+<h3>How much does eBay take from a $40 sale?</h3>
+<p>With $8 shipping and 8% tax, $7.45 in total: $7.05 final value fee plus the $0.40 per-order fee, at the 13.6% rate. Your category rate may differ.</p>
+<h3>How is the promoted listing fee calculated?</h3>
+<p>It is your ad rate times the same total the final value fee uses, item plus shipping plus tax. A 5% ad rate on a $51.84 order costs $2.59, charged only when the sale is attributed to the ad.</p>
+<h3>What is the eBay per-order fee?</h3>
+<p>$0.40 per order, or $0.30 when the order total is $10 or less. On an $8 order with free shipping and no tax, fees come to $1.39 including the $0.30.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-vs-ebay/">Etsy vs eBay fees</a></li><li><a href="../amazon-fba-calculator/">Amazon FBA calculator</a></li><li><a href="../poshmark-fee-calculator/">Poshmark fee calculator</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li><li><a href="../markup-calculator/">Markup calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var base=n('item')+n('ship'),tax=base*n('tax')/100,tot=base+tax;
+  if(!base){$('keep').textContent=m(0);setRows([['Enter the sold price to see eBay fees.','']]);verdict(false,'No sale entered yet.');return}
+  var fv=tot*n('fvf')/100,disc=$('trs').checked?fv*0.1:0,po=tot>n('thr')?n('po'):n('pos'),ad=tot*n('ad')/100;
+  var fees=fv-disc+po+ad,costs=n('cost')+n('label'),keep=base-fees-costs;
+  var r=[['Buyer pays (item + shipping + tax)',m(tot)],['Sales tax, passed to the state',m(-tax)],['Final value fee ('+n('fvf')+'% of '+m(tot)+')',m(-fv)]];
+  if(disc)r.push(['Top Rated Plus discount (10%)',m(disc)]);
+  r.push(['Per-order fee',m(-po)]);
+  if(ad)r.push(['Promoted listing ('+n('ad')+'%)',m(-ad)]);
+  r.push(['Total eBay fees',m(-fees)+' ('+pc(fees/base)+')'],['Item cost + label',m(-costs)],['You keep',m(keep),'total']);
+  setRows(r);$('keep').textContent=m(keep);
+  if(keep<0)verdict(false,'This sale loses '+m(-keep)+'. Raise the price or the shipping charge, or drop the ad rate.');
+  else verdict(true,'eBay takes '+pc(fees/base)+' of the '+m(base)+' you charged. Your profit is '+pc(keep/base,0)+' of it.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

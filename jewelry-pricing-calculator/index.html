@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jewelry Pricing Calculator: Metal, Labor, Wholesale and Retail</title>
+<meta name="description" content="Price handmade jewelry from metal weight, stones, findings, labor and overhead. Get wholesale and retail prices and what you keep after Etsy or Shopify fees.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/jewelry-pricing-calculator/">
+<meta property="og:title" content="Jewelry pricing calculator">
+<meta property="og:description" content="Price handmade jewelry from metal weight, stones, findings, labor and overhead. Get wholesale and retail prices and what you keep after Etsy or Shopify fees.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/jewelry-pricing-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-11.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Jewelry pricing calculator", "url": "https://rudracodeshere.github.io/profit-calculator/jewelry-pricing-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Price handmade jewelry from metal weight, stones, findings, labor and overhead. Get wholesale and retail prices and what you keep after Etsy or Shopify fees."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do you calculate the price of handmade jewelry?", "acceptedAnswer": {"@type": "Answer", "text": "Add metal (grams x price per gram), stones and findings, and your labor, then add overhead. Mark the total up to wholesale and double for retail. 5 g of silver at $1.50/g, $4.50 of findings and an hour at $25 with 10% overhead is a $40.70 cost, $81.40 wholesale and $162.80 retail."}}, {"@type": "Question", "name": "Should I mark up my labor too, or just materials?", "acceptedAnswer": {"@type": "Answer", "text": "Mark up the full cost, labor included. If you only mark up materials, your profit disappears on the pieces that take longest to make, which are often your best work. The markup is what pays for selling, marketing and slow months; your hourly rate is just your wage."}}, {"@type": "Question", "name": "How much does Etsy take on a jewelry sale?", "acceptedAnswer": {"@type": "Answer", "text": "In the US, 6.5% transaction fee, 3% + $0.25 processing and $0.20 listing fee per item. On a $162.80 ring that is $15.92, before any Offsite Ads fee."}}, {"@type": "Question", "name": "How often should I update prices for metal costs?", "acceptedAnswer": {"@type": "Answer", "text": "Whenever your supplier's price per gram changes noticeably, starting with your heaviest pieces. On a labor-heavy ring like the example, a 10% rise in metal adds only $3.30 to a $162.80 retail price; on a heavy cast piece it can add much more."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Jewelry pricing calculator", "item": "https://rudracodeshere.github.io/profit-calculator/jewelry-pricing-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Jewelry pricing calculator</h1>
+<p class="lead">Enter the metal by weight at your supplier's price, then stones, findings and your time. You get a full cost per piece, a wholesale and a retail price, how sensitive that price is to metal prices, and what a retail sale leaves you after platform fees.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="gr">Metal weight per piece</label>
+      <div class="in"><input id="gr" type="number" inputmode="decimal" min="0" step="0.1" value="5"><span>grams</span></div>
+      <label for="pg">Metal price <small>(today's price from your supplier)</small></label>
+      <div class="in"><span>$</span><input id="pg" type="number" inputmode="decimal" min="0" step="0.01" value="1.50"><span>per gram</span></div>
+      <label for="st">Stones, beads and findings</label>
+      <div class="in"><span>$</span><input id="st" type="number" inputmode="decimal" min="0" step="0.01" value="4.50"></div>
+      <label for="mn">Bench time per piece</label>
+      <div class="in"><input id="mn" type="number" inputmode="decimal" min="0" step="1" value="60"><span>minutes</span></div>
+      <label for="hr">Your hourly rate</label>
+      <div class="in"><span>$</span><input id="hr" type="number" inputmode="decimal" min="0" step="0.5" value="25"><span>/ hour</span></div>
+      <label for="oh">Overhead <small>(tools, polishing supplies, packaging, as % of cost)</small></label>
+      <div class="in"><input id="oh" type="number" inputmode="decimal" min="0" step="1" value="10"><span>%</span></div>
+      <label for="mk">Markup to wholesale <small>(on full cost)</small></label>
+      <div class="in"><input id="mk" type="number" inputmode="decimal" min="0" step="5" value="100"><span>%</span></div>
+      <label for="rm">Retail multiplier <small>(x wholesale)</small></label>
+      <div class="in"><input id="rm" type="number" inputmode="decimal" min="0" step="0.1" value="2"><span>x</span></div>
+      <label for="plat">Fees check: where you sell at retail</label>
+      <select id="plat" class="full">
+        <option value="etsy">Etsy (6.5% + 3% + $0.25 + $0.20)</option>
+        <option value="shop">Shopify Basic (2.9% + $0.30)</option>
+        <option value="own">Craft fair, own site or custom rate</option>
+      </select>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="etx">Etsy fees per sale <small>(6.5% + 3%; $0.25 + $0.20 listing)</small></label>
+      <div class="in"><input id="etx" type="number" min="0" step="0.1" value="9.5"><span>% +</span><span>$</span><input id="etf" type="number" min="0" step="0.01" value="0.45"></div>
+      <label for="spp">Shopify Payments card rate</label>
+      <div class="in"><input id="spp" type="number" min="0" step="0.1" value="2.9"><span>% +</span><span>$</span><input id="spf" type="number" min="0" step="0.01" value="0.30"></div>
+      <label for="opp">Custom rate <small>(card reader, own site)</small></label>
+      <div class="in"><input id="opp" type="number" min="0" step="0.1" value="0"><span>% +</span><span>$</span><input id="opf" type="number" min="0" step="0.01" value="0"></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>Retail price</span><b id="big"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">Metal prices are not live: enter what your supplier charges per gram today (sheet, wire and casting grain are priced differently from spot). Fee defaults are US rates as of October 2026: Etsy 6.5% transaction + 3% + $0.25 processing + $0.20 listing; Shopify Basic 2.9% + $0.30 (plan fee not included). Fees are on the item price only, shipping and tax left out.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=jewelry-pricing-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>How to price a piece of jewelry</h2>
+<p>Price from the bench up. Weigh the metal that goes into the finished piece (plus what you lose to filing and sprue, if you track it) and multiply by what you pay per gram. Add stones, beads, chain and findings. Add your bench time at an hourly rate, then a percentage for overhead: saw blades, polishing compound, pickle, packaging and tool wear that no single piece carries on its own.</p>
+<p class="formula">Full cost = (metal g x price per g + stones + findings + labor) x (1 + overhead %)<br>Wholesale = full cost x (1 + markup) &nbsp;|&nbsp; Retail = wholesale x 2</p>
+<h2>A worked example</h2>
+<p>A silver ring uses 5 grams at $1.50 a gram, so <strong>$7.50</strong> of metal. Add $4.50 of stone and findings and an hour at $25 ($25.00). Adding 10% overhead ($3.70) brings the full cost to <strong>$40.70</strong>. A 100% markup gives a wholesale price of <strong>$81.40</strong> and doubling that gives a retail price of <strong>$162.80</strong>.</p>
+<p>Sold on Etsy at $162.80, fees take $15.92, and after the full cost you keep $106.18. On Shopify Basic the card fee is $5.02 and you keep $117.08, before the monthly plan fee.</p>
+<h2>When metal prices move</h2>
+<p>Labor is usually the biggest part of a handmade piece, so a rise in metal prices moves the retail price less than people expect. In the example, a 10% rise in the silver price raises the retail price from $162.80 to $166.10. Pieces that are heavy and quick to make, like cast or chunky chain pieces, feel it much more. Re-run your heaviest pieces whenever your supplier's price changes, and reprice those first.</p>
+<p>Gold and platinum pieces are the opposite case: metal can be most of the cost. For those, some jewelers quote metal at the day's price and add labor and markup on top, rather than fixing a price for a whole season.</p>
+
+<h2>Questions</h2>
+<h3>How do you calculate the price of handmade jewelry?</h3>
+<p>Add metal (grams x price per gram), stones and findings, and your labor, then add overhead. Mark the total up to wholesale and double for retail. 5 g of silver at $1.50/g, $4.50 of findings and an hour at $25 with 10% overhead is a $40.70 cost, $81.40 wholesale and $162.80 retail.</p>
+<h3>Should I mark up my labor too, or just materials?</h3>
+<p>Mark up the full cost, labor included. If you only mark up materials, your profit disappears on the pieces that take longest to make, which are often your best work. The markup is what pays for selling, marketing and slow months; your hourly rate is just your wage.</p>
+<h3>How much does Etsy take on a jewelry sale?</h3>
+<p>In the US, 6.5% transaction fee, 3% + $0.25 processing and $0.20 listing fee per item. On a $162.80 ring that is $15.92, before any Offsite Ads fee.</p>
+<h3>How often should I update prices for metal costs?</h3>
+<p>Whenever your supplier's price per gram changes noticeably, starting with your heaviest pieces. On a labor-heavy ring like the example, a 10% rise in metal adds only $3.30 to a $162.80 retail price; on a heavy cast piece it can add much more.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../handmade-pricing-calculator/">Handmade pricing calculator</a></li><li><a href="../wholesale-price-calculator/">Wholesale price calculator</a></li><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../etsy-pricing-calculator/">Etsy pricing calculator</a></li><li><a href="../markup-calculator/">Markup calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var mt=n('gr')*n('pg'),lab=n('mn')/60*n('hr'),sub=mt+n('st')+lab,o=n('oh')/100,cost=sub*(1+o);
+  var mul=(1+n('mk')/100)*n('rm'),ws=cost*(1+n('mk')/100),rt=ws*n('rm'),rt10=(cost+mt*0.1*(1+o))*mul;
+  var pl=$('plat').value,k=pl==='etsy'?['etx','etf','Etsy fees']:pl==='shop'?['spp','spf','Shopify Payments fee']:['opp','opf','Card fees'];
+  var fees=rt?rt*n(k[0])/100+n(k[1]):0,keep=rt-fees,prof=keep-cost;
+  $('big').textContent=m(rt);
+  setRows([['Metal ('+n('gr')+' g at '+m(n('pg'))+'/g)',m(mt)],['Stones, beads, findings',m(n('st'))],['Labor ('+n('mn')+' min)',m(lab)],['Overhead ('+pc(o,0)+')',m(sub*o)],['Full cost per piece',m(cost),'total'],
+    ['Wholesale ('+n('mk')+'% markup)',m(ws)],['Retail ('+n('rm')+'x wholesale)',m(rt)],['Retail if metal goes up 10%',m(rt10)],
+    [k[2]+' on a retail sale',m(-fees)],['You keep after fees',m(keep)],['Profit after full cost',m(prof),'total']]);
+  if(!cost){verdict(false,'Enter the metal, findings and your time to price a piece.');return}
+  if(prof<0)verdict(false,'At '+m(rt)+' the '+k[2].toLowerCase()+' of '+m(fees)+' leave you '+m(-prof)+' short of your full cost. Raise the markup.');
+  else verdict(true,'At '+m(rt)+', '+k[2].toLowerCase()+' take '+m(fees)+' and you keep '+m(prof)+' after metal, findings, overhead and your '+m(lab)+' of labor.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

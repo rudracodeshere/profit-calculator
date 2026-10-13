@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Ads Calculator: Break-Even ROAS and Cost Per Click</title>
+<meta name="description" content="Is your Etsy Ads budget making money? Enter budget, cost per click and conversion rate for orders, cost per order, ROAS, break-even ROAS and profit.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-ads-calculator/">
+<meta property="og:title" content="Etsy Ads calculator: are your ads paying for themselves?">
+<meta property="og:description" content="Is your Etsy Ads budget making money? Enter budget, cost per click and conversion rate for orders, cost per order, ROAS, break-even ROAS and profit.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-ads-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-05.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Etsy Ads calculator: are your ads paying for themselves?", "url": "https://rudracodeshere.github.io/profit-calculator/etsy-ads-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Is your Etsy Ads budget making money? Enter budget, cost per click and conversion rate for orders, cost per order, ROAS, break-even ROAS and profit."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a good ROAS for Etsy Ads?", "acceptedAnswer": {"@type": "Answer", "text": "Any ROAS above your break-even, which is your order value divided by your profit per order before ads. For a $40 order that makes $21.75, break-even is 1.84. For a $40 order that makes $12, it is 3.33."}}, {"@type": "Question", "name": "How much should I spend on Etsy Ads per day?", "acceptedAnswer": {"@type": "Answer", "text": "The minimum is $1 a day. Start small, run it for a month, then compare Etsy's ROAS for each listing with your break-even ROAS. Raise the budget only on listings that clear it."}}, {"@type": "Question", "name": "What is a good cost per click on Etsy?", "acceptedAnswer": {"@type": "Answer", "text": "One below your break-even cost per click: profit per order times conversion rate. With $21.75 of profit and a 2.5% conversion rate, that is $0.54. Above that, each ad order loses money."}}, {"@type": "Question", "name": "Are Etsy Ads and Offsite Ads the same thing?", "acceptedAnswer": {"@type": "Answer", "text": "No. Etsy Ads are optional, run inside Etsy and charge per click from a budget you set. Offsite Ads run on other websites and charge a percentage of the order only when an ad leads to a sale."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Etsy Ads ROAS calculator", "item": "https://rudracodeshere.github.io/profit-calculator/etsy-ads-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Etsy Ads calculator: are your ads paying for themselves?</h1>
+<p class="lead">Etsy Ads (the promoted listings inside Etsy search) charge you per click. Enter your daily budget, what a click costs and how often clicks turn into orders. You get orders per month, the ad cost of each order, your ROAS against the break-even ROAS, and whether the ads add or take away profit.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="budget">Daily budget</label>
+      <div class="in"><span>$</span><input id="budget" type="number" inputmode="decimal" min="0" step="0.5" value="5"><span>/day</span></div>
+      <label for="cpc">Average cost per click</label>
+      <div class="in"><span>$</span><input id="cpc" type="number" inputmode="decimal" min="0" step="0.01" value="0.35"></div>
+      <label for="cr">Conversion rate <small>(orders &divide; clicks)</small></label>
+      <div class="in"><input id="cr" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="2.5"><span>%</span></div>
+      <label for="aov">Average order value <small>(item + shipping the buyer pays)</small></label>
+      <div class="in"><span>$</span><input id="aov" type="number" inputmode="decimal" min="0" step="0.01" value="40"></div>
+      <label for="pmode">Profit per order before ads</label>
+      <select id="pmode" class="full"><option value="calc">Work it out from my costs</option><option value="enter">I know it, let me enter it</option></select>
+      <div id="wcalc"><label for="costs">Materials + packaging + label per order</label>
+      <div class="in"><span>$</span><input id="costs" type="number" inputmode="decimal" min="0" step="0.01" value="14"></div></div>
+      <div id="wenter" style="display:none"><label for="profit">Profit per order before ads</label>
+      <div class="in"><span>$</span><input id="profit" type="number" inputmode="decimal" min="0" step="0.01" value="12"></div></div>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="tx">Transaction fee</label>
+      <div class="in"><input id="tx" type="number" min="0" step="0.1" value="6.5"><span>%</span></div>
+      <label for="pp">Payment processing</label>
+      <div class="in"><input id="pp" type="number" min="0" step="0.1" value="3"><span>% +</span><span>$</span><input id="pf" type="number" min="0" step="0.01" value="0.25"></div>
+      <label for="lfee">Listing fee per item sold</label>
+      <div class="in"><span>$</span><input id="lfee" type="number" min="0" step="0.01" value="0.20"></div>
+      <label for="days">Days per month</label>
+      <div class="in"><input id="days" type="number" min="1" step="1" value="30"></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>Profit added by Etsy Ads per month</span><b id="net"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">Etsy Ads as of October 2026: pay per click, minimum budget $1/day, a daily budget is a maximum and may not all be spent. Fee rates are US: 6.5% transaction, 3% + $0.25 processing, $0.20 listing fee, assuming one item per order. Offsite Ads are a separate fee charged per sale; see the Offsite Ads calculator.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-ads-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>How Etsy Ads cost works</h2>
+<p>You set a daily budget. Etsy shows your listings in search and on other Etsy pages, and charges you each time a shopper clicks one. Clicks are priced by auction, so your cost per click moves with competition for your search terms. Only some clicks turn into orders, and that conversion rate decides how much each ad order really costs.</p>
+<p class="formula">Ad cost per order = cost per click &divide; conversion rate</p>
+<p class="formula">Break-even ROAS = average order value &divide; profit per order before ads</p>
+<h2>Worked example</h2>
+<p>A $5 daily budget is <strong>$150.00</strong> a month. At $0.35 a click that buys 14.3 clicks a day. With a 2.5% conversion rate, 10.7 orders a month come from ads, so each costs <strong>$14.00</strong> in clicks.</p>
+<p>Orders average $40, and after Etsy's fees and $14 of costs each makes <strong>$21.75</strong> before ads. Revenue from ads is $428.57, a ROAS of <strong>2.86</strong>. The break-even ROAS is $40 &divide; $21.75 = <strong>1.84</strong>, and the highest cost per click you can afford is <strong>$0.54</strong>. The ads add <strong>$83.04</strong> of profit a month.</p>
+<p>If clicks cost $0.60 instead, ROAS drops to 1.67, under break-even, and the same budget loses $14.06 a month.</p>
+<h2>How to compare with the ROAS Etsy shows you</h2>
+<p>In Shop Manager &gt; Marketing &gt; Etsy Ads, Etsy reports revenue, spend and ROAS (revenue &divide; spend) for the shop and for each listing. Put that ROAS next to the break-even ROAS above:</p>
+<p><strong>Etsy ROAS above break-even:</strong> the ads earn more profit than they cost.</p>
+<p><strong>Etsy ROAS below break-even:</strong> every dollar of ads returns less than a dollar of profit, even if the ROAS looks high. A ROAS of 2 sounds good, but if your break-even is 3.33 (a $40 order that only makes $12), you are paying to sell.</p>
+<p>Two cautions. Etsy credits an order to the ads if the buyer clicked an ad within its attribution window, so some of those buyers would have found you anyway, and your true ROAS is likely lower than the dashboard says. And a listing-level ROAS on three orders is noise; judge listings on at least a month of data.</p>
+<h2>Getting more from the same budget</h2>
+<p>Turn off ads on listings with a ROAS under your break-even, so the budget goes to the ones that work. Put ads on listings with higher order values: a $60 order has far more room to pay for clicks than a $12 one. And check this calculator again after any price change, because a price rise lifts your break-even cost per click.</p>
+
+<h2>Questions</h2>
+<h3>What is a good ROAS for Etsy Ads?</h3>
+<p>Any ROAS above your break-even, which is your order value divided by your profit per order before ads. For a $40 order that makes $21.75, break-even is 1.84. For a $40 order that makes $12, it is 3.33.</p>
+<h3>How much should I spend on Etsy Ads per day?</h3>
+<p>The minimum is $1 a day. Start small, run it for a month, then compare Etsy's ROAS for each listing with your break-even ROAS. Raise the budget only on listings that clear it.</p>
+<h3>What is a good cost per click on Etsy?</h3>
+<p>One below your break-even cost per click: profit per order times conversion rate. With $21.75 of profit and a 2.5% conversion rate, that is $0.54. Above that, each ad order loses money.</p>
+<h3>Are Etsy Ads and Offsite Ads the same thing?</h3>
+<p>No. Etsy Ads are optional, run inside Etsy and charge per click from a budget you set. Offsite Ads run on other websites and charge a percentage of the order only when an ad leads to a sale.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../roas-calculator/">ROAS calculator</a></li><li><a href="../etsy-offsite-ads-calculator/">Etsy Offsite Ads calculator</a></li><li><a href="../etsy-profit-calculator/">Etsy monthly profit calculator</a></li><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../break-even-calculator/">Break-even calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var enter=$('pmode').value=='enter';
+  $('wcalc').style.display=enter?'none':'';$('wenter').style.display=enter?'':'none';
+  var b=n('budget'),cpc=n('cpc'),cr=Math.min(n('cr'),100)/100,aov=n('aov'),days=n('days')||30;
+  var pr=enter?n('profit'):aov-aov*(n('tx')+n('pp'))/100-n('pf')-n('lfee')-n('costs');
+  if(!b||!cpc||!cr||!aov){$('net').textContent='-';setRows([]);verdict(false,'Enter a daily budget, cost per click, conversion rate and order value. Etsy Ads shows the last three in Shop Manager > Marketing > Etsy Ads.');return}
+  var sp=b*days,cl=sp/cpc,o=cl*cr,cpo=cpc/cr,rev=o*aov,roas=rev/sp,net=o*pr-sp;
+  var r=[['Ad spend per month',m(sp)],['Clicks per day',(b/cpc).toFixed(1)],['Orders from ads per month',o.toFixed(1)],['Ad cost per order',m(cpo)],['Revenue from ads',m(rev)],['Profit per order before ads',m(pr)],['Your ROAS',roas.toFixed(2)]];
+  if(pr>0)r.push(['Break-even ROAS',(aov/pr).toFixed(2)],['Break-even cost per click',m(pr*cr)]);
+  else r.push(['Break-even ROAS','none (no profit to spend)']);
+  r.push(['Profit added by ads',m(net),'total']);
+  setRows(r);$('net').textContent=m(net);
+  if(pr<=0)verdict(false,'Each order already loses '+m(-pr)+' before ads. Advertising only makes the loss bigger. Fix the price first.');
+  else if(net<0)verdict(false,'Each ad order costs '+m(cpo)+' in clicks but only makes '+m(pr)+'. You need a ROAS of '+(aov/pr).toFixed(2)+' or a cost per click under '+m(pr*cr)+'. Pause the listings with the worst ROAS first.');
+  else verdict(true,'Ads cost '+m(cpo)+' per order against '+m(pr)+' of profit. Your ROAS of '+roas.toFixed(2)+' clears the break-even of '+(aov/pr).toFixed(2)+'.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

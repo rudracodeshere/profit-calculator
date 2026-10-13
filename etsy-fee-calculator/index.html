@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Fee Calculator 2026: Every Fee on One Sale, and What You Keep</title>
+<meta name="description" content="Free Etsy fee calculator. Enter a sale and see the transaction fee, payment processing, listing fee, Offsite Ads and currency conversion, plus what you keep after costs.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-fee-calculator/">
+<meta property="og:title" content="Etsy fee calculator">
+<meta property="og:description" content="Free Etsy fee calculator. Enter a sale and see the transaction fee, payment processing, listing fee, Offsite Ads and currency conversion, plus what you keep after costs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-fee-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-01.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Etsy fee calculator", "url": "https://rudracodeshere.github.io/profit-calculator/etsy-fee-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free Etsy fee calculator. Enter a sale and see the transaction fee, payment processing, listing fee, Offsite Ads and currency conversion, plus what you keep after costs."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Etsy take from a $20 sale?", "acceptedAnswer": {"@type": "Answer", "text": "With free shipping, $2.35: $1.30 transaction fee, $0.85 processing and the $0.20 listing fee. That is 11.75% of the sale, before any Offsite Ads fee."}}, {"@type": "Question", "name": "Does Etsy charge fees on shipping?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both the 6.5% transaction fee and the 3% processing fee apply to the shipping you charge the buyer."}}, {"@type": "Question", "name": "Does Etsy charge fees on sales tax?", "acceptedAnswer": {"@type": "Answer", "text": "The 6.5% transaction fee is not charged on sales tax. In the US the 3% processing fee is calculated on the full amount the buyer pays, tax included, which adds a few cents per order. This calculator leaves tax out to keep the inputs simple."}}, {"@type": "Question", "name": "Is Etsy Plus worth it?", "acceptedAnswer": {"@type": "Answer", "text": "Etsy Plus costs $10 a month and gives listing and ad credits. It only pays off if you would spend that on listings and Etsy Ads anyway; treat it as monthly overhead, not a per-sale fee."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Etsy fee calculator", "item": "https://rudracodeshere.github.io/profit-calculator/etsy-fee-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Etsy fee calculator</h1>
+<p class="lead">Enter one Etsy order. You get every fee Etsy takes, line by line, and what is left after your materials and the shipping label. All rates are editable if Etsy changes them or you sell outside the US. Nothing leaves your browser.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="price">Item price</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="25"></div>
+      <label for="ship">Shipping you charge the buyer</label>
+      <div class="in"><span>$</span><input id="ship" type="number" inputmode="decimal" min="0" step="0.01" value="5"></div>
+      <label for="qty">Quantity in the order</label>
+      <div class="in"><input id="qty" type="number" min="1" step="1" value="1"></div>
+      <label for="cost">Materials + packaging per item</label>
+      <div class="in"><span>$</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="8"></div>
+      <label for="label">Shipping label you pay</label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="5"></div>
+      <label class="check"><input id="offsite" type="checkbox"> Order came from Offsite Ads</label>
+      <label class="check"><input id="fx" type="checkbox"> My listing currency differs from my bank currency (2.5% conversion)</label>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="tx">Transaction fee</label>
+      <div class="in"><input id="tx" type="number" min="0" step="0.1" value="6.5"><span>%</span></div>
+      <label for="pp">Payment processing</label>
+      <div class="in"><input id="pp" type="number" min="0" step="0.1" value="3"><span>% +</span><span>$</span><input id="pf" type="number" min="0" step="0.01" value="0.25"></div>
+      <label for="oa">Offsite Ads rate <small>(12% if your shop made over $10k last year)</small></label>
+      <div class="in"><input id="oa" type="number" min="0" step="1" value="15"><span>%</span></div>
+      </details>
+    </div>
+    <div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US Etsy rates as of October 2026: 6.5% transaction fee and 3% + $0.25 processing on the order total (items + shipping), $0.20 listing fee per item sold. Processing rates differ by country (for example 4% + £0.20 in the UK). Sales tax is left out; processing on the tax portion adds a few cents per order.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-fee-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>Every Etsy fee, explained</h2>
+<p><strong>Listing fee: $0.20.</strong> You pay it when you publish a listing and again each time an item sells and the listing auto-renews. A quantity-3 order costs $0.60 in listing fees.</p>
+<p><strong>Transaction fee: 6.5%</strong> of the order total: item price, the shipping you charge, and gift wrap. Offering free shipping doesn't avoid it. It just means the fee is charged on a higher item price.</p>
+<p><strong>Payment processing: 3% + $0.25</strong> per order in the US, also on the order total. Other countries have their own rate.</p>
+<p><strong>Offsite Ads: 15% or 12%</strong>, only on orders that came from an Etsy ad on another site within 30 days of the click, capped at $100 per order. See the <a href="../etsy-offsite-ads-calculator/">Offsite Ads calculator</a> to check whether those sales still make money.</p>
+<p><strong>Currency conversion: 2.5%</strong> when your listings are priced in a different currency from your payment account.</p>
+<h2>The quick formula</h2>
+<p class="formula">Etsy fees (US) = 9.5% of (items + shipping) + $0.25 + $0.20 per item</p>
+<p>Example: a $25 item with $5 shipping. The order total is $30, so the fees are $1.95 (transaction) + $1.15 (processing) + $0.20 (listing) = <strong>$3.30</strong>, or 11% of the order. With $8 of materials and a $5 label, you keep <strong>$13.70</strong>. If the same order came from Offsite Ads, another $4.50 goes, leaving $9.20.</p>
+<h2>Why the percentage is higher on cheap items</h2>
+<p>The $0.45 of fixed fees per order ($0.25 processing plus the $0.20 listing fee) barely matters on a $60 order, but on a $5 sticker it adds 9 points to the share Etsy takes. Bundling low-priced items, or setting a minimum order, keeps fixed fees from eating small sales.</p>
+
+<h2>Questions</h2>
+<h3>How much does Etsy take from a $20 sale?</h3>
+<p>With free shipping, $2.35: $1.30 transaction fee, $0.85 processing and the $0.20 listing fee. That is 11.75% of the sale, before any Offsite Ads fee.</p>
+<h3>Does Etsy charge fees on shipping?</h3>
+<p>Yes. Both the 6.5% transaction fee and the 3% processing fee apply to the shipping you charge the buyer.</p>
+<h3>Does Etsy charge fees on sales tax?</h3>
+<p>The 6.5% transaction fee is not charged on sales tax. In the US the 3% processing fee is calculated on the full amount the buyer pays, tax included, which adds a few cents per order. This calculator leaves tax out to keep the inputs simple.</p>
+<h3>Is Etsy Plus worth it?</h3>
+<p>Etsy Plus costs $10 a month and gives listing and ad credits. It only pays off if you would spend that on listings and Etsy Ads anyway; treat it as monthly overhead, not a per-sale fee.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-pricing-calculator/">Etsy pricing calculator</a></li><li><a href="../etsy-offsite-ads-calculator/">Etsy Offsite Ads calculator</a></li><li><a href="../etsy-profit-calculator/">Etsy monthly profit calculator</a></li><li><a href="../etsy-free-shipping-calculator/">Etsy free shipping calculator</a></li><li><a href="../etsy-vs-shopify/">Etsy vs Shopify break-even</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var q=Math.max(1,Math.round(n('qty'))),t=n('price')*q+n('ship');
+  var tx=t*n('tx')/100,pp=t*n('pp')/100+n('pf'),lf=0.20*q;
+  var oa=$('offsite').checked?Math.min(t*n('oa')/100,100):0,fx=$('fx').checked?t*0.025:0;
+  var fees=tx+pp+lf+oa+fx,costs=n('cost')*q+n('label'),keep=t-fees-costs;
+  var r=[['Buyer pays',m(t)],['Transaction fee ('+n('tx')+'%)',m(-tx)],['Payment processing',m(-pp)],['Listing fee ($0.20 x '+q+')',m(-lf)]];
+  if(oa)r.push(['Offsite Ads ('+n('oa')+'%, max $100)',m(-oa)]);
+  if(fx)r.push(['Currency conversion (2.5%)',m(-fx)]);
+  r.push(['Total Etsy fees',m(-fees)+' ('+(t?pc(fees/t):'0%')+')'],['Materials + label',m(-costs)],['You keep',m(keep),'total']);
+  setRows(r);
+  verdict(keep>=0,keep<0?'This order loses '+m(-keep)+' after fees and costs.':'Etsy takes '+m(fees)+' of '+m(t)+'. You keep '+(t?pc(keep/t,0):'0%')+' of the order.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

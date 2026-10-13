@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Poshmark Fee Calculator 2026: Earnings, Profit and the $15 Trap</title>
+<meta name="description" content="Free Poshmark fee calculator. See your earnings after the $2.95 or 20% fee, your profit after cost, and the listing price you need to earn a set amount.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/poshmark-fee-calculator/">
+<meta property="og:title" content="Poshmark fee calculator">
+<meta property="og:description" content="Free Poshmark fee calculator. See your earnings after the $2.95 or 20% fee, your profit after cost, and the listing price you need to earn a set amount.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/poshmark-fee-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-08.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Poshmark fee calculator", "url": "https://rudracodeshere.github.io/profit-calculator/poshmark-fee-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free Poshmark fee calculator. See your earnings after the $2.95 or 20% fee, your profit after cost, and the listing price you need to earn a set amount."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Poshmark take from a $30 sale?", "acceptedAnswer": {"@type": "Answer", "text": "20%, or $6.00, so you earn $24.00. Shipping is paid by the buyer and isn't counted."}}, {"@type": "Question", "name": "Is it better to price at $14.99 or $15 on Poshmark?", "acceptedAnswer": {"@type": "Answer", "text": "$14.99. It earns $12.04 after the $2.95 flat fee, while $15.00 earns $12.00 after the 20% fee. You need $15.06 to earn more than you would at $14.99."}}, {"@type": "Question", "name": "What should I list at to earn $25 on Poshmark?", "acceptedAnswer": {"@type": "Answer", "text": "$31.25. Poshmark takes 20%, $6.25, and you keep $25.00."}}, {"@type": "Question", "name": "Does Poshmark charge fees on shipping?", "acceptedAnswer": {"@type": "Answer", "text": "No. The buyer pays for the prepaid shipping label and the fee is based on the sale price only."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Poshmark fee calculator", "item": "https://rudracodeshere.github.io/profit-calculator/poshmark-fee-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Poshmark fee calculator</h1>
+<p class="lead">Enter a sale price to see Poshmark's fee, what you earn and your profit after what you paid for the item. Or enter what you want to earn and get the lowest listing price that gets you there, with the $15 fee threshold handled correctly.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="price">Sale price</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="30"></div>
+      <label for="cost">What you paid for the item</label>
+      <div class="in"><span>$</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="8"></div>
+      <label for="want">Amount you want to earn</label>
+      <div class="in"><span>$</span><input id="want" type="number" inputmode="decimal" min="0" step="0.01" value="25"></div>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="flat">Flat fee on sales under the threshold</label>
+      <div class="in"><span>$</span><input id="flat" type="number" min="0" step="0.01" value="2.95"></div>
+      <label for="thr">Threshold</label>
+      <div class="in"><span>$</span><input id="thr" type="number" min="0" step="0.01" value="15"></div>
+      <label for="pct">Commission at or above the threshold</label>
+      <div class="in"><input id="pct" type="number" min="0" step="1" value="20"><span>%</span></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>You earn</span><b id="earn"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <h3>Price needed to earn a set amount</h3>
+      <table><tbody id="rows2"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US Poshmark fees as of October 2026: $2.95 flat on sales under $15, 20% on sales of $15 or more. The buyer pays shipping through the prepaid label, so it isn't part of your earnings. Rates differ in Canada and other markets and can change, so they are editable. The 20% fee is rounded to the nearest cent here; Poshmark's own rounding may differ by a cent.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=poshmark-fee-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>Poshmark's two-tier fee</h2>
+<p>Poshmark keeps one fee per sale. Under $15, it is a flat $2.95. At $15 or more, it is 20% of the sale price. The buyer pays for shipping with Poshmark's prepaid label, so shipping doesn't come out of your earnings and isn't charged a fee.</p>
+<p class="formula">Earnings = price - $2.95 (under $15) &nbsp;|&nbsp; Earnings = price x 0.80 ($15 and up)</p>
+<p>Example: a top you paid $8 for sells for $30. Poshmark takes $6.00 and you earn $24.00, so your profit is $16.00.</p>
+<h2>The $15 trap</h2>
+<p>Because the fee switches from flat to percentage, earnings drop when you cross the threshold. A $14.99 sale earns $12.04. A $15.00 sale earns $12.00. Every price from $15.00 to $15.04 earns less than $14.99 does, and you need to list at $15.06 to earn more ($12.05). If your item is priced in that band, take it down to $14.99.</p>
+<p>The flat fee also makes cheap items costly to sell. On a $5 item, the $2.95 fee is 59.0% of the sale and you earn $2.05. Bundles help, since the fee is charged once per order.</p>
+<h2>Pricing backward from what you want to earn</h2>
+<p>Divide by 0.8 when the result lands at $15 or above, otherwise add $2.95. To earn $25 you list at $31.25. To earn $10 you list at $12.95. The calculator picks whichever rule gives the lower price, so it never sends you into the gap just above $15. Remember offers: buyers expect to negotiate, so list a little above the price you actually need.</p>
+
+<h2>Questions</h2>
+<h3>How much does Poshmark take from a $30 sale?</h3>
+<p>20%, or $6.00, so you earn $24.00. Shipping is paid by the buyer and isn't counted.</p>
+<h3>Is it better to price at $14.99 or $15 on Poshmark?</h3>
+<p>$14.99. It earns $12.04 after the $2.95 flat fee, while $15.00 earns $12.00 after the 20% fee. You need $15.06 to earn more than you would at $14.99.</p>
+<h3>What should I list at to earn $25 on Poshmark?</h3>
+<p>$31.25. Poshmark takes 20%, $6.25, and you keep $25.00.</p>
+<h3>Does Poshmark charge fees on shipping?</h3>
+<p>No. The buyer pays for the prepaid shipping label and the fee is based on the sale price only.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../ebay-fee-calculator/">eBay fee calculator</a></li><li><a href="../etsy-vs-ebay/">Etsy vs eBay fees</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li><li><a href="../markup-calculator/">Markup calculator</a></li><li><a href="../price-increase-calculator/">Price increase calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var Tc=Math.round(n('thr')*100),fl=Math.round(n('flat')*100),r=n('pct')/100,Pc=Math.round(n('price')*100);
+  function fee(c){return c<Tc?fl:Math.round(c*r)}
+  function earn(c){return c-fee(c)}
+  function first(from,ok){var c=Math.max(Tc,from);for(var k=0;k<100000;k++,c++)if(ok(earn(c)))return c;return -1}
+  var lowMax=Tc>=1?Tc-1-fl:-1,Wc=Math.round(n('want')*100);
+  if(Wc){
+    var c=[];if(Wc+fl<Tc)c.push(Wc+fl);
+    if(r<1){var h=first(Math.floor(Wc/(1-r))-2,function(e){return e>=Wc});if(h>=0)c.push(h)}
+    if(c.length){var best=Math.min.apply(null,c);
+      setRows([['To earn '+m(Wc/100)+', list at',m(best/100),'total'],['Poshmark fee',m(-fee(best)/100)],['You earn',m(earn(best)/100)]],'rows2');}
+    else setRows([['No price earns that with these rates.','']],'rows2');
+  }else setRows([['Enter the amount you want to earn.','']],'rows2');
+  if(!Pc){$('earn').textContent='-';setRows([['Enter a sale price.','']]);verdict(false,'No sale price entered yet.');return}
+  var f=fee(Pc)/100,P=Pc/100,e=P-f,pr=e-n('cost');
+  setRows([['Sale price',m(P)],[Pc<Tc?'Poshmark flat fee':'Poshmark fee ('+n('pct')+'%)',m(-f)+' ('+pc(f/P)+')'],['You earn',m(e)],['What you paid',m(-n('cost'))],['Profit',m(pr),'total']]);
+  $('earn').textContent=m(e);
+  if(Pc>=Tc&&r<1&&lowMax>0&&earn(Pc)<lowMax){
+    var beat=first(Math.floor(lowMax/(1-r))-2,function(x){return x>lowMax});
+    verdict(false,'Price trap: listing at '+m((Tc-1)/100)+' earns '+m(lowMax/100)+', more than '+m(e)+' at this price. You need '+m(beat/100)+' or more to beat it.');
+  }else if(e<=0)verdict(false,'The '+m(fl/100)+' flat fee takes the whole sale. Bundle this with other items.');
+  else if(pr<0)verdict(false,'This sale loses '+m(-pr)+' after what you paid for the item.');
+  else verdict(true,'You keep '+m(e)+' and make '+m(pr)+' profit. Poshmark takes '+pc(f/P)+'.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

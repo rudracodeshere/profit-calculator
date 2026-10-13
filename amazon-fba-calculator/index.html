@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amazon FBA Calculator 2026: Profit, Margin, ROI per Unit</title>
+<meta name="description" content="Free Amazon FBA profit calculator: referral fee, FBA fee, storage, inbound shipping and seller plan per unit, with margin, ROI and break-even price.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/amazon-fba-calculator/">
+<meta property="og:title" content="Amazon FBA profit calculator">
+<meta property="og:description" content="Free Amazon FBA profit calculator: referral fee, FBA fee, storage, inbound shipping and seller plan per unit, with margin, ROI and break-even price.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/amazon-fba-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-04.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Amazon FBA profit calculator", "url": "https://rudracodeshere.github.io/profit-calculator/amazon-fba-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free Amazon FBA profit calculator: referral fee, FBA fee, storage, inbound shipping and seller plan per unit, with margin, ROI and break-even price."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Amazon take from a $25 sale with FBA?", "acceptedAnswer": {"@type": "Answer", "text": "With a 15% referral fee, a $4.50 FBA fee, $0.15 storage and the Professional plan spread over 100 units, $8.80, or 35.2% of the price. Your FBA fee depends on size and weight."}}, {"@type": "Question", "name": "What is the Amazon referral fee minimum?", "acceptedAnswer": {"@type": "Answer", "text": "$0.30 per item in most categories. On a $1.50 item, 15% comes to less than that, so Amazon charges $0.30 instead."}}, {"@type": "Question", "name": "How do I find my break-even price on Amazon?", "acceptedAnswer": {"@type": "Answer", "text": "Add up every fixed cost per unit (FBA fee, storage, plan share, inbound shipping and product cost) and divide by 1 minus the referral rate. For the example on this page that is $13.59."}}, {"@type": "Question", "name": "Should I use the Individual or Professional plan?", "acceptedAnswer": {"@type": "Answer", "text": "Individual costs $0.99 per item; Professional costs $39.99 a month. At 100 units a month Professional works out to $0.40 a unit, so it is cheaper above about 40 sales a month."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Amazon FBA calculator", "item": "https://rudracodeshere.github.io/profit-calculator/amazon-fba-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Amazon FBA profit calculator</h1>
+<p class="lead">Enter your selling price, the fees Amazon quotes for your item and what the unit costs you to make or buy. You get profit per unit, margin, return on your product cost and the lowest price that still breaks even.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="price">Selling price</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="25"></div>
+      <label for="fba">FBA fulfillment fee per unit <small>(depends on size and weight)</small></label>
+      <div class="in"><span>$</span><input id="fba" type="number" inputmode="decimal" min="0" step="0.01" value="4.50"></div>
+      <label for="stor">Monthly storage per unit <small>(average while it sits in the warehouse)</small></label>
+      <div class="in"><span>$</span><input id="stor" type="number" inputmode="decimal" min="0" step="0.01" value="0.15"></div>
+      <label for="inb">Inbound shipping to Amazon per unit</label>
+      <div class="in"><span>$</span><input id="inb" type="number" inputmode="decimal" min="0" step="0.01" value="0.50"></div>
+      <label for="cost">Product cost per unit</label>
+      <div class="in"><span>$</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="6"></div>
+      <label for="plan">Seller plan</label>
+      <select id="plan" class="full"><option value="pro">Professional ($39.99/month)</option><option value="ind">Individual ($0.99 per item sold)</option></select>
+      <label for="units">Units you sell per month <small>(spreads the Professional fee)</small></label>
+      <div class="in"><input id="units" type="number" inputmode="numeric" min="1" step="1" value="100"></div>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="ref">Referral fee for your category <small>(8-17% typical, most are 15%)</small></label>
+      <div class="in"><input id="ref" type="number" min="0" step="0.1" value="15"><span>%</span></div>
+      <label for="refmin">Minimum referral fee per item</label>
+      <div class="in"><span>$</span><input id="refmin" type="number" min="0" step="0.01" value="0.30"></div>
+      <label for="pro">Professional plan per month</label>
+      <div class="in"><span>$</span><input id="pro" type="number" min="0" step="0.01" value="39.99"></div>
+      <label for="ind">Individual plan per item sold</label>
+      <div class="in"><span>$</span><input id="ind" type="number" min="0" step="0.01" value="0.99"></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>Profit per unit</span><b id="profit"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US Amazon rates as of October 2026: referral fee varies by category, 8-17% typical, most are 15%, with a $0.30 minimum per item. Professional plan $39.99/month, Individual $0.99 per item sold. FBA fulfillment and storage fees depend on your item's size, weight and the season, so copy them from Amazon's revenue calculator or your fee preview. Returns, ads, prep and long-term storage fees are not included.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=amazon-fba-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>The fees on an FBA sale</h2>
+<p><strong>Referral fee.</strong> Amazon's commission, a percentage of the selling price that depends on the category. Most categories are 15%, with a $0.30 minimum per item, which only bites on items under $2.</p>
+<p><strong>FBA fulfillment fee.</strong> A fixed fee per unit for picking, packing and shipping, set by the item's size tier and shipping weight. It does not change with price, so it takes a much bigger share of cheap items.</p>
+<p><strong>Storage.</strong> Charged monthly per cubic foot. Turn it into a per-unit figure by dividing your monthly storage bill by the units you sell that month. Slow sellers pay storage for many months.</p>
+<p><strong>Your seller plan.</strong> Professional is $39.99 a month however much you sell. Individual has no monthly fee but charges $0.99 on every item. Professional is cheaper once you sell more than about 40 units a month.</p>
+<h2>The formula</h2>
+<p class="formula">Profit = price - referral fee - FBA fee - storage - plan share - inbound shipping - product cost</p>
+<p>Example: a $25 item with a 15% referral fee ($3.75), a $4.50 FBA fee, $0.15 storage and the Professional plan spread over 100 units ($0.40). Amazon takes $8.80, or 35.2% of the price. Add $0.50 inbound shipping and a $6 product cost and you make <strong>$9.70</strong> a unit: a 38.8% margin and 161.7% ROI on product cost. The break-even price is $13.59.</p>
+<p>On the Individual plan the same unit pays $0.99 instead of $0.40 and profit drops to $9.11.</p>
+<h2>Margin vs ROI</h2>
+<p>Margin tells you how much of each sale you keep. ROI tells you how hard your inventory money works: $6 spent on stock that returns $9.70 of profit is a 161.7% return per cycle. Wholesale and arbitrage sellers often screen products by ROI; private label sellers tend to watch margin because ad spend comes out of it.</p>
+
+<h2>Questions</h2>
+<h3>How much does Amazon take from a $25 sale with FBA?</h3>
+<p>With a 15% referral fee, a $4.50 FBA fee, $0.15 storage and the Professional plan spread over 100 units, $8.80, or 35.2% of the price. Your FBA fee depends on size and weight.</p>
+<h3>What is the Amazon referral fee minimum?</h3>
+<p>$0.30 per item in most categories. On a $1.50 item, 15% comes to less than that, so Amazon charges $0.30 instead.</p>
+<h3>How do I find my break-even price on Amazon?</h3>
+<p>Add up every fixed cost per unit (FBA fee, storage, plan share, inbound shipping and product cost) and divide by 1 minus the referral rate. For the example on this page that is $13.59.</p>
+<h3>Should I use the Individual or Professional plan?</h3>
+<p>Individual costs $0.99 per item; Professional costs $39.99 a month. At 100 units a month Professional works out to $0.40 a unit, so it is cheaper above about 40 sales a month.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../ebay-fee-calculator/">eBay fee calculator</a></li><li><a href="../etsy-vs-amazon-handmade/">Etsy vs Amazon Handmade</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li><li><a href="../break-even-calculator/">Break-even calculator</a></li><li><a href="../cogs-calculator/">COGS calculator</a></li><li><a href="../roas-calculator/">ROAS calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var P=n('price'),r=n('ref')/100,mn=n('refmin'),pro=$('plan').value==='pro',u=Math.max(1,Math.round(n('units')));
+  var pl=pro?n('pro')/u:n('ind'),amz=n('fba')+n('stor')+pl,own=n('inb')+n('cost');
+  var fixed=amz+own,be=r<1?fixed/(1-r):0;
+  if(be*r<mn)be=fixed+mn;
+  var beTxt=r<1?m(be):'not possible at this referral rate';
+  if(!P){$('profit').textContent='-';setRows([['Enter a selling price to see your profit.',''],['Break-even price',beTxt]]);verdict(false,'No price entered yet. You need at least '+beTxt+' to cover these costs.');return}
+  var ref=Math.max(P*r,mn),fees=ref+amz,profit=P-fees-own;
+  setRows([['Selling price',m(P)],['Referral fee ('+n('ref')+'%, min '+m(mn)+')',m(-ref)],['FBA fulfillment',m(-n('fba'))],['Storage',m(-n('stor'))],
+    [pro?'Professional plan ('+m(n('pro'))+' / '+u+' units)':'Individual plan per item',m(-pl)],['Total Amazon fees',m(-fees)+' ('+pc(fees/P)+')'],
+    ['Inbound shipping',m(-n('inb'))],['Product cost',m(-n('cost'))],['Profit per unit',m(profit),'total'],['Margin',pc(profit/P)],
+    ['ROI on product cost',n('cost')?pc(profit/n('cost')):'n/a'],['Break-even price',beTxt]]);
+  if(n('ind'))$('rows').innerHTML+='<tr><td>Professional is cheaper above</td><td>'+Math.floor(n('pro')/n('ind'))+' units/month</td></tr>';
+  $('profit').textContent=m(profit);
+  if(profit<0)verdict(false,'Each sale loses '+m(-profit)+'. You need at least '+beTxt+' just to break even.');
+  else verdict(profit/P>=0.2,'You make '+m(profit)+' a unit, a '+pc(profit/P)+' margin. '+(profit/P<0.2?'That is thin for FBA: returns, ads and long-term storage can wipe it out.':'There is room for returns and some ad spend.'));
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

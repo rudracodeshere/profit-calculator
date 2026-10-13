@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COGS Calculator: Cost of Goods Sold per Unit and per Period</title>
+<meta name="description" content="Free COGS calculator for online sellers. Work out cost per unit from a production batch, or cost of goods sold for a period from inventory and purchases.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/cogs-calculator/">
+<meta property="og:title" content="COGS calculator (cost of goods sold)">
+<meta property="og:description" content="Free COGS calculator for online sellers. Work out cost per unit from a production batch, or cost of goods sold for a period from inventory and purchases.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/cogs-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-09.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "COGS calculator (cost of goods sold)", "url": "https://rudracodeshere.github.io/profit-calculator/cogs-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free COGS calculator for online sellers. Work out cost per unit from a production batch, or cost of goods sold for a period from inventory and purchases."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is shipping included in COGS?", "acceptedAnswer": {"@type": "Answer", "text": "Inbound shipping to get stock or materials to you usually is. Outbound shipping labels to customers are a selling cost, not COGS, even though you pay them per order."}}, {"@type": "Question", "name": "Are Etsy or Shopify fees part of cost of goods sold?", "acceptedAnswer": {"@type": "Answer", "text": "No. Marketplace and payment fees are selling expenses. Keep them out of COGS so your gross margin compares products fairly, then subtract fees separately to get net profit."}}, {"@type": "Question", "name": "How do I calculate COGS if I make products myself?", "acceptedAnswer": {"@type": "Answer", "text": "Add up a batch's materials, packaging and inbound freight, then divide by the units it made. $240 for 60 units is $4.00 each. Add labor if you pay a maker or want to price in your own time."}}, {"@type": "Question", "name": "What if I don't track inventory?", "acceptedAnswer": {"@type": "Answer", "text": "Count what you have on hand once at the start and end of the period, valued at what you paid. Then COGS is beginning inventory plus purchases minus ending inventory: $2,000 + $3,500 - $1,800 = $3,700."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "COGS calculator", "item": "https://rudracodeshere.github.io/profit-calculator/cogs-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>COGS calculator (cost of goods sold)</h1>
+<p class="lead">Two ways to get your cost of goods sold. Per unit: enter what one batch cost to make or buy and how many units it produced. Per period: enter your inventory at the start and end and what you bought in between.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="mode">What do you want to calculate?</label>
+      <select id="mode" class="full">
+        <option value="batch">Cost per unit from a batch</option>
+        <option value="period">COGS for a period (month, quarter, year)</option>
+      </select>
+      <div id="fBatch">
+      <label for="mat">Materials or product cost for the batch</label>
+      <div class="in"><span>$</span><input id="mat" type="number" inputmode="decimal" min="0" step="0.01" value="180"></div>
+      <label for="pack">Packaging for the batch</label>
+      <div class="in"><span>$</span><input id="pack" type="number" inputmode="decimal" min="0" step="0.01" value="24"></div>
+      <label for="frt">Inbound shipping and duties <small>(getting supplies to you)</small></label>
+      <div class="in"><span>$</span><input id="frt" type="number" inputmode="decimal" min="0" step="0.01" value="36"></div>
+      <label for="lab">Labor <small>(optional: paid help, or your own time at an hourly rate)</small></label>
+      <div class="in"><span>$</span><input id="lab" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+      <label for="units">Units the batch produced</label>
+      <div class="in"><input id="units" type="number" inputmode="numeric" min="0" step="1" value="60"></div>
+      <label for="price">Selling price per unit <small>(optional)</small></label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="18"></div>
+      </div>
+      <div id="fPeriod" style="display:none">
+      <label for="beg">Beginning inventory <small>(at cost)</small></label>
+      <div class="in"><span>$</span><input id="beg" type="number" inputmode="decimal" min="0" step="0.01" value="2000"></div>
+      <label for="buy">Purchases during the period <small>(stock, materials, inbound freight)</small></label>
+      <div class="in"><span>$</span><input id="buy" type="number" inputmode="decimal" min="0" step="0.01" value="3500"></div>
+      <label for="end">Ending inventory <small>(at cost)</small></label>
+      <div class="in"><span>$</span><input id="end" type="number" inputmode="decimal" min="0" step="0.01" value="1800"></div>
+      <label for="rev">Net sales for the period <small>(optional)</small></label>
+      <div class="in"><span>$</span><input id="rev" type="number" inputmode="decimal" min="0" step="0.01" value="9000"></div>
+      </div>
+    </div>
+    <div>
+      <div class="big"><span id="bigLabel">COGS per unit</span><b id="big"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">For planning, not tax advice. Value inventory at what you paid, not retail price. Inventory rules differ by country and business type; ask a tax professional how they apply to you. Guidance as of October 2026.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=cogs-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>What goes into COGS</h2>
+<p>Cost of goods sold is what the items you sold cost you to make or buy. For an online seller that usually means materials or wholesale stock, packaging that ships with the product, and inbound shipping or import duties to get supplies to you. Direct labor counts if you pay someone to make the product.</p>
+<p>It does not include selling costs: marketplace fees, payment processing, outbound shipping labels, ads or software. Those are expenses, but they belong lower down your profit and loss, and mixing them into COGS makes your gross margin look worse than it is.</p>
+<h2>COGS per unit from a batch</h2>
+<p class="formula">COGS per unit = (materials + packaging + inbound freight + labor) / units produced</p>
+<p>Example: a batch of 60 candles takes $180 of wax, wicks, fragrance and jars, $24 of boxes and labels, and $36 of freight on the supplies. That is $240, or <strong>$4.00</strong> per candle. At an $18 price the gross profit is $14.00 per candle, a 77.8% gross margin. If you count 5 hours of your own time at $20, the batch costs $340 and each candle $5.67.</p>
+<p>Whether to include your own time is a choice. Leaving it out tells you cash cost. Putting it in tells you whether the price pays you a wage.</p>
+<h2>COGS for a month, quarter or year</h2>
+<p class="formula">COGS = beginning inventory + purchases - ending inventory</p>
+<p>Example: you started the quarter with $2,000 of stock at cost, bought $3,500 more and counted $1,800 left at the end. You sold <strong>$3,700</strong> of inventory. On $9,000 of net sales that is $5,300 of gross profit, a 58.9% gross margin.</p>
+<p>This method needs an actual count at the end of the period. If you skip it, your COGS will be off by however much stock went missing, broke or was used for samples.</p>
+<p>US sole proprietors filing Schedule C will see cost of goods sold on line 4, worked out in Part III. That is only a pointer to where the number goes; the IRS instructions and a tax professional decide what you include.</p>
+
+<h2>Questions</h2>
+<h3>Is shipping included in COGS?</h3>
+<p>Inbound shipping to get stock or materials to you usually is. Outbound shipping labels to customers are a selling cost, not COGS, even though you pay them per order.</p>
+<h3>Are Etsy or Shopify fees part of cost of goods sold?</h3>
+<p>No. Marketplace and payment fees are selling expenses. Keep them out of COGS so your gross margin compares products fairly, then subtract fees separately to get net profit.</p>
+<h3>How do I calculate COGS if I make products myself?</h3>
+<p>Add up a batch's materials, packaging and inbound freight, then divide by the units it made. $240 for 60 units is $4.00 each. Add labor if you pay a maker or want to price in your own time.</p>
+<h3>What if I don't track inventory?</h3>
+<p>Count what you have on hand once at the start and end of the period, valued at what you paid. Then COGS is beginning inventory plus purchases minus ending inventory: $2,000 + $3,500 - $1,800 = $3,700.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li><li><a href="../handmade-pricing-calculator/">Handmade pricing calculator</a></li><li><a href="../candle-pricing-calculator/">Candle pricing calculator</a></li><li><a href="../break-even-calculator/">Break-even calculator</a></li><li><a href="../markup-calculator/">Markup calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var per=$('mode').value==='period';
+  $('fBatch').style.display=per?'none':'';$('fPeriod').style.display=per?'':'none';
+  if(!per){
+    $('bigLabel').textContent='COGS per unit';
+    var tot=n('mat')+n('pack')+n('frt')+n('lab'),u=Math.round(n('units')),p=n('price');
+    if(!u){$('big').textContent='-';setRows([['Batch cost',m(tot)]]);verdict(false,'Enter how many units the batch produced.');return}
+    var c=tot/u,r=[['Materials',m(n('mat'))],['Packaging',m(n('pack'))],['Inbound shipping',m(n('frt'))]];
+    if(n('lab'))r.push(['Labor',m(n('lab'))]);
+    r.push(['Total batch cost',m(tot)],['Units',u],['COGS per unit',m(c),'total']);
+    $('big').textContent=m(c);
+    if(p){r.push(['Gross profit per unit',m(p-c)],['Gross margin',pc((p-c)/p)])}
+    setRows(r);
+    if(!p)verdict(true,'Each unit costs '+m(c)+'. Enter a selling price to see the gross margin.');
+    else verdict(p-c>0,p-c>0?'Each unit costs '+m(c)+' and sells for '+m(p)+', leaving '+m(p-c)+' before fees and shipping.':'Each unit costs more than it sells for. Raise the price or lower the batch cost.');
+  }else{
+    $('bigLabel').textContent='Cost of goods sold';
+    var b=n('beg'),pu=n('buy'),e=n('end'),s=n('rev'),cg=b+pu-e;
+    if(cg<0){$('big').textContent='-';setRows([['Available for sale',m(b+pu)],['Ending inventory',m(e)]]);verdict(false,'Ending inventory is larger than what you started with plus what you bought. Check the counts or missing purchases.');return}
+    $('big').textContent=m(cg);
+    var rr=[['Beginning inventory',m(b)],['+ Purchases',m(pu)],['= Available for sale',m(b+pu)],['- Ending inventory',m(-e)],['Cost of goods sold',m(cg),'total']];
+    if(s)rr.push(['Net sales',m(s)],['Gross profit',m(s-cg)],['Gross margin',pc((s-cg)/s)]);
+    setRows(rr);
+    if(!s)verdict(true,'You sold '+m(cg)+' worth of inventory at cost. Enter net sales to see gross profit.');
+    else verdict(s>cg,s>cg?'Gross profit is '+m(s-cg)+' on '+m(s)+' of sales. Fees, ads and overhead still come out of that.':'Your goods cost more than you sold them for this period.');
+  }
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

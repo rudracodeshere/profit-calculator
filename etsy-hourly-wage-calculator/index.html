@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Hourly Wage Calculator: Are You Paying Yourself?</title>
+<meta name="description" content="Find your real hourly pay on Etsy after fees, materials and labels, counting time to make, pack and list. Then see the price that pays your target wage.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-hourly-wage-calculator/">
+<meta property="og:title" content="Etsy hourly wage calculator: are you paying yourself?">
+<meta property="og:description" content="Find your real hourly pay on Etsy after fees, materials and labels, counting time to make, pack and list. Then see the price that pays your target wage.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-hourly-wage-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-07.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Etsy hourly wage calculator: are you paying yourself?", "url": "https://rudracodeshere.github.io/profit-calculator/etsy-hourly-wage-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Find your real hourly pay on Etsy after fees, materials and labels, counting time to make, pack and list. Then see the price that pays your target wage."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate my hourly wage selling on Etsy?", "acceptedAnswer": {"@type": "Answer", "text": "Subtract Etsy's fees, materials and the shipping label from what the buyer pays, then divide by the hours one sale takes, including packing and listing time. The $36 example leaves $18.13 for 80 minutes, which is $13.60 an hour."}}, {"@type": "Question", "name": "Should I include listing and photography time?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It is real work the sale depends on. Spread it across your sales: if you spend 5 hours a month on photos and listings and sell 30 items, that is 10 minutes per sale."}}, {"@type": "Question", "name": "What should I charge to pay myself $20 an hour on Etsy?", "acceptedAnswer": {"@type": "Answer", "text": "Add your wage for the time, materials, label and $0.45 of fixed fees, then divide by 0.905 to cover the 9.5% Etsy takes. For 80 minutes of work with $14 of costs, that is $45.43."}}, {"@type": "Question", "name": "Is it normal to earn less than minimum wage on Etsy?", "acceptedAnswer": {"@type": "Answer", "text": "Many makers do, often because they count only making time. If your number is under minimum wage, the calculator shows the price that fixes it: $38.07 for the example to reach $15 an hour."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Etsy hourly wage calculator", "item": "https://rudracodeshere.github.io/profit-calculator/etsy-hourly-wage-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Etsy hourly wage calculator: are you paying yourself?</h1>
+<p class="lead">Take your current price, subtract Etsy's fees, materials and the label, and divide what's left by all the time one sale takes: making it, packing it, and your share of photographing and listing. That's your real hourly wage. Then see what price would pay the wage you want.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="price">Item price</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="36"></div>
+      <label for="ship">Shipping you charge <small>(0 for free shipping)</small></label>
+      <div class="in"><span>$</span><input id="ship" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+      <label for="mat">Materials + packaging</label>
+      <div class="in"><span>$</span><input id="mat" type="number" inputmode="decimal" min="0" step="0.01" value="9"></div>
+      <label for="label">Shipping label you pay</label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="5"></div>
+      <label for="tmake">Minutes to make one</label>
+      <div class="in"><input id="tmake" type="number" inputmode="decimal" min="0" step="5" value="60"><span>min</span></div>
+      <label for="tpack">Minutes to pack and ship it</label>
+      <div class="in"><input id="tpack" type="number" inputmode="decimal" min="0" step="1" value="10"><span>min</span></div>
+      <label for="tlist">Minutes of photos, listing and messages per sale <small>(total time &divide; items sold)</small></label>
+      <div class="in"><input id="tlist" type="number" inputmode="decimal" min="0" step="1" value="10"><span>min</span></div>
+      <label for="target">Hourly wage you want</label>
+      <div class="in"><span>$</span><input id="target" type="number" inputmode="decimal" min="0" step="0.5" value="20"><span>/hr</span></div>
+      <label for="minw">Minimum wage where you live</label>
+      <div class="in"><span>$</span><input id="minw" type="number" inputmode="decimal" min="0" step="0.25" value="15"><span>/hr</span></div>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="tx">Transaction fee</label>
+      <div class="in"><input id="tx" type="number" min="0" step="0.1" value="6.5"><span>%</span></div>
+      <label for="pp">Payment processing</label>
+      <div class="in"><input id="pp" type="number" min="0" step="0.1" value="3"><span>% +</span><span>$</span><input id="pf" type="number" min="0" step="0.01" value="0.25"></div>
+      <label for="lfee">Listing fee per item sold</label>
+      <div class="in"><span>$</span><input id="lfee" type="number" min="0" step="0.01" value="0.20"></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>Your real hourly wage</span><b id="wage"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US Etsy rates as of October 2026: 6.5% transaction fee and 3% + $0.25 processing on the order total (item + shipping), $0.20 listing fee per item sold. One item per order, no Offsite Ads, no sales tax. The wage is before income tax and self-employment tax. Minimum wages vary by state and city, so enter yours.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-hourly-wage-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>How your real hourly wage is worked out</h2>
+<p>Everything left after Etsy's fees, materials and the label is what pays you. Divide it by all the time a sale takes, not only the making. Packing, printing the label, the post office run, photographing and writing the listing, and answering buyer messages are all part of the job. For listing time, take the hours you spent on photos and listings this month and divide by the items you sold.</p>
+<p class="formula">Hourly wage = (price + shipping &minus; Etsy fees &minus; materials &minus; label) &divide; hours per sale</p>
+<p>To find the price that pays a target wage, the fees have to be solved for, because they grow with the price:</p>
+<p class="formula">Price = (wage &times; hours + materials + label + $0.45) &divide; (1 &minus; 9.5%) &minus; shipping charged</p>
+<h2>Worked example</h2>
+<p>A $36 item with free shipping, $9 in materials and packaging, and a $5 label. Etsy takes $3.87, which leaves <strong>$18.13</strong>. It takes 60 minutes to make, 10 to pack and 10 of listing and admin, 80 minutes in total. That is <strong>$13.60 an hour</strong>, under a $15 minimum wage.</p>
+<p>Counting only the hour of making, it looks like $18.13 an hour. The 20 minutes of packing and admin are what pull it under minimum wage.</p>
+<p>To earn $20 an hour the price has to be <strong>$45.43</strong>. To match a $15 minimum wage it needs <strong>$38.07</strong>. At $50 the wage would be $23.10.</p>
+<h2>What to do if the number is low</h2>
+<p><strong>Raise the price first.</strong> In the example, going from $36 to $45.43 takes the wage from $13.60 to $20. Testing a higher price on a few listings costs you nothing but a few weeks.</p>
+<p><strong>Cut time that isn't making.</strong> Batch your photography, reuse listing templates, buy labels online in one session. Time you save on admin raises your hourly wage without touching the price.</p>
+<p><strong>Make in batches.</strong> Twenty of an item rarely take twenty times as long as one. Time a batch and divide by the count for a truer minutes-to-make.</p>
+<p>The minutes per item vary across a catalog, and so does the wage. Matching your sales export to time per product shows which listings are paying you and which are a hobby.</p>
+
+<h2>Questions</h2>
+<h3>How do I calculate my hourly wage selling on Etsy?</h3>
+<p>Subtract Etsy's fees, materials and the shipping label from what the buyer pays, then divide by the hours one sale takes, including packing and listing time. The $36 example leaves $18.13 for 80 minutes, which is $13.60 an hour.</p>
+<h3>Should I include listing and photography time?</h3>
+<p>Yes. It is real work the sale depends on. Spread it across your sales: if you spend 5 hours a month on photos and listings and sell 30 items, that is 10 minutes per sale.</p>
+<h3>What should I charge to pay myself $20 an hour on Etsy?</h3>
+<p>Add your wage for the time, materials, label and $0.45 of fixed fees, then divide by 0.905 to cover the 9.5% Etsy takes. For 80 minutes of work with $14 of costs, that is $45.43.</p>
+<h3>Is it normal to earn less than minimum wage on Etsy?</h3>
+<p>Many makers do, often because they count only making time. If your number is under minimum wage, the calculator shows the price that fixes it: $38.07 for the example to reach $15 an hour.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-pricing-calculator/">Etsy pricing calculator</a></li><li><a href="../handmade-pricing-calculator/">Handmade pricing calculator</a></li><li><a href="../etsy-profit-calculator/">Etsy monthly profit calculator</a></li><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../price-increase-calculator/">Price increase calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var p=n('price'),s=n('ship'),c=n('mat')+n('label'),mk=n('tmake'),mins=mk+n('tpack')+n('tlist'),h=mins/60;
+  var rate=(n('tx')+n('pp'))/100,fix=n('pf')+n('lfee'),t=p+s,fees=t*rate+fix,k=t-fees-c;
+  function priceFor(w){return Math.max(0,(w*h+c+fix)/(1-rate)-s)}
+  if(!mins){$('wage').textContent='-';setRows([]);verdict(false,'Enter how many minutes one sale takes you to see your hourly wage.');return}
+  if(!p){$('wage').textContent='-';setRows([]);verdict(false,'Enter your item price.');return}
+  var w=k/h,tw=n('target'),mw=n('minw');
+  $('wage').textContent=m(w)+'/hr';
+  var r=[['Buyer pays',m(t)],['Etsy fees',m(-fees)],['Materials + packaging',m(-n('mat'))],['Shipping label',m(-n('label'))],['Left to pay you',m(k),'total'],['Time per sale',Math.round(mins)+' min ('+h.toFixed(2)+' hrs)']];
+  if(mk&&mk<mins)r.push(['Wage counting making time only',m(k/(mk/60))+'/hr']);
+  if(tw)r.push(['Price for '+m(tw)+'/hr',m(priceFor(tw))]);
+  if(mw)r.push(['Price for minimum wage ('+m(mw)+'/hr)',m(priceFor(mw))]);
+  setRows(r);
+  if(k<0)verdict(false,'You pay '+m(-k)+' to sell each one, before counting your time. Charge at least '+m(priceFor(0))+' just to cover costs.');
+  else if(mw&&w<mw)verdict(false,'You earn '+m(w)+' an hour, under the '+m(mw)+' minimum wage. Charge '+m(priceFor(tw||mw))+' to pay yourself '+m(tw||mw)+'/hr.');
+  else if(tw&&w<tw)verdict(false,'You earn '+m(w)+' an hour, above minimum wage but short of your '+m(tw)+' target. '+m(priceFor(tw))+' gets you there.');
+  else verdict(true,'You pay yourself '+m(w)+' an hour for every minute of the sale, not just the making.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
