@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Offsite Ads Calculator: Is the 15% Fee Costing You Money? (2026)</title>
+<meta name="description" content="See what you keep on an Etsy Offsite Ads sale versus a normal sale, and the lowest price where an ad sale stops losing money. 15% or 12% fee, $100 cap. Free, no signup.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-offsite-ads-calculator/">
+<meta property="og:title" content="Etsy Offsite Ads calculator: are ad sales losing you money?">
+<meta property="og:description" content="Profit on an Offsite Ads sale vs a normal sale, and the break-even price. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-offsite-ads-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-06.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.vs div{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+.vs b{display:block;font-size:1.5rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.vs .win{border-color:var(--green);background:var(--greenbg)}
+nav{font-size:.9rem;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; Full fee &amp; profit calculator</a></nav>
+<h1>Etsy Offsite Ads calculator: are ad sales losing you money?</h1>
+<p class="lead">When a buyer clicks one of Etsy's ads on Google, Instagram or Pinterest and buys within 30 days, Etsy takes an extra 15% of the order (12% if your shop made over $10,000 in the last year). Enter one listing's numbers to see what you keep on an ad sale, what you keep on a normal sale, and the lowest price where an ad sale still makes money. Free, nothing leaves your browser.</p>
+
+<div class="card">
+  <div class="tabs" role="group" aria-label="Offsite Ads rate">
+    <button type="button" id="t15" aria-pressed="true">Under $10k/year (15%)</button>
+    <button type="button" id="t12" aria-pressed="false">Over $10k/year (12%)</button>
+  </div>
+  <div class="grid">
+    <div>
+      <label for="price">Item price</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="25"></div>
+      <label for="ship">Shipping you charge the buyer <small>(0 for free shipping)</small></label>
+      <div class="in"><span>$</span><input id="ship" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+      <label for="cost">Materials + packaging per order</label>
+      <div class="in"><span>$</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="7"></div>
+      <label for="label">Shipping label you pay</label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="5"></div>
+      <label for="share">Share of your orders from Offsite Ads <small>(Shop Manager &gt; Marketing &gt; Offsite Ads)</small></label>
+      <div class="in"><input id="share" type="number" min="0" max="100" step="1" value="10" style="padding-left:10px"><span>%</span></div>
+    </div>
+    <div>
+      <div class="vs" aria-live="polite">
+        <div id="boxN"><span>Normal sale: you keep</span><b id="keepN">$0</b></div>
+        <div id="boxA"><span>Offsite Ads sale: you keep</span><b id="keepA">$0</b></div>
+      </div>
+      <table><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US Etsy rates as of October 2026: 6.5% transaction fee and 3% + $0.25 payment processing on the order total (item + shipping), $0.20 listing fee per item sold, Offsite Ads 15% or 12% of the order total, capped at $100 per order. Your time and sales tax are left out. Rates change; check Etsy's fee page.</p>
+</div>
+
+<div class="cta">
+  <h2>Which of your products actually survive the ad fee?</h2>
+  <p>This page checks one listing. The <strong>Seller Profit Sheet</strong> reads your monthly Etsy sales export and shows real net profit per product after every fee, including Offsite Ads, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-offsite-ads-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>How the Offsite Ads fee works</h2>
+<p>Etsy advertises your listings on other sites at its own expense. You pay only when one of those ads leads to a sale within 30 days of the click. The fee is a share of the whole order total, item price plus shipping, and it never goes above $100 for one order. It comes on top of the normal 6.5% transaction fee and payment processing, so an ad sale costs about 24.5% plus $0.45 in fees at the 15% rate.</p>
+
+<h2>The break-even price for an ad sale</h2>
+<p>An ad sale stops losing money when the order total covers your costs after about 24.5% in fees:</p>
+<p><strong>break-even order total = (costs + $0.45) &divide; (1 &minus; 0.245)</strong></p>
+<p>With $7 in materials and packaging and a $5 label, that's $12.45 &divide; 0.755 = <strong>$16.49</strong>. Price below that and every Offsite Ads sale costs you money before you've paid yourself anything. At $25 with free shipping you keep $10.18 on a normal sale and $6.43 on an ad sale.</p>
+
+<h2>Should you opt out of Offsite Ads?</h2>
+<p>Shops that made under $10,000 in the last 12 months can opt out in Shop Manager &gt; Settings &gt; Advertising. Once you pass $10,000, Offsite Ads become mandatory at 12% and you can't turn them off. Opting out makes sense when ad sales leave you little or nothing. It also means fewer sales, because some of those buyers would never have found you. If ad sales still leave a profit, they are usually worth keeping. A middle path many sellers take is raising prices slightly across the shop so ad sales still pay.</p>
+
+<h2>Questions</h2>
+<h3>Can I see which orders came from Offsite Ads?</h3>
+<p>Yes. Each order that came from an ad shows an Offsite Ads fee line in your payment account, and Shop Manager &gt; Marketing &gt; Offsite Ads shows the totals.</p>
+<h3>Does the fee apply to shipping?</h3>
+<p>Yes. It is charged on the order total including shipping, which is why moving shipping into the item price doesn't change the fee.</p>
+<h3>How do I see the real effect across my whole shop?</h3>
+<p>Your monthly sales export includes every fee Etsy took. The Seller Profit Sheet above turns it into profit per product, so you can see which listings ad fees push into a loss.</p>
+
+<footer>Independent tool, not affiliated with Etsy. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../">Etsy, Shopify, Amazon &amp; eBay fee calculator</a> &middot; <a href="../etsy-vs-shopify/">Etsy vs Shopify break-even</a> &middot; <a href="../etsy-pricing-calculator/">Etsy pricing calculator</a>.</footer>
+</main>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+  var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toFixed(2)};
+  var rate=0.15;
+  function base(t){return t*0.095+0.45}
+  function ad(t){return Math.min(t*rate,100)}
+  function calc(){
+    var price=n('price'),ship=n('ship'),t=price+ship,costs=n('cost')+n('label'),sh=Math.min(n('share'),100)/100;
+    var kn=t-base(t)-costs,ka=kn-ad(t),avg=kn-sh*ad(t);
+    var be=(costs+0.45)/(1-0.095-rate);
+    if(be*rate>100){be=(costs+0.45+100)/(1-0.095)}
+    var bePrice=Math.max(0,be-ship);
+    $('keepN').textContent=m(kn);$('keepA').textContent=m(ka);
+    $('boxN').className=kn>=0?'win':'';$('boxA').className=ka>=0?(ka>=kn*0.5?'win':''):'';
+    var h='<tr><td>Etsy transaction + processing</td><td>'+m(base(t))+'</td></tr>';
+    h+='<tr><td>Offsite Ads fee (ad sales only)</td><td>'+m(ad(t))+'</td></tr>';
+    h+='<tr><td>Costs + label</td><td>'+m(costs)+'</td></tr>';
+    h+='<tr><td>Lowest item price where an ad sale breaks even</td><td>'+m(bePrice)+'</td></tr>';
+    h+='<tr class="total"><td>Average kept per order at '+Math.round(sh*100)+'% ad sales</td><td>'+m(avg)+'</td></tr>';
+    $('rows').innerHTML=h;
+    var v=$('verdict');
+    if(kn<0){v.className='verdict bad';v.textContent='This listing loses money even without ads. Raise the price to at least '+m(Math.max(0,(costs+0.45)/0.905-ship))+'.'}
+    else if(ka<0){v.className='verdict bad';v.textContent='Every Offsite Ads sale loses you '+m(-ka)+'. Raise the price to at least '+m(bePrice)+(rate===0.15?', or opt out (allowed under $10k a year).':'.')}
+    else if(ka<kn*0.5){v.className='verdict bad';v.textContent='Ad sales still profit, but the fee takes '+Math.round((1-ka/kn)*100)+'% of what you keep. A small price rise would protect it.'}
+    else{v.className='verdict ok';v.textContent='Ad sales still leave you '+m(ka)+'. The fee hurts, but these are sales you might not have had.'}
+  }
+  function tier(r){rate=r;$('t15').setAttribute('aria-pressed',r===0.15);$('t12').setAttribute('aria-pressed',r===0.12);calc()}
+  $('t15').addEventListener('click',function(){tier(0.15)});
+  $('t12').addEventListener('click',function(){tier(0.12)});
+  document.querySelectorAll('input').forEach(function(e){e.addEventListener('input',calc);e.addEventListener('change',calc)});
+  calc();
+})();
+</script>
+</body>
+</html>
