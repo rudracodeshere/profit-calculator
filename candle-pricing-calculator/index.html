@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Candle Pricing Calculator: Cost per Candle and Retail Price</title>
+<meta name="description" content="Cost one candle from wax, fragrance load (as % of wax), wick, vessel, label and labor. Get a retail price, a wholesale check and a batch shopping list.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/candle-pricing-calculator/">
+<meta property="og:title" content="Candle pricing calculator">
+<meta property="og:description" content="Cost one candle from wax, fragrance load (as % of wax), wick, vessel, label and labor. Get a retail price, a wholesale check and a batch shopping list.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/candle-pricing-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-10.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Candle pricing calculator", "url": "https://rudracodeshere.github.io/profit-calculator/candle-pricing-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Cost one candle from wax, fragrance load (as % of wax), wick, vessel, label and labor. Get a retail price, a wholesale check and a batch shopping list."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate how much fragrance oil to use?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply the wax weight by the fragrance load. 8 oz of wax at an 8% load takes 0.64 oz of oil. Weigh both on a scale; fluid ounces of oil are not the same as ounces by weight."}}, {"@type": "Question", "name": "Is fragrance load based on wax weight or total weight?", "acceptedAnswer": {"@type": "Answer", "text": "Wax weight, in the way most suppliers state it. If you only know the total fill weight, divide it by 1 plus the load to find the wax: an 8 oz fill at 8% is 7.41 oz of wax and 0.59 oz of oil."}}, {"@type": "Question", "name": "How much should I charge for a candle?", "acceptedAnswer": {"@type": "Answer", "text": "Start from your full cost per candle, labor included, and multiply. A candle that costs $12.00 to make sells for $36.00 at 3x, which leaves room for a shop to buy it at $18.00. If you plan to wholesale a lot, 4x cost gives you a 50% wholesale margin."}}, {"@type": "Question", "name": "How much wax do I need for 24 candles?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply the wax per candle by 24 and divide by 16 for pounds. At 8 oz each, that is 12.00 lb of wax plus 15.36 oz of fragrance oil at an 8% load."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Candle pricing calculator", "item": "https://rudracodeshere.github.io/profit-calculator/candle-pricing-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Candle pricing calculator</h1>
+<p class="lead">Enter your wax and fragrance prices, how much goes in each candle and what the rest of the candle costs. You get the cost per candle, a suggested retail price, a wholesale check and how much wax and oil a batch needs.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="wp">Wax price</label>
+      <div class="in"><span>$</span><input id="wp" type="number" inputmode="decimal" min="0" step="0.01" value="3.50"><span>per lb</span></div>
+      <label for="wo">Wax per candle</label>
+      <div class="in"><input id="wo" type="number" inputmode="decimal" min="0" step="0.1" value="8"><span>oz (weight)</span></div>
+      <label class="check"><input id="fill" type="checkbox"> That's the total fill weight (wax + oil), not wax alone</label>
+      <label for="fl">Fragrance load <small>(% of wax weight)</small></label>
+      <div class="in"><input id="fl" type="number" inputmode="decimal" min="0" step="0.5" value="8"><span>%</span></div>
+      <label for="op">Fragrance oil price</label>
+      <div class="in"><span>$</span><input id="op" type="number" inputmode="decimal" min="0" step="0.01" value="2.00"><span>per oz</span></div>
+      <label for="wk">Wick (with sustainer / sticker)</label>
+      <div class="in"><span>$</span><input id="wk" type="number" inputmode="decimal" min="0" step="0.01" value="0.15"></div>
+      <label for="vs">Vessel (jar, tin)</label>
+      <div class="in"><span>$</span><input id="vs" type="number" inputmode="decimal" min="0" step="0.01" value="2.50"></div>
+      <label for="lb">Label and lid</label>
+      <div class="in"><span>$</span><input id="lb" type="number" inputmode="decimal" min="0" step="0.01" value="0.60"></div>
+      <label for="pk">Packaging <small>(box, warning sticker, filler)</small></label>
+      <div class="in"><span>$</span><input id="pk" type="number" inputmode="decimal" min="0" step="0.01" value="0.72"></div>
+      <label for="mn">Labor per candle <small>(pour, cure, wick trim, label)</small></label>
+      <div class="in"><input id="mn" type="number" inputmode="decimal" min="0" step="1" value="15"><span>minutes</span></div>
+      <label for="hr">Your hourly rate</label>
+      <div class="in"><span>$</span><input id="hr" type="number" inputmode="decimal" min="0" step="0.5" value="20"><span>/ hour</span></div>
+      <label for="mu">Retail price multiplier <small>(x cost per candle)</small></label>
+      <div class="in"><input id="mu" type="number" inputmode="decimal" min="0" step="0.1" value="3"><span>x</span></div>
+      <label for="bt">Batch size</label>
+      <div class="in"><input id="bt" type="number" inputmode="decimal" min="0" step="1" value="24"><span>candles</span></div>
+    </div>
+    <div>
+      <div class="big"><span>Suggested retail price</span><b id="big"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+      <h3>Batch</h3>
+      <table><tbody id="batch"></tbody></table>
+    </div>
+  </div>
+  <p class="note">All prices are your own supplier prices; nothing here is a live or typical price. Fragrance load is calculated on wax weight, the way most wax suppliers state their maximum load. Weigh oil, don't measure it by volume. Fees for selling on Etsy or elsewhere are not included. As of October 2026.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=candle-pricing-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>Fragrance load is a percentage of the wax</h2>
+<p>This is the mistake that throws off candle costs and scent throw. An 8% fragrance load means the oil weighs 8% of the <strong>wax</strong>, not 8% of the finished candle. For 8 oz of wax that is 0.64 oz of oil, and the candle weighs 8.64 oz in total. Oil makes up only 7.4% of that total, but the load is still 8%, because load is measured against the wax.</p>
+<p class="formula">Oil (oz) = wax (oz) x fragrance load &nbsp;|&nbsp; Wax cost = wax oz / 16 x price per lb</p>
+<p>If you know your vessel's total fill weight instead (say 8 oz of wax and oil together), divide by 1 plus the load to get the wax: 8 / 1.08 = 7.41 oz of wax and 0.59 oz of oil. Tick the fill-weight box above and the calculator does this for you. Check your wax supplier's sheet for the maximum load it holds; going over it can make oil sweat out of the wax.</p>
+<h2>A worked example</h2>
+<p>A candle with 8 oz of soy wax at $3.50 a pound uses $1.75 of wax. At 8% load it needs 0.64 oz of fragrance oil, which at $2.00 an ounce is $1.28. Add a $0.15 wick, a $2.50 jar, $0.60 for the label and lid, and $0.72 of packaging, and the materials come to <strong>$7.00</strong>. Fifteen minutes of labor at $20 an hour is $5.00, so the candle costs <strong>$12.00</strong>.</p>
+<p>At 3x cost the retail price is <strong>$36.00</strong>. A shop buying at half of retail pays $18.00, which still leaves you $6.00 a candle, a 33.3% margin. A batch of 24 needs 12.00 lb of wax and 15.36 oz of oil, costs $288.00 and is worth $864.00 at retail.</p>
+<h2>Costs candle makers leave out</h2>
+<p>Test burns, the jars that crack, warning labels, the dust cover and the box all belong in the cost per candle. So does your time for pouring, curing, trimming wicks and labeling, not just the minutes the wax is in the pot. If you sell online, marketplace fees and the shipping you absorb come out of the retail price too, so check it with the <a href="../etsy-fee-calculator/">Etsy fee calculator</a> once you have a price.</p>
+
+<h2>Questions</h2>
+<h3>How do I calculate how much fragrance oil to use?</h3>
+<p>Multiply the wax weight by the fragrance load. 8 oz of wax at an 8% load takes 0.64 oz of oil. Weigh both on a scale; fluid ounces of oil are not the same as ounces by weight.</p>
+<h3>Is fragrance load based on wax weight or total weight?</h3>
+<p>Wax weight, in the way most suppliers state it. If you only know the total fill weight, divide it by 1 plus the load to find the wax: an 8 oz fill at 8% is 7.41 oz of wax and 0.59 oz of oil.</p>
+<h3>How much should I charge for a candle?</h3>
+<p>Start from your full cost per candle, labor included, and multiply. A candle that costs $12.00 to make sells for $36.00 at 3x, which leaves room for a shop to buy it at $18.00. If you plan to wholesale a lot, 4x cost gives you a 50% wholesale margin.</p>
+<h3>How much wax do I need for 24 candles?</h3>
+<p>Multiply the wax per candle by 24 and divide by 16 for pounds. At 8 oz each, that is 12.00 lb of wax plus 15.36 oz of fragrance oil at an 8% load.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../handmade-pricing-calculator/">Handmade pricing calculator</a></li><li><a href="../wholesale-price-calculator/">Wholesale price calculator</a></li><li><a href="../etsy-pricing-calculator/">Etsy pricing calculator</a></li><li><a href="../cogs-calculator/">COGS calculator</a></li><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function f2(x){return x.toFixed(2)}
+function calc(){
+  var w=n('wo'),L=n('fl')/100,wax=$('fill').checked?w/(1+L):w,oil=wax*L;
+  var wc=wax/16*n('wp'),oc=oil*n('op');
+  var mat=wc+oc+n('wk')+n('vs')+n('lb')+n('pk'),lab=n('mn')/60*n('hr'),cost=mat+lab;
+  var rt=cost*n('mu'),ws=rt/2,wpro=ws-cost,wm=ws?wpro/ws:0,b=Math.round(n('bt'));
+  $('big').textContent=m(rt);
+  setRows([['Wax ('+f2(wax)+' oz at '+m(n('wp'))+'/lb)',m(wc)],['Fragrance oil ('+f2(oil)+' oz)',m(oc)],['Wick',m(n('wk'))],['Vessel',m(n('vs'))],['Label and lid',m(n('lb'))],['Packaging',m(n('pk'))],
+    ['Materials',m(mat)],['Labor ('+n('mn')+' min)',m(lab)],['Cost per candle',m(cost),'total'],
+    ['Total pour weight',f2(wax+oil)+' oz'],['Oil as a share of the whole candle',(wax+oil)?pc(oil/(wax+oil)):'0%'],
+    ['Retail ('+n('mu')+'x cost)',m(rt)],['Wholesale at half of retail',m(ws)],['Wholesale profit',m(wpro)+' ('+pc(wm)+')']]);
+  setRows([['Wax to melt',f2(wax*b/16)+' lb ('+f2(wax*b)+' oz)'],['Fragrance oil to weigh out',f2(oil*b)+' oz'],['Batch cost ('+b+' candles)',m(cost*b)],['Batch value at retail',m(rt*b),'total']],'batch');
+  if(!cost){verdict(false,'Enter your wax, vessel and other costs to price a candle.');return}
+  if(wm<0.3)verdict(false,'If a shop buys at half of retail ('+m(ws)+'), you make '+m(wpro)+' a candle. For a 50% wholesale margin, retail at 4x cost: '+m(cost*4)+'.');
+  else verdict(true,'Each candle costs '+m(cost)+'. At '+m(rt)+' retail you can still wholesale at '+m(ws)+' and make '+m(wpro)+' a candle.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Sale Calculator: Profit After a Discount or Coupon</title>
+<meta name="description" content="See what an Etsy sale or coupon really costs: profit at full and sale price after fees, extra sales needed, and the biggest discount you can afford.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-sale-calculator/">
+<meta property="og:title" content="Etsy sale calculator: can you afford that discount?">
+<meta property="og:description" content="See what an Etsy sale or coupon really costs: profit at full and sale price after fees, extra sales needed, and the biggest discount you can afford.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-sale-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-04.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Etsy sale calculator: can you afford that discount?", "url": "https://rudracodeshere.github.io/profit-calculator/etsy-sale-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "See what an Etsy sale or coupon really costs: profit at full and sale price after fees, extra sales needed, and the biggest discount you can afford."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does Etsy charge fees on the original price or the sale price?", "acceptedAnswer": {"@type": "Answer", "text": "On the sale price. The 6.5% transaction fee and 3% processing are charged on what the buyer actually pays. On a $40 item at 25% off, the fees are on $30.00."}}, {"@type": "Question", "name": "How many more sales do I need to make up for a discount?", "acceptedAnswer": {"@type": "Answer", "text": "Divide your full-price profit by your sale profit. For the $40 example at 25% off that is $18.75 ÷ $9.70, so 20 normal sales become 39 needed on sale."}}, {"@type": "Question", "name": "What's the biggest discount I can offer on Etsy without losing money?", "acceptedAnswer": {"@type": "Answer", "text": "Your break-even price is (materials + label + $0.45) ÷ 0.905, minus any shipping you charge. For $17 of costs that is $19.28, so a $40 item can go to 51.8% off before it loses money, and that leaves you nothing at all."}}, {"@type": "Question", "name": "Is a coupon better than a sale on Etsy?", "acceptedAnswer": {"@type": "Answer", "text": "The math per order is the same. The difference is who gets the discount: a sale goes to every buyer, including people who would have paid full price, while a targeted coupon only reaches the shoppers you choose."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Etsy sale & coupon calculator", "item": "https://rudracodeshere.github.io/profit-calculator/etsy-sale-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Etsy sale calculator: can you afford that discount?</h1>
+<p class="lead">A 25% sale doesn't cut your profit by 25%. It cuts it by much more, because your costs stay the same. Enter a listing and a discount to see profit at full price and on sale, how many extra orders the sale needs to pay for itself, and the deepest discount before every sale loses money.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="price">Item price before the discount</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="40"></div>
+      <label for="disc">Discount (sale or coupon)</label>
+      <div class="in"><input id="disc" type="number" inputmode="decimal" min="0" max="100" step="1" value="25"><span>% off</span></div>
+      <label for="ship">Shipping you charge <small>(not discounted)</small></label>
+      <div class="in"><span>$</span><input id="ship" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+      <label for="mat">Materials + packaging</label>
+      <div class="in"><span>$</span><input id="mat" type="number" inputmode="decimal" min="0" step="0.01" value="12"></div>
+      <label for="label">Shipping label you pay</label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="5"></div>
+      <label for="units">Sales you'd make at full price in the same period</label>
+      <div class="in"><input id="units" type="number" inputmode="decimal" min="0" step="1" value="20"></div>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="tx">Transaction fee</label>
+      <div class="in"><input id="tx" type="number" min="0" step="0.1" value="6.5"><span>%</span></div>
+      <label for="pp">Payment processing</label>
+      <div class="in"><input id="pp" type="number" min="0" step="0.1" value="3"><span>% +</span><span>$</span><input id="pf" type="number" min="0" step="0.01" value="0.25"></div>
+      <label for="lfee">Listing fee per item sold</label>
+      <div class="in"><span>$</span><input id="lfee" type="number" min="0" step="0.01" value="0.20"></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>Sales needed to earn the same profit</span><b id="need"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US Etsy rates as of October 2026: 6.5% transaction fee and 3% + $0.25 processing on what the buyer actually pays (discounted item + shipping), $0.20 listing fee per item sold. Etsy sales and coupons in Shop Manager discount the item price; this calculator leaves shipping at full price. Offsite Ads and sales tax are left out.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-sale-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>Why a discount costs more than it looks</h2>
+<p>Your materials, label and Etsy's flat fees don't go on sale. The whole discount comes out of your profit, and your profit is only a slice of the price. Etsy does charge its percentage fees on the discounted price, so you save a little there, but only 9.5 cents of every dollar you give away.</p>
+<p class="formula">Profit on sale = (sale price + shipping) &times; (1 &minus; 9.5%) &minus; $0.45 &minus; materials &minus; label</p>
+<p class="formula">Sales needed = full-price sales &times; full-price profit &divide; sale profit</p>
+<h2>Worked example</h2>
+<p>A $40 item with free shipping, $12 in materials and a $5 label. At full price you keep <strong>$18.75</strong>. At 25% off the buyer pays $30.00 and you keep <strong>$9.70</strong>, which is 48% less profit from a 25% discount.</p>
+<p>If you'd normally sell 20 in a month ($375.00 profit), the sale has to sell <strong>39</strong> to earn the same. A 10% discount leaves $15.13 per sale and needs 25 sales. The deepest discount this item can take before each sale loses money is <strong>51.8%</strong>, a price of $19.28. At 60% off, every sale loses $2.97.</p>
+<h2>When a sale is still worth it</h2>
+<p><strong>Clearing old stock.</strong> If the materials are already paid for and the item isn't selling, profit at a lower price beats none. Treat the materials as spent and judge the sale on fees and the label alone.</p>
+<p><strong>Targeted coupons.</strong> Etsy lets you send coupons to buyers who favorited an item or abandoned a cart. Those go to people already close to buying, so you give away the discount on fewer orders than a shop-wide sale.</p>
+<p><strong>Big sale events.</strong> When Etsy runs a site-wide event, the extra traffic may supply the extra orders. Use the "sales needed" number as the target and compare it to last year's event if you have one.</p>
+<p>A sale is easy to judge on one listing. Across a whole shop with mixed prices it's harder, which is where a per-product breakdown of your sales export helps.</p>
+
+<h2>Questions</h2>
+<h3>Does Etsy charge fees on the original price or the sale price?</h3>
+<p>On the sale price. The 6.5% transaction fee and 3% processing are charged on what the buyer actually pays. On a $40 item at 25% off, the fees are on $30.00.</p>
+<h3>How many more sales do I need to make up for a discount?</h3>
+<p>Divide your full-price profit by your sale profit. For the $40 example at 25% off that is $18.75 &divide; $9.70, so 20 normal sales become 39 needed on sale.</p>
+<h3>What's the biggest discount I can offer on Etsy without losing money?</h3>
+<p>Your break-even price is (materials + label + $0.45) &divide; 0.905, minus any shipping you charge. For $17 of costs that is $19.28, so a $40 item can go to 51.8% off before it loses money, and that leaves you nothing at all.</p>
+<h3>Is a coupon better than a sale on Etsy?</h3>
+<p>The math per order is the same. The difference is who gets the discount: a sale goes to every buyer, including people who would have paid full price, while a targeted coupon only reaches the shoppers you choose.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../etsy-profit-calculator/">Etsy monthly profit calculator</a></li><li><a href="../etsy-free-shipping-calculator/">Etsy free shipping calculator</a></li><li><a href="../break-even-calculator/">Break-even calculator</a></li><li><a href="../price-increase-calculator/">Price increase calculator</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var p=n('price'),s=n('ship'),d=Math.min(n('disc'),100)/100,c=n('mat')+n('label'),N=n('units');
+  var rate=(n('tx')+n('pp'))/100,fix=n('pf')+n('lfee');
+  function keep(x){return x+s-(x+s)*rate-fix-c}
+  if(!p){$('need').textContent='-';setRows([]);verdict(false,'Enter the item price to see what a discount costs.');return}
+  var ps=p*(1-d),kf=keep(p),ks=keep(ps),pmin=(c+fix)/(1-rate)-s,dmax=1-pmin/p;
+  var r=[['Full price: you keep',m(kf)],['Sale price ('+pc(d,0)+' off)',m(ps)],['On sale: you keep',m(ks)],['Profit lost per sale',m(ks-kf)+(kf>0?' ('+pc((kf-ks)/kf,0)+')':'')]];
+  if(N)r.push([Math.round(N)+' full-price sales earn',m(N*kf)]);
+  r.push(['Deepest discount before a loss',pmin<=0?'any':(dmax<=0?'none':pc(dmax)+' ('+m(pmin)+')'),'total']);
+  setRows(r);
+  if(kf<=0){$('need').textContent='-';verdict(false,'This listing already loses '+m(-kf)+' per sale at full price. Fix the price before running a sale.');return}
+  if(ks<=0){$('need').textContent='never';verdict(false,'At '+pc(d,0)+' off, every sale loses '+m(-ks)+'. No number of extra orders makes that up. Keep the discount under '+pc(Math.max(dmax,0),0)+'.');return}
+  var ratio=kf/ks;
+  if(N){var need=Math.ceil(N*ratio-1e-9);$('need').textContent=need+' sales';
+    verdict(ratio<1.5,'You need '+need+' sales on sale to match '+Math.round(N)+' at full price, '+(need-Math.round(N))+' more ('+pc(ratio-1,0)+' more orders). '+(ratio<1.5?'A realistic bump for a well-timed sale.':'That is a big lift to ask of one sale. Try a smaller discount or a coupon for past buyers only.'));}
+  else{$('need').textContent=pc(ratio-1,0)+' more';verdict(ratio<1.5,'The sale needs '+pc(ratio-1,0)+' more orders than usual just to earn the same profit.');}
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

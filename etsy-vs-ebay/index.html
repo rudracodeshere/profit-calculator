@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy vs eBay Fees 2026: Same Item, Side by Side</title>
+<meta name="description" content="Compare Etsy and eBay fees on the same sale: what each takes per order and per month, what you keep after costs, and how sales tax and ads change it.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-vs-ebay/">
+<meta property="og:title" content="Etsy vs eBay: which takes less of your sale?">
+<meta property="og:description" content="Compare Etsy and eBay fees on the same sale: what each takes per order and per month, what you keep after costs, and how sales tax and ads change it.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-vs-ebay/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-13.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Etsy vs eBay: which takes less of your sale?", "url": "https://rudracodeshere.github.io/profit-calculator/etsy-vs-ebay/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Compare Etsy and eBay fees on the same sale: what each takes per order and per month, what you keep after costs, and how sales tax and ads change it."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is eBay or Etsy cheaper to sell on?", "acceptedAnswer": {"@type": "Answer", "text": "On fees, Etsy is usually cheaper. On a $30 item with $6 shipping Etsy takes $3.87 and eBay takes $5.30. eBay only comes out ahead when many of your Etsy orders come through Offsite Ads."}}, {"@type": "Question", "name": "Does eBay charge fees on sales tax?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. eBay's final value fee is a percentage of the total the buyer pays, including shipping and sales tax. With 7% tax on a $36 order, eBay's fee goes from $5.30 to $5.64."}}, {"@type": "Question", "name": "Does Top Rated Plus make eBay cheaper than Etsy?", "acceptedAnswer": {"@type": "Answer", "text": "It helps but usually not enough. The 10% discount on the final value fee cuts eBay's fee on a $36 order to $4.81, still above Etsy's $3.87."}}, {"@type": "Question", "name": "Do I need an eBay Store to sell on eBay?", "acceptedAnswer": {"@type": "Answer", "text": "No. A store subscription is optional. It mainly pays off if you list more items than the free monthly allowance covers, since stores come with more free listings. Enter its monthly price above to see what it does to your monthly total."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Etsy vs eBay fees", "item": "https://rudracodeshere.github.io/profit-calculator/etsy-vs-ebay/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Etsy vs eBay: which takes less of your sale?</h1>
+<p class="lead">Enter one item as you would list it on both sites. You get each platform's fees line by line, what you keep after your costs, and the difference over a month of orders. Every rate is editable.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="pr">Item price</label>
+      <div class="in"><span>$</span><input id="pr" type="number" inputmode="decimal" min="0" step="0.01" value="30"></div>
+      <label for="sh">Shipping you charge the buyer</label>
+      <div class="in"><span>$</span><input id="sh" type="number" inputmode="decimal" min="0" step="0.01" value="6"></div>
+      <label for="tx">Buyer's sales tax rate <small>(eBay's fee includes tax)</small></label>
+      <div class="in"><input id="tx" type="number" inputmode="decimal" min="0" step="0.1" value="0"><span>%</span></div>
+      <label for="co">Item cost <small>(materials or what you paid)</small></label>
+      <div class="in"><span>$</span><input id="co" type="number" inputmode="decimal" min="0" step="0.01" value="10"></div>
+      <label for="lb">Shipping label + packaging</label>
+      <div class="in"><span>$</span><input id="lb" type="number" inputmode="decimal" min="0" step="0.01" value="6"></div>
+      <label for="od">Orders per month</label>
+      <div class="in"><input id="od" type="number" inputmode="decimal" min="0" step="1" value="20"></div>
+      <label for="os">Etsy orders from Offsite Ads</label>
+      <div class="in"><input id="os" type="number" inputmode="decimal" min="0" max="100" step="1" value="0"><span>%</span></div>
+      <label for="pl">eBay promoted listings ad rate <small>(0 if you don't promote)</small></label>
+      <div class="in"><input id="pl" type="number" inputmode="decimal" min="0" step="0.5" value="0"><span>%</span></div>
+      <label for="st">eBay Store subscription <small>(optional, per month)</small></label>
+      <div class="in"><span>$</span><input id="st" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+      <label class="check"><input id="trs" type="checkbox"> eBay Top Rated Plus listing (10% off the final value fee)</label>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="etx">Etsy transaction fee</label>
+      <div class="in"><input id="etx" type="number" min="0" step="0.1" value="6.5"><span>%</span></div>
+      <label for="epp">Etsy payment processing</label>
+      <div class="in"><input id="epp" type="number" min="0" step="0.1" value="3"><span>% +</span><span>$</span><input id="epf" type="number" min="0" step="0.01" value="0.25"></div>
+      <label for="elf">Etsy listing fee per item sold</label>
+      <div class="in"><span>$</span><input id="elf" type="number" min="0" step="0.01" value="0.20"></div>
+      <label for="eoa">Etsy Offsite Ads rate <small>(12% over $10k/yr sales)</small></label>
+      <div class="in"><input id="eoa" type="number" min="0" step="1" value="15"><span>%</span></div>
+      <label for="bfv">eBay final value fee <small>(13.6% most categories; varies)</small></label>
+      <div class="in"><input id="bfv" type="number" min="0" step="0.1" value="13.6"><span>%</span></div>
+      <label for="bpo">eBay per-order fee <small>(over $10 / $10 or less)</small></label>
+      <div class="in"><span>$</span><input id="bpo" type="number" min="0" step="0.01" value="0.40"><span>/</span><span>$</span><input id="bps" type="number" min="0" step="0.01" value="0.30"></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span id="winl">Cheaper for this order</span><b id="big"></b></div>
+      <table class="wide" aria-live="polite"><thead><tr><th>Per order</th><th>Etsy</th><th>eBay</th></tr></thead><tbody id="cmp"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">US rates as of October 2026. Etsy: 6.5% transaction fee on item + shipping, 3% + $0.25 processing on the total including tax, $0.20 listing fee per item sold. eBay: 13.6% final value fee for most categories (some categories are higher or lower) on the total the buyer pays including shipping and sales tax, plus $0.40 per order ($0.30 on orders of $10 or less). Offsite Ads are averaged over the share of orders entered. Sales tax is collected and paid by both marketplaces, so it is not counted as income.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-vs-ebay" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>How the two fee models differ</h2>
+<p><strong>Etsy</strong> splits its cut into small pieces: a 6.5% transaction fee on the item and shipping, 3% + $0.25 for payment processing and $0.20 every time an item sells (the listing renews). Together that is about 9.5% plus $0.45 on a typical one-item order. Offsite Ads add 15% (or 12%) on orders that come through Etsy's ads on other sites.</p>
+<p><strong>eBay</strong> charges one larger final value fee, 13.6% in most categories, plus $0.40 per order. The difference that catches sellers out: eBay calculates it on the whole amount the buyer pays, <em>including sales tax</em>. Etsy's 6.5% transaction fee leaves tax out (only its 3% processing fee includes it).</p>
+<p class="formula">Etsy = 6.5% x (item + shipping) + 3% x (item + shipping + tax) + $0.25 + $0.20<br>eBay = 13.6% x (item + shipping + tax) + $0.40</p>
+<h2>A worked example</h2>
+<p>A $30 item with $6 shipping, no tax. Etsy takes <strong>$3.87</strong> and eBay takes <strong>$5.30</strong>, so Etsy leaves you $1.43 more. After a $10 item cost and a $6 label you keep $16.13 on Etsy and $14.70 on eBay. Over 20 orders a month that is $77.40 in Etsy fees against $105.92 on eBay, a $28.52 gap.</p>
+<p>Add a 7% sales tax and eBay's fee rises to $5.64 while Etsy's only goes to $3.95. A Top Rated Plus discount brings eBay down to $4.81 on the untaxed order, still above Etsy. Etsy only loses on fees when a large share of your orders come through Offsite Ads: at half your orders, Etsy's average fee is $6.57 and eBay is $1.27 cheaper.</p>
+<h2>What the fees don't tell you</h2>
+<p><strong>Who is shopping.</strong> Etsy buyers are looking for handmade, vintage and craft supplies, and often search by style or occasion. eBay buyers often search for a specific thing: a part, a model number, a collectible, a used item at a good price. Auctions and Best Offer let the market set the price, which suits resale and rare items more than made-to-order work.</p>
+<p><strong>Listing costs.</strong> Every Etsy listing costs $0.20 up front and lasts four months. eBay gives a monthly allowance of free listings and charges an insertion fee beyond it, so a large catalog of slow-moving items can cost less to keep listed on eBay.</p>
+<p><strong>Subscriptions are optional on both.</strong> An eBay Store adds a monthly fee and more free listings; Etsy Plus is $10 a month. Neither is needed to sell. If you add one, put it in the store box above (or count Etsy Plus as overhead) and check it is paid back.</p>
+<p>Many sellers list on both. Fees are only half of it: compare the price each audience will actually pay for the same item.</p>
+
+<h2>Questions</h2>
+<h3>Is eBay or Etsy cheaper to sell on?</h3>
+<p>On fees, Etsy is usually cheaper. On a $30 item with $6 shipping Etsy takes $3.87 and eBay takes $5.30. eBay only comes out ahead when many of your Etsy orders come through Offsite Ads.</p>
+<h3>Does eBay charge fees on sales tax?</h3>
+<p>Yes. eBay's final value fee is a percentage of the total the buyer pays, including shipping and sales tax. With 7% tax on a $36 order, eBay's fee goes from $5.30 to $5.64.</p>
+<h3>Does Top Rated Plus make eBay cheaper than Etsy?</h3>
+<p>It helps but usually not enough. The 10% discount on the final value fee cuts eBay's fee on a $36 order to $4.81, still above Etsy's $3.87.</p>
+<h3>Do I need an eBay Store to sell on eBay?</h3>
+<p>No. A store subscription is optional. It mainly pays off if you list more items than the free monthly allowance covers, since stores come with more free listings. Enter its monthly price above to see what it does to your monthly total.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../ebay-fee-calculator/">eBay fee calculator</a></li><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../etsy-vs-amazon-handmade/">Etsy vs Amazon Handmade</a></li><li><a href="../etsy-vs-shopify/">Etsy vs Shopify break-even</a></li><li><a href="../etsy-offsite-ads-calculator/">Etsy Offsite Ads calculator</a></li><li><a href="../poshmark-fee-calculator/">Poshmark fee calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var t=n('pr')+n('sh'),tax=t*n('tx')/100,g=t+tax,q=n('od'),own=n('co')+n('lb');
+  var e1=t*n('etx')/100,e2=t?g*n('epp')/100+n('epf'):0,e3=t?n('elf'):0,e4=n('os')/100*Math.min(t*n('eoa')/100,100),ef=e1+e2+e3+e4;
+  var b1=g*n('bfv')/100*($('trs').checked?0.9:1),b2=t?(g>10?n('bpo'):n('bps')):0,b3=g*n('pl')/100,bf=b1+b2+b3;
+  var ek=t-ef-own,bk=t-bf-own,st=n('st');
+  function row(l,a,b,c){return '<tr'+(c?' class="total"':'')+'><td>'+l+'</td><td>'+a+'</td><td>'+b+'</td></tr>'}
+  $('cmp').innerHTML=row('Buyer pays (before tax)',m(t),m(t))+row('Transaction / final value fee',m(-e1),m(-b1))+
+    row('Processing / per order',m(-e2),m(-b2))+row('Listing fee',m(-e3),'$0.00')+row('Ads',m(-e4),m(-b3))+
+    row('Total fees',m(-ef),m(-bf))+row('Share of order',t?pc(ef/t):'0%',t?pc(bf/t):'0%')+row('You keep after costs',m(ek),m(bk),1)+
+    row('Fees per month ('+q+' orders)',m(ef*q),m(bf*q+st))+row('Kept per month',m(ek*q),m(bk*q-st));
+  if(!t){$('big').textContent='-';verdict(false,'Enter an item price to compare the two platforms.');return}
+  var d=bf-ef,dm=(bf*q+st)-ef*q;
+  $('big').textContent=(d>=0?'Etsy':'eBay')+', by '+m(Math.abs(d));
+  if(d>=0){var fv=g?(ef-b2-b3)/g/($('trs').checked?0.9:1):0;verdict(true,'Etsy leaves you '+m(d)+' more per order, '+m(dm)+' a month at '+q+' orders. eBay would only match Etsy if its final value fee in your category were '+(fv>0?pc(fv):'0%')+' or less.')}
+  else verdict(true,'eBay leaves you '+m(-d)+' more per order'+(dm<0?', '+m(-dm)+' a month at '+q+' orders':', but the store subscription cancels it out over a month')+'. Most of the gap is Etsy Offsite Ads; check those orders still pay.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

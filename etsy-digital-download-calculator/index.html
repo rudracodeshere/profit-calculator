@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy Digital Download Calculator: Fees, Profit and Sales Goal</title>
+<meta name="description" content="Selling printables, patterns or SVGs on Etsy? See the fees on each digital sale, what you keep, and how many sales a month it takes to reach your income goal.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/etsy-digital-download-calculator/">
+<meta property="og:title" content="Etsy digital download calculator">
+<meta property="og:description" content="Selling printables, patterns or SVGs on Etsy? See the fees on each digital sale, what you keep, and how many sales a month it takes to reach your income goal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/etsy-digital-download-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-06.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Etsy digital download calculator", "url": "https://rudracodeshere.github.io/profit-calculator/etsy-digital-download-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Selling printables, patterns or SVGs on Etsy? See the fees on each digital sale, what you keep, and how many sales a month it takes to reach your income goal."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Etsy take from a digital download sale?", "acceptedAnswer": {"@type": "Answer", "text": "In the US, 6.5% transaction fee, 3% + $0.25 processing and $0.20 listing fee. On an $8 download that is $1.21, leaving you $6.79."}}, {"@type": "Question", "name": "Do I pay the listing fee every time a digital item sells?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each sale renews the listing for another $0.20, even though the file never runs out. That is why the fixed fees matter so much on low prices."}}, {"@type": "Question", "name": "What's the cheapest price that makes sense for an Etsy digital download?", "acceptedAnswer": {"@type": "Answer", "text": "There is no hard floor, but at $2 Etsy takes 32.0% of each sale and at $5 it takes 18.5%. Many sellers bundle small files to get the price up and the fee share down."}}, {"@type": "Question", "name": "Do Offsite Ads apply to digital products?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If a buyer comes through an Etsy ad on another site and buys within 30 days, the 15% fee (or 12%) applies to digital items too. Enter your share of ad sales to include it."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Etsy digital download calculator", "item": "https://rudracodeshere.github.io/profit-calculator/etsy-digital-download-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Etsy digital download calculator</h1>
+<p class="lead">Digital products have no materials and no shipping, so Etsy's fees are nearly your only cost. On a cheap file they take a bigger bite than most sellers expect. Enter your price to see the fees, what you keep, and how many sales a month your income goal needs.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="price">Price of the download</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="8"></div>
+      <label for="share">Sales from Offsite Ads</label>
+      <div class="in"><input id="share" type="number" inputmode="decimal" min="0" max="100" step="1" value="0"><span>%</span></div>
+      <label class="check"><input id="fx" type="checkbox"> My listing currency differs from my bank currency (2.5% conversion)</label>
+      <label for="goal">Monthly income goal <small>(take-home)</small></label>
+      <div class="in"><span>$</span><input id="goal" type="number" inputmode="decimal" min="0" step="10" value="500"></div>
+      <label for="mcost">Monthly costs <small>(design software, font and graphics licenses, Etsy Plus)</small></label>
+      <div class="in"><span>$</span><input id="mcost" type="number" inputmode="decimal" min="0" step="1" value="10"></div>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="tx">Transaction fee</label>
+      <div class="in"><input id="tx" type="number" min="0" step="0.1" value="6.5"><span>%</span></div>
+      <label for="pp">Payment processing</label>
+      <div class="in"><input id="pp" type="number" min="0" step="0.1" value="3"><span>% +</span><span>$</span><input id="pf" type="number" min="0" step="0.01" value="0.25"></div>
+      <label for="lfee">Listing fee per sale</label>
+      <div class="in"><span>$</span><input id="lfee" type="number" min="0" step="0.01" value="0.20"></div>
+      <label for="oa">Offsite Ads rate <small>(12% if your shop made over $10k last year)</small></label>
+      <div class="in"><input id="oa" type="number" min="0" step="1" value="15"><span>%</span></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>Sales per month for your goal</span><b id="need"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+      <h3>Fees by price point</h3>
+      <table class="wide"><thead><tr><th>Price</th><th>Fees</th><th>Fee %</th><th>You keep</th></tr></thead><tbody id="tbl"></tbody></table>
+    </div>
+  </div>
+  <p class="note">US Etsy rates as of October 2026: 6.5% transaction fee, 3% + $0.25 payment processing, $0.20 listing fee charged again each time a digital listing sells, Offsite Ads 15% (12% over $10k/yr) on ad-driven sales, 2.5% currency conversion when your listing and bank currencies differ. One item per order. Sales tax and VAT that Etsy collects from buyers are left out, as is income tax.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=etsy-digital-download-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>What Etsy charges on a digital download</h2>
+<p>A digital listing pays the same fees as a physical one: the <strong>6.5% transaction fee</strong>, <strong>3% + $0.25 processing</strong> and the <strong>$0.20 listing fee</strong>, which Etsy charges again every time the listing sells and renews. There is no shipping and no label, so the fees are usually your only cost per sale.</p>
+<p class="formula">You keep per sale = price &times; (1 &minus; 9.5%) &minus; $0.45</p>
+<p class="formula">Sales per month = (income goal + monthly costs) &divide; what you keep per sale</p>
+<h2>Worked example</h2>
+<p>An $8 printable. Etsy takes $0.52 in transaction fees, $0.49 processing and $0.20 for the listing: <strong>$1.21</strong>, or 15.1%. You keep <strong>$6.79</strong>. To take home $500 a month after $10 of software costs, you need <strong>76 sales</strong> a month.</p>
+<p>If 20% of your sales come from Offsite Ads and you're paid in a different currency, fees rise to $1.65 a sale (20.6%), you keep $6.35, and the same goal takes 81 sales.</p>
+<h2>Why cheap downloads lose so much to fees</h2>
+<p>The $0.45 of fixed fees per order is the same on a $2 file and a $20 one. The table under the calculator shows the effect: at $2 Etsy takes 32.0% of the sale, at $5 it takes 18.5%, at $10 it's 14.0%. At $3, the 133 sales you'd need for a $300 month means fees eat almost a quarter of everything buyers pay.</p>
+<p>Three ways around it:</p>
+<p><strong>Bundle.</strong> Ten $2 coloring pages sold separately pay the fixed fees ten times. As one $12 bundle they pay it once.</p>
+<p><strong>Encourage multi-item orders.</strong> The $0.25 processing fee is per order, so a buyer who adds three files to one cart pays it once. A shop coupon for 3+ items can pay for itself.</p>
+<p><strong>Price on value, not effort.</strong> A file costs nothing to copy, so the price should reflect what it saves or gives the buyer, not how long it took you this one time.</p>
+<p>With a large catalog of low-priced files, the per-listing view in your sales export shows which designs actually carry the shop.</p>
+
+<h2>Questions</h2>
+<h3>How much does Etsy take from a digital download sale?</h3>
+<p>In the US, 6.5% transaction fee, 3% + $0.25 processing and $0.20 listing fee. On an $8 download that is $1.21, leaving you $6.79.</p>
+<h3>Do I pay the listing fee every time a digital item sells?</h3>
+<p>Yes. Each sale renews the listing for another $0.20, even though the file never runs out. That is why the fixed fees matter so much on low prices.</p>
+<h3>What's the cheapest price that makes sense for an Etsy digital download?</h3>
+<p>There is no hard floor, but at $2 Etsy takes 32.0% of each sale and at $5 it takes 18.5%. Many sellers bundle small files to get the price up and the fee share down.</p>
+<h3>Do Offsite Ads apply to digital products?</h3>
+<p>Yes. If a buyer comes through an Etsy ad on another site and buys within 30 days, the 15% fee (or 12%) applies to digital items too. Enter your share of ad sales to include it.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../etsy-offsite-ads-calculator/">Etsy Offsite Ads calculator</a></li><li><a href="../gumroad-fee-calculator/">Gumroad fee calculator</a></li><li><a href="../etsy-profit-calculator/">Etsy monthly profit calculator</a></li><li><a href="../etsy-sale-calculator/">Etsy sale &amp; coupon calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function parts(p){
+  var sh=Math.min(n('share'),100)/100;
+  return {tx:p*n('tx')/100,pp:p*n('pp')/100+n('pf'),lf:n('lfee'),oa:sh*Math.min(p*n('oa')/100,100),fx:$('fx').checked?p*0.025:0};
+}
+function tot(f){return f.tx+f.pp+f.lf+f.oa+f.fx}
+function calc(){
+  var h='';[2,5,10,20].forEach(function(q){var f=tot(parts(q));h+='<tr><td>'+m(q)+'</td><td>'+m(f)+'</td><td>'+pc(f/q)+'</td><td>'+m(q-f)+'</td></tr>'});
+  $('tbl').innerHTML=h;
+  var p=n('price');
+  if(!p){$('need').textContent='-';setRows([]);verdict(false,'Enter a price to see the fees on one sale.');return}
+  var f=parts(p),fees=tot(f),k=p-fees,goal=n('goal')+n('mcost');
+  var r=[['Buyer pays',m(p)],['Transaction fee',m(-f.tx)],['Payment processing',m(-f.pp)],['Listing fee',m(-f.lf)]];
+  if(f.oa)r.push(['Offsite Ads (average per sale)',m(-f.oa)]);
+  if(f.fx)r.push(['Currency conversion',m(-f.fx)]);
+  r.push(['Total fees',m(-fees)+' ('+pc(fees/p)+')'],['You keep per sale',m(k),'total']);
+  setRows(r);
+  if(k<=0){$('need').textContent='-';verdict(false,'Fees take the whole price. Raise it or sell it in a bundle.');return}
+  var need=Math.ceil(goal/k-1e-9);$('need').textContent=goal?need+' sales':'-';
+  if(fees/p>0.2)verdict(false,'Etsy takes '+pc(fees/p,0)+' of every sale at this price. A bundle at a higher price keeps more of each dollar.'+(goal?' You need '+need+' sales a month for '+m(n('goal'))+'.':''));
+  else verdict(true,'You keep '+m(k)+' of every '+m(p)+' sale.'+(goal?' That is '+need+' sales a month, about '+Math.ceil(need/30)+' a day, for '+m(n('goal'))+' after '+m(n('mcost'))+' of monthly costs.':''));
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

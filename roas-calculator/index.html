@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROAS Calculator: Break-Even ROAS, Target ROAS and CPA</title>
+<meta name="description" content="Free ROAS calculator for online sellers. See your return on ad spend, the break-even ROAS for your margin, the ROAS you need for a profit target, and max CPA.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/roas-calculator/">
+<meta property="og:title" content="ROAS calculator: is your ad spend making money?">
+<meta property="og:description" content="Free ROAS calculator for online sellers. See your return on ad spend, the break-even ROAS for your margin, the ROAS you need for a profit target, and max CPA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/roas-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-08.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "ROAS calculator: is your ad spend making money?", "url": "https://rudracodeshere.github.io/profit-calculator/roas-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free ROAS calculator for online sellers. See your return on ad spend, the break-even ROAS for your margin, the ROAS you need for a profit target, and max CPA."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a good ROAS for an online store?", "acceptedAnswer": {"@type": "Answer", "text": "Any ROAS above your break-even, which is 1 divided by your margin before ads. At a 40% margin that is 2.50x; at a 25% margin it is 4.00x. A ROAS that is great for one shop can lose money for another."}}, {"@type": "Question", "name": "Is a 2x ROAS profitable?", "acceptedAnswer": {"@type": "Answer", "text": "Only if you keep more than 50% of revenue before ads. At a 40% margin, $500 of ads that bring in $1,000 lose $100.00."}}, {"@type": "Question", "name": "How do I calculate break-even CPA?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply your average order value by your margin before ads. A $50.00 average order at a 40% margin gives a break-even CPA of $20.00."}}, {"@type": "Question", "name": "What's the difference between ROAS and ACoS?", "acceptedAnswer": {"@type": "Answer", "text": "ROAS is revenue divided by ad spend; ACoS, used by Amazon, is ad spend divided by revenue. They are inverses: 4.00x ROAS is 25.0% ACoS."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "ROAS calculator", "item": "https://rudracodeshere.github.io/profit-calculator/roas-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>ROAS calculator: is your ad spend making money?</h1>
+<p class="lead">Enter what you spent on ads and the sales they brought in. You get your ROAS, the ROAS where ads stop losing money for your margin, the ROAS you need for a profit target, and the most you can pay to get one order.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="spend">Ad spend</label>
+      <div class="in"><span>$</span><input id="spend" type="number" inputmode="decimal" min="0" step="1" value="500"></div>
+      <label for="rev">Revenue from those ads</label>
+      <div class="in"><span>$</span><input id="rev" type="number" inputmode="decimal" min="0" step="1" value="2000"></div>
+      <label for="orders">Orders from those ads</label>
+      <div class="in"><input id="orders" type="number" inputmode="numeric" min="0" step="1" value="40"></div>
+      <label for="mg">Margin before ads <small>(after product cost, fees and shipping)</small></label>
+      <div class="in"><input id="mg" type="number" inputmode="decimal" min="0" max="100" step="1" value="40"><span>%</span></div>
+      <label for="tp">Profit you want to keep after ads <small>(% of revenue)</small></label>
+      <div class="in"><input id="tp" type="number" inputmode="decimal" min="0" max="100" step="1" value="10"><span>%</span></div>
+    </div>
+    <div>
+      <div class="big"><span>Your ROAS</span><b id="big"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">ROAS here uses the revenue the ad platform attributes to the ads. Meta, Google, Pinterest and Etsy each use their own attribution window, so check against your own sales data. Margin before ads should already include marketplace fees (Etsy US 9.5% + $0.25 as of October 2026, Shopify Payments 2.9% + $0.30 on Basic) and any free-shipping cost.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=roas-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+
+<h2>What ROAS tells you, and what it doesn't</h2>
+<p>ROAS (return on ad spend) is the revenue an ad brought in divided by what the ad cost. $2,000 of sales from $500 of ads is a 4.00x ROAS, sometimes written as 400%. It measures revenue, not profit. Whether 4.00x is good depends entirely on how much of that revenue you keep before ads.</p>
+<h2>Break-even ROAS</h2>
+<p>Your margin before ads is what's left of each sale after the product cost, marketplace and payment fees, and any shipping you cover. Ads have to be paid out of that. If you keep 40% of revenue, each $1 of ad spend needs $2.50 of sales just to pay for itself.</p>
+<p class="formula">Break-even ROAS = 1 / margin before ads &nbsp;|&nbsp; Target ROAS = 1 / (margin - target profit %)</p>
+<p>At a 40% margin, break-even ROAS is <strong>2.50x</strong>. If you also want to keep 10% of revenue as profit, you need 1 / 0.30 = <strong>3.33x</strong>. A product with a 25% margin needs 4.00x just to break even, which is why low-margin products are hard to advertise.</p>
+<h2>Worked example</h2>
+<p>A shop spends $500 on Meta ads and Ads Manager reports 40 purchases worth $2,000. ROAS is 4.00x and the cost per order is <strong>$12.50</strong>. With a 40% margin, the shop keeps $800.00 before ads and <strong>$300.00</strong> after, 15.0% of the ad revenue. The average order is $50.00, so the break-even CPA is $20.00 and the CPA that leaves 10% profit is $15.00.</p>
+<h2>Where to find the numbers on each platform</h2>
+<p><strong>Meta Ads:</strong> the "Purchase ROAS" and "Cost per purchase" columns in Ads Manager, once your pixel or Shopify connection reports purchases. <strong>Google Ads:</strong> "Conv. value / cost" is ROAS, and "Cost / conv." is CPA. <strong>Pinterest Ads:</strong> conversion reporting shows ROAS and cost per action when the Pinterest tag tracks checkouts. <strong>Etsy Ads:</strong> the Etsy Ads dashboard shows spend, revenue and ROAS for ads shown on Etsy. Etsy Offsite Ads are different: you pay a 15% or 12% fee only when a sale happens, so there is no spend to enter here.</p>
+<p>Amazon Sponsored Products reports ACoS instead, which is spend divided by sales: the inverse of ROAS. A 25.0% ACoS equals a 4.00x ROAS.</p>
+
+<h2>Questions</h2>
+<h3>What is a good ROAS for an online store?</h3>
+<p>Any ROAS above your break-even, which is 1 divided by your margin before ads. At a 40% margin that is 2.50x; at a 25% margin it is 4.00x. A ROAS that is great for one shop can lose money for another.</p>
+<h3>Is a 2x ROAS profitable?</h3>
+<p>Only if you keep more than 50% of revenue before ads. At a 40% margin, $500 of ads that bring in $1,000 lose $100.00.</p>
+<h3>How do I calculate break-even CPA?</h3>
+<p>Multiply your average order value by your margin before ads. A $50.00 average order at a 40% margin gives a break-even CPA of $20.00.</p>
+<h3>What's the difference between ROAS and ACoS?</h3>
+<p>ROAS is revenue divided by ad spend; ACoS, used by Amazon, is ad spend divided by revenue. They are inverses: 4.00x ROAS is 25.0% ACoS.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-ads-calculator/">Etsy Ads ROAS calculator</a></li><li><a href="../etsy-offsite-ads-calculator/">Etsy Offsite Ads calculator</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li><li><a href="../break-even-calculator/">Break-even calculator</a></li><li><a href="../price-increase-calculator/">Price increase calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function x(v){return v.toFixed(2)+'x'}
+function calc(){
+  var s=n('spend'),r=n('rev'),o=Math.round(n('orders')),g=n('mg')/100,t=n('tp')/100;
+  var be=g>0?x(1/g):'none (no margin)',tr=g>t?x(1/(g-t)):'not reachable';
+  var aov=o?r/o:0,rows=[];
+  if(!s){$('big').textContent='-';setRows([['Break-even ROAS',be],['Target ROAS for '+pc(t,0)+' profit',tr]]);verdict(false,'Enter your ad spend to see your ROAS. The break-even ROAS above already applies to any campaign at this margin.');return}
+  var roas=r/s,profit=r*g-s;
+  $('big').textContent=x(roas);
+  rows.push(['ROAS (revenue / spend)',x(roas)+' ('+pc(roas,0)+')'],['ACoS (spend / revenue)',r?pc(s/r):'n/a'],['Break-even ROAS',be],['Target ROAS for '+pc(t,0)+' profit',tr],['Margin kept before ads',m(r*g)],['Profit after ads',m(profit),'total']);
+  if(r)rows.push(['Profit after ads as % of revenue',pc(profit/r)]);
+  if(o){rows.push(['Cost per order (CPA)',m(s/o)],['Average order value',m(aov)],['Break-even CPA',m(aov*g)]);if(g>t)rows.push(['Target CPA',m(aov*(g-t))])}
+  setRows(rows);
+  if(!g)verdict(false,'With no margin before ads, any ad spend is a loss. Fix the price or costs first.');
+  else if(profit<0)verdict(false,'These ads lose '+m(-profit)+'. At a '+pc(g,0)+' margin you need at least '+be+' ROAS; you are at '+x(roas)+'.');
+  else if(g>t&&roas<1/(g-t))verdict(false,'Profitable by '+m(profit)+', but below your '+tr+' target. Cut the weakest ads or raise prices before scaling.');
+  else verdict(true,'These ads make '+m(profit)+' after spend. ROAS '+x(roas)+' is above your '+be+' break-even, so there is room to scale carefully.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
