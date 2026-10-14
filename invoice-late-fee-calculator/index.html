@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invoice Late Fee Calculator: Monthly % Plus Flat Fee, by Days Late</title>
+<meta name="description" content="Free invoice late fee calculator. Enter the invoice amount, days overdue, monthly late fee % and any flat fee to see the fee, the new balance and the wording for your invoice.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/invoice-late-fee-calculator/">
+<meta property="og:title" content="Invoice late fee calculator">
+<meta property="og:description" content="Free invoice late fee calculator. Enter the invoice amount, days overdue, monthly late fee % and any flat fee to see the fee, the new balance and the wording for your invoice.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/invoice-late-fee-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-01.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Invoice late fee calculator", "url": "https://rudracodeshere.github.io/profit-calculator/invoice-late-fee-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free invoice late fee calculator. Enter the invoice amount, days overdue, monthly late fee % and any flat fee to see the fee, the new balance and the wording for your invoice."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a normal late fee on an invoice?", "acceptedAnswer": {"@type": "Answer", "text": "1% to 1.5% a month on the unpaid balance is common, often with a flat fee of $25 to $50. On a $2,400 invoice 45 days late, 1.5% a month comes to $54.00."}}, {"@type": "Question", "name": "Can I charge a late fee if it wasn't in my contract?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not in the US, unless the client agrees to it. In the UK, business invoices carry statutory interest and fixed compensation even without a clause. Add the fee to your terms before the next project."}}, {"@type": "Question", "name": "Is 1.5% a month the same as 18% a year?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, as simple interest: 1.5% x 12 = 18%. This calculator charges it daily, so 45 days at 1.5% a month is 2.25% of the invoice."}}, {"@type": "Question", "name": "When should the late fee start?", "acceptedAnswer": {"@type": "Answer", "text": "The day after the due date, unless your terms give a grace period. A short grace period of 5 to 7 days avoids charging clients whose payment is already in transit."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Invoice late fee calculator", "item": "https://rudracodeshere.github.io/profit-calculator/invoice-late-fee-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Invoice late fee calculator</h1>
+<p class="lead">Enter an unpaid invoice, how many days late it is, and the late fee in your terms. You get the fee to add, the new balance, what each extra day costs the client, and a line of wording to put on your invoices.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="amt">Invoice amount</label>
+      <div class="in"><span>$</span><input id="amt" type="number" inputmode="decimal" min="0" step="0.01" value="2400"></div>
+      <label for="days">Days past the due date</label>
+      <div class="in"><input id="days" type="number" inputmode="numeric" min="0" step="1" value="45"><span>days</span></div>
+      <label for="rate">Late fee per month <small>(% of the unpaid balance)</small></label>
+      <div class="in"><input id="rate" type="number" inputmode="decimal" min="0" step="0.1" value="1.5"><span>%</span></div>
+      <label for="flat">Flat late fee <small>(one-time, 0 for none)</small></label>
+      <div class="in"><span>$</span><input id="flat" type="number" inputmode="decimal" min="0" step="1" value="25"></div>
+      <label for="grace">Grace period <small>(days before the % fee starts)</small></label>
+      <div class="in"><input id="grace" type="number" inputmode="numeric" min="0" step="1" value="0"><span>days</span></div>
+    </div>
+    <div>
+      <div class="big"><span>Late fee to add</span><b id="big"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+      <h3>Wording for your invoices</h3>
+      <p id="clause" class="formula" style="font-weight:400"></p>
+    </div>
+  </div>
+  <p class="note">The % fee is simple interest, pro-rated daily on a 30-day month: amount x monthly rate x days / 30. The flat fee is added once the invoice is a day late. A late fee is only enforceable if the client agreed to it before the work started, and many US states cap the rate; in the UK, business invoices can carry statutory interest of 8% a year above the Bank of England base rate instead. This is math, not legal advice.</p>
+</div>
+
+<div class="cta">
+  <h2>Stop writing awkward payment chasers</h2>
+  <p>The <strong>Get Paid Kit</strong> has 10 ready-to-send emails from the friendly reminder to the letter before action, payment terms and a late fee policy to add before the work starts, and the <strong>Invoice Chaser</strong> spreadsheet: it tracks every invoice, works out late fees, tells you who to chase today and writes the email with the client's name, amounts and dates filled in. Word, Google Docs, Excel and Google Sheets. One-time $9.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/get-paid-kit?utm_source=calculator&amp;utm_content=invoice-late-fee-calculator" rel="noopener">Get the Get Paid Kit</a>
+</div>
+
+<h2>How the late fee is worked out</h2>
+<p>Most freelancers and small businesses charge a late fee as a monthly percentage of the unpaid balance, often <strong>1.5% a month</strong> (18% a year), sometimes with a small flat fee on top. Charging it daily from the due date means the client pays for exactly how late they are, and it gives them a reason to pay today instead of next week.</p>
+<p class="formula">Late fee = invoice amount x monthly rate x days late / 30 + flat fee</p>
+<h2>Worked example</h2>
+<p>A <strong>$2,400</strong> invoice is <strong>45 days</strong> late. Your terms say 1.5% a month plus a $25 late fee. The percentage part is 2,400 x 0.015 x 45 / 30 = <strong>$54.00</strong>. Add the $25 flat fee and the late fee is <strong>$79.00</strong>, so the client now owes <strong>$2,479.00</strong>. Each extra day adds 2,400 x 0.015 / 30 = <strong>$1.20</strong>.</p>
+<p>With a 15-day grace period the percentage only runs for 30 days: 2,400 x 0.015 x 30 / 30 = $36.00, or $61.00 with the flat fee.</p>
+<h2>Making a late fee stick</h2>
+<p>The fee has to be agreed before the work starts. Put it in your contract or proposal, print the wording above on every invoice, and mention it in your reminders from the first overdue email. A fee you add without warning is easy for a client to refuse, and it sours the relationship.</p>
+<p>Keep the rate reasonable. In the US the legal maximum depends on your state; some cap late fees or interest well below 18% a year. In the UK, business-to-business invoices carry statutory interest of 8% a year over the Bank of England base rate, plus fixed compensation of &pound;40, &pound;70 or &pound;100 depending on the debt, even if your contract says nothing. In the EU, the Late Payment Directive sets interest at least 8 points over the ECB reference rate plus &euro;40.</p>
+<p>The fee is a nudge, not the plan. What gets most invoices paid is a steady sequence of short, polite emails that ask for a specific payment date. The <a href="../payment-reminder-email-generator/">payment reminder email generator</a> writes the right one for how late the invoice is.</p>
+
+<h2>Questions</h2>
+<h3>What is a normal late fee on an invoice?</h3>
+<p>1% to 1.5% a month on the unpaid balance is common, often with a flat fee of $25 to $50. On a $2,400 invoice 45 days late, 1.5% a month comes to $54.00.</p>
+<h3>Can I charge a late fee if it wasn't in my contract?</h3>
+<p>Usually not in the US, unless the client agrees to it. In the UK, business invoices carry statutory interest and fixed compensation even without a clause. Add the fee to your terms before the next project.</p>
+<h3>Is 1.5% a month the same as 18% a year?</h3>
+<p>Yes, as simple interest: 1.5% x 12 = 18%. This calculator charges it daily, so 45 days at 1.5% a month is 2.25% of the invoice.</p>
+<h3>When should the late fee start?</h3>
+<p>The day after the due date, unless your terms give a grace period. A short grace period of 5 to 7 days avoids charging clients whose payment is already in transit.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../payment-reminder-email-generator/">Payment reminder email generator</a></li><li><a href="../paypal-fee-calculator/">PayPal fee calculator</a></li><li><a href="../stripe-fee-calculator/">Stripe fee calculator</a></li><li><a href="../break-even-calculator/">Break-even calculator</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var A=n('amt'),d=Math.floor(n('days')),r=n('rate')/100,F=n('flat'),g=Math.floor(n('grace'));
+  if(!A){$('big').textContent='-';setRows([]);verdict(false,'Enter the invoice amount to see the late fee.');$('clause').textContent='';return}
+  var cd=Math.max(0,d-g),pct=Math.round(A*r*cd/30*100)/100,flat=d>0?F:0,fee=pct+flat,daily=A*r/30;
+  $('big').textContent=m(fee);
+  setRows([['Invoice amount',m(A)],['Days late',d],['Days the % fee applies',cd],[pc(r,2)+' a month, pro-rated daily',m(pct)],['Flat late fee',m(flat)],
+    ['Total late fee',m(fee)],['Balance now owed',m(A+fee),'total'],['Each extra day adds',m(daily)],['Equal to a yearly rate of',pc(r*12)]]);
+  if(!d)verdict(true,'This invoice is not overdue yet, so no late fee applies. A short reminder 3 days before the due date gets many invoices paid on time.');
+  else verdict(fee<=A*0.1,'At '+d+' days late, the client owes '+m(A+fee)+': '+m(A)+' plus a '+m(fee)+' late fee. Every further day adds '+m(daily)+'.'+(fee>A*0.1?' The fee is now over 10% of the invoice, which a court or the client may see as a penalty; check your local limit.':''));
+  $('clause').textContent='Payment is due within 14 days of the invoice date. Late payments incur '+(r?(+(r*100).toFixed(2))+'% per month on the unpaid balance, calculated daily from '+(g?g+' days after ':'')+'the due date':'no interest')+(F?', plus a one-time late fee of '+m(F):'')+', per our agreed terms.';
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
