@@ -11,6 +11,7 @@ Each spec module defines PAGE = dict(
   faqs,        # [(question, answer_html)]
   related,     # [slug, ...] 3-6 related pages
   cta_head, cta_text,   # optional overrides for the Seller Profit Sheet box
+  cta_url, cta_btn,     # optional: point the box at another product (e.g. KIT)
   og_image,    # optional, pin path
   tests,       # [{set:{id:val}, click:[id], expect:{id: substring or [substrings]}}] checked in Chromium
 )
@@ -22,6 +23,7 @@ import hashlib, html, importlib.util, json, pathlib, re, sys, datetime
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = "https://rudracodeshere.github.io/profit-calculator/"
 GUMROAD = "https://quietprofitsheets.gumroad.com/l/seller-profit-sheet"
+KIT = "https://quietprofitsheets.gumroad.com/l/get-paid-kit"
 TODAY = datetime.date.today().isoformat()
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
@@ -31,7 +33,7 @@ STATIC = [
     dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-12"),
     dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-13"),
 ]
-CATS = ["Platform fees", "Etsy tools", "Pricing & margins", "Maker pricing", "Compare platforms"]
+CATS = ["Platform fees", "Etsy tools", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid"]
 
 CSS = """:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
 *{box-sizing:border-box}
@@ -132,7 +134,7 @@ def render(p, names):
             {"@type": "ListItem", "position": 2, "name": p["nav_name"], "item": url}]},
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
-    cta_link = f"{GUMROAD}?utm_source=calculator&amp;utm_content={slug}"
+    cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -173,7 +175,7 @@ def render(p, names):
 <div class="cta">
   <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
   <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
-  <a class="btn" href="{cta_link}" rel="noopener">Get the Seller Profit Sheet</a>
+  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>
 </div>
 
 {p['body']}
