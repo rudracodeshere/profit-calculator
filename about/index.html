@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About: Free Seller Calculators by Quiet Profit Sheets</title>
+<meta name="description" content="Who makes these free seller calculators, how the math is checked, and where every fee rate comes from, with links to each platform's official fee page.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/about/">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>About these calculators</h1>
+<p class="lead">Free calculators for people who sell online: Etsy makers, Shopify store owners, eBay and Poshmark resellers, Amazon sellers and freelancers. Each one answers a single money question, such as what a platform takes from a sale, what to charge, or whether an ad is paying for itself.</p>
+
+<h2>Who makes them</h2>
+<p>The site is made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=about">Quiet Profit Sheets</a>, a small independent maker of spreadsheet tools for sellers. We are not affiliated with Etsy, Shopify, eBay, Amazon, PayPal, Stripe, Gumroad, Poshmark or any other company named on these pages. The calculators are free and need no signup. Our paid product is the Seller Profit Sheet, a one-time $14 spreadsheet that runs the same math across a whole sales export.</p>
+
+<h2>How the numbers are worked out</h2>
+<ul>
+<li><strong>Everything runs in your browser.</strong> Nothing you type is sent anywhere or stored.</li>
+<li><strong>Fee rates are US defaults and are editable.</strong> Platforms change their fees, and rates differ by country, category and plan. Every rate a calculator uses can be changed on the page, and the small print under each tool says which rates it assumes and when they were last checked.</li>
+<li><strong>Every worked example is tested.</strong> Each page's example numbers are checked automatically in a real browser whenever the site is rebuilt, so the figures in the text match what the calculator shows.</li>
+<li><strong>Rounding:</strong> money is shown to the cent. Platforms sometimes round differently, so a result can be a cent off from your statement.</li>
+</ul>
+
+<h2>Where the fee rates come from</h2>
+<p>Rates are taken from each platform's own fee pages and cross-checked against recent seller guides. When sources disagree, the calculator uses the most commonly published rate, says so in its notes, and lets you enter your own. Always confirm against the official page for your account:</p>
+<ul>
+<li><a href="https://www.etsy.com/legal/fees/" rel="nofollow noopener">Etsy fees &amp; payments policy</a></li>
+<li><a href="https://www.shopify.com/pricing" rel="nofollow noopener">Shopify pricing</a></li>
+<li><a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364" rel="nofollow noopener">eBay selling fees</a></li>
+<li><a href="https://sell.amazon.com/pricing" rel="nofollow noopener">Amazon selling fees</a></li>
+<li><a href="https://www.paypal.com/us/business/paypal-business-fees" rel="nofollow noopener">PayPal business fees</a></li>
+<li><a href="https://stripe.com/pricing" rel="nofollow noopener">Stripe pricing</a></li>
+<li><a href="https://gumroad.com/pricing" rel="nofollow noopener">Gumroad pricing</a></li>
+</ul>
+
+<h2>Not financial or tax advice</h2>
+<p>These tools are estimates to help you price and plan. They leave out income tax, and sales tax or VAT unless a page says otherwise. For tax questions, talk to an accountant in your country.</p>
+
+<h2>Found a wrong number?</h2>
+<p>If a platform changed a fee or a result looks off, tell us through the <a href="https://quietprofitsheets.gumroad.com/?utm_source=about">Quiet Profit Sheets</a> page and we will fix it.</p>
+<p><a href="../#all">See all calculators</a></p>
+
+<footer>Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>.</footer>
+</main>
+</body>
+</html>

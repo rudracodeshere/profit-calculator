@@ -32,6 +32,7 @@ STATIC = [
     dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-10"),
     dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-12"),
     dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-13"),
+    dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-15"),  # built from tools/about.html
 ]
 CATS = ["Platform fees", "Etsy tools", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid"]
 
@@ -185,7 +186,7 @@ def render(p, names):
 <h2>Related calculators</h2>
 <ul class="related">{rel}</ul>
 
-<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a>.</footer>
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
 </main>
 <script>
 (function(){{
@@ -198,6 +199,45 @@ calc();
 </body>
 </html>
 """
+
+
+def render_about():
+    body = (ROOT / "tools" / "about.html").read_text()
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About: Free Seller Calculators by Quiet Profit Sheets</title>
+<meta name="description" content="Who makes these free seller calculators, how the math is checked, and where every fee rate comes from, with links to each platform's official fee page.">
+<link rel="canonical" href="{BASE}about/">
+<link rel="icon" href="../logo.png">
+<style>
+{CSS}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+{body}
+<footer>Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>.</footer>
+</main>
+</body>
+</html>
+"""
+
+
+def write_readme(reg):
+    lines = ["# Free seller calculators", "",
+             f"Free, no-signup calculators for Etsy, Shopify, eBay, Amazon, Poshmark and freelance sellers. Live site: {BASE}", "",
+             "Every calculator runs in the browser, uses editable US fee rates, and has its worked example checked by an automated browser test.", ""]
+    for c in CATS:
+        items = [r for r in reg if r["cat"] == c and r["slug"]]
+        if items:
+            lines += [f"## {c}", ""] + [f"- [{r['nav_name']}]({BASE}{r['slug']}/)" for r in items] + [""]
+    lines += [f"[About and fee sources]({BASE}about/)", "",
+              "Pages are generated from `tools/pages/*.py` by `tools/build_pages.py`; test with `tools/check_pages.js`.", ""]
+    (ROOT / "README.md").write_text("\n".join(lines))
 
 
 def main():
@@ -235,6 +275,9 @@ def main():
         lm = old["lastmod"] if old.get("hash") == h else TODAY
         reg.append(dict(slug=p["slug"], cat=p["cat"], nav_name=p["nav_name"], lastmod=lm, hash=h))
     reg_path.write_text(json.dumps(reg, indent=1))
+    (ROOT / "about").mkdir(exist_ok=True)
+    (ROOT / "about" / "index.html").write_text(render_about())
+    write_readme(reg)
     urls = "\n".join(f"  <url><loc>{BASE}{r['slug'] + '/' if r['slug'] else ''}</loc><lastmod>{r['lastmod']}</lastmod></url>" for r in reg)
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
     # homepage directory block between markers
