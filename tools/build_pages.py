@@ -25,13 +25,21 @@ BASE = "https://rudracodeshere.github.io/profit-calculator/"
 GUMROAD = "https://quietprofitsheets.gumroad.com/l/seller-profit-sheet"
 KIT = "https://quietprofitsheets.gumroad.com/l/get-paid-kit"
 TODAY = datetime.date.today().isoformat()
+FIVERR = "https://www.fiverr.com/rudrasharma_in"
+# Done-for-you offer under each tool: (link, line). A page spec can set gig: "seo" | "profit" | "sheet".
+GIGS = {
+    "seo": (FIVERR, "Rather have someone rewrite your Etsy titles, 13 tags and descriptions for you? I do it on Fiverr, from $5."),
+    "profit": (FIVERR, "Rather have someone check every product's real profit and fix your prices for you? I do it on Fiverr, from $15."),
+    "sheet": (FIVERR, "Need a custom Excel or Google Sheets tracker built around how you work? I build them on Fiverr, from $5."),
+}
+CAT_GIG = {"Invoices & getting paid": "sheet"}
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
-    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-13"),
-    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-10"),
-    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-12"),
-    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-13"),
+    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-17"),
+    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-17"),
+    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-17"),
+    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-17"),
     dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-15"),  # built from tools/about.html
 ]
 CATS = ["Platform fees", "Etsy tools", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid"]
@@ -79,6 +87,7 @@ tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
 .related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
 .related a:hover{border-color:var(--navy)}
 nav{font-size:.9rem;margin-bottom:8px}
+.dfy{margin:14px 0 0;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;background:#fff;font-size:.95rem}
 footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
 th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
 .wide td,.wide th{text-align:right;padding:6px 4px}
@@ -136,6 +145,7 @@ def render(p, names):
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
     cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
+    gig_url, gig_line = GIGS[p.get("gig", CAT_GIG.get(p["cat"], "profit"))]
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -178,6 +188,7 @@ def render(p, names):
   <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
   <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>
 </div>
+<p class="dfy">{gig_line} <a href="{gig_url}" rel="noopener">See the offer on Fiverr</a></p>
 
 {p['body']}
 

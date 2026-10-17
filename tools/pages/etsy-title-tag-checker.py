@@ -1,4 +1,5 @@
 PAGE = dict(
+    gig="seo",
     slug="etsy-title-tag-checker",
     cat="Etsy tools",
     nav_name="Etsy title and tag checker",
