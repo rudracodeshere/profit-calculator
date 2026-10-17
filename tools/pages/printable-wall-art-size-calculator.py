@@ -88,8 +88,10 @@ $('file').addEventListener('change',function(){var f=this.files&&this.files[0];i
         ("How many files can I upload to an Etsy digital listing?", "Up to 5 files, each up to 20MB. A ZIP counts as one file."),
     ],
     related=["etsy-digital-download-calculator", "print-on-demand-profit-calculator", "etsy-title-tag-checker", "etsy-fee-calculator", "etsy-pricing-calculator"],
-    cta_head="Selling printables? See which ones actually make money.",
-    cta_text="The <strong>Seller Profit Sheet</strong> reads your Etsy sales export and shows what each listing kept after transaction fees, processing, listing renewals and Offsite Ads, so you can see which designs carry the shop and which ones to drop. Excel and Google Sheets, one-time $14, no subscription.",
+    cta_head="Show buyers which sizes they get, and how to print them.",
+    cta_text="The <strong>Printable Size Guide Kit</strong> gives you 8 ready-to-upload \"sizes included\" and print size guide listing images in 4 color themes, an editable size chart (PowerPoint or Google Slides), a one-page how-to-print guide to put in your download ZIP, and a pixel cheat sheet for every size at 300, 200 and 150 DPI. One-time $5.",
+    cta_url="https://quietprofitsheets.gumroad.com/l/printable-size-kit",
+    cta_btn="Get the Printable Size Guide Kit",
     og_image="pins/pin-06.png",
     tests=[
         {"expect": {"big": ["3.4 × 5.1 in"], "rows": ["1,024 × 1,536 px", "2:3 (portrait)", "0 of 24", "7,200 × 10,800 px"], "verdict": ["Too small to sell as wall art"], "tbl": ["Too small (256 DPI)", "7,200 \u00d7 10,800"]}},
