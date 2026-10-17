@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Quiet Profit Sheets: free calculators for Etsy and small online sellers</title>
+  <link>https://rudracodeshere.github.io/profit-calculator/</link>
+  <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
+  <language>en</language>
+  <lastBuildDate>Sat, 17 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Printable Wall Art Size Calculator: Print Sizes and DPI for Etsy</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/printable-wall-art-size-calculator/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/printable-wall-art-size-calculator/#pin-1</guid>
+    <pubDate>Sat, 17 Oct 2026 12:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/printable-wall-art-size-calculator.png" alt="Will your art print sharp at 16x20?"></p><p>Free print size and DPI calculator for Etsy printable wall art and print on demand. Enter your image's pixel size and see every frame size it prints sharp at (8x10, 11x14, 16x20, A4 and more), which aspect ratios need a crop, and the pixels each size needs. No signup.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/printable-wall-art-size-calculator.png" length="83313" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/printable-wall-art-size-calculator.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
+</channel>
+</rss>

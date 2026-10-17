@@ -1,0 +1,22 @@
+# Releases the next Pinterest pins into pins/feed.xml every day (see tools/pins/build_feed.py).
+name: Release pins to the Pinterest feed
+on:
+  schedule:
+    - cron: "5 0,12 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/pins/build_feed.py
+      - name: Commit if the feed changed
+        run: |
+          git diff --quiet pins/feed.xml && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pins/feed.xml
+          git commit -m "Release next pins to the Pinterest feed"
+          git push
