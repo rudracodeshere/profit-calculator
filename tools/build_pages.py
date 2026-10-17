@@ -28,9 +28,9 @@ TODAY = datetime.date.today().isoformat()
 FIVERR = "https://www.fiverr.com/rudrasharma_in"
 # Done-for-you offer under each tool: (link, line). A page spec can set gig: "seo" | "profit" | "sheet".
 GIGS = {
-    "seo": (FIVERR, "Rather have someone rewrite your Etsy titles, 13 tags and descriptions for you? I do it on Fiverr, from $5."),
-    "profit": (FIVERR, "Rather have someone check every product's real profit and fix your prices for you? I do it on Fiverr, from $15."),
-    "sheet": (FIVERR, "Need a custom Excel or Google Sheets tracker built around how you work? I build them on Fiverr, from $5."),
+    "seo": (FIVERR + "/write-etsy-seo-titles-13-tags-and-descriptions-for-your-listings", "Rather have someone rewrite your Etsy titles, 13 tags and descriptions for you? I do it on Fiverr, from $5."),
+    "profit": (FIVERR + "/find-which-of-your-etsy-products-lose-money-and-fix-your-prices", "Rather have someone check every product's real profit and fix your prices for you? I do it on Fiverr, from $15."),
+    "sheet": (FIVERR + "/build-a-custom-excel-or-google-sheets-tracker-with-formulas", "Need a custom Excel or Google Sheets tracker built around how you work? I build them on Fiverr, from $5."),
 }
 CAT_GIG = {"Invoices & getting paid": "sheet"}
 
