@@ -58,6 +58,13 @@
   "hash": "af92123a1ebd"
  },
  {
+  "slug": "dtf-transfer-size-chart",
+  "cat": "Print & design sizes",
+  "nav_name": "DTF transfer size chart and t-shirt design size calculator",
+  "lastmod": "2026-10-17",
+  "hash": "0ee0a253e06a"
+ },
+ {
   "slug": "ebay-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "eBay fee calculator",
@@ -163,6 +170,13 @@
   "hash": "da0c08c7804e"
  },
  {
+  "slug": "kdp-cover-size-calculator",
+  "cat": "Print & design sizes",
+  "nav_name": "KDP cover size and spine width calculator",
+  "lastmod": "2026-10-17",
+  "hash": "e4664f166bd3"
+ },
+ {
   "slug": "markup-calculator",
   "cat": "Pricing & margins",
   "nav_name": "Markup calculator",
@@ -206,7 +220,7 @@
  },
  {
   "slug": "printable-wall-art-size-calculator",
-  "cat": "Etsy tools",
+  "cat": "Print & design sizes",
   "nav_name": "Printable wall art size and DPI calculator",
   "lastmod": "2026-10-17",
   "hash": "4ae79439628d"

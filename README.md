@@ -26,6 +26,11 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 - [Etsy monthly profit calculator](https://rudracodeshere.github.io/profit-calculator/etsy-profit-calculator/)
 - [Etsy sale & coupon calculator](https://rudracodeshere.github.io/profit-calculator/etsy-sale-calculator/)
 - [Etsy title and tag checker](https://rudracodeshere.github.io/profit-calculator/etsy-title-tag-checker/)
+
+## Print & design sizes
+
+- [DTF transfer size chart and t-shirt design size calculator](https://rudracodeshere.github.io/profit-calculator/dtf-transfer-size-chart/)
+- [KDP cover size and spine width calculator](https://rudracodeshere.github.io/profit-calculator/kdp-cover-size-calculator/)
 - [Printable wall art size and DPI calculator](https://rudracodeshere.github.io/profit-calculator/printable-wall-art-size-calculator/)
 
 ## Pricing & margins

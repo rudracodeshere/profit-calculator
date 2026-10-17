@@ -1,7 +1,7 @@
 PAGE = dict(
     gig="seo",
     slug="printable-wall-art-size-calculator",
-    cat="Etsy tools",
+    cat="Print & design sizes",
     nav_name="Printable wall art size and DPI calculator",
     title="Printable Wall Art Size Calculator: Print Sizes, DPI and Pixels for Etsy",
     desc="Free print size and DPI calculator for Etsy printable wall art and print on demand. Enter your image's pixels to see every frame size it prints sharp at, which ratios need a crop, and the pixels each size needs.",
