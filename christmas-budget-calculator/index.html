@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Christmas Budget Calculator: Gift Budget per Person + How Much to Save Each Payday</title>
+<meta name="description" content="Free Christmas budget calculator. Set a gift budget per kid, adult and friend, add food, travel and decorations, and see your total and how much to set aside each payday until you shop. Free printable worksheet.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/christmas-budget-calculator/">
+<meta property="og:title" content="Christmas budget calculator">
+<meta property="og:description" content="Free Christmas budget calculator. Set a gift budget per kid, adult and friend, add food, travel and decorations, and see your total and how much to set aside each payday until you shop. Free printable worksheet.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/christmas-budget-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/feed/christmas-budget-calculator.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+.dfy{margin:14px 0 0;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;background:#fff;font-size:.95rem}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Christmas budget calculator", "url": "https://rudracodeshere.github.io/profit-calculator/christmas-budget-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free Christmas budget calculator. Set a gift budget per kid, adult and friend, add food, travel and decorations, and see your total and how much to set aside each payday until you shop. Free printable worksheet."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much should I spend on Christmas?", "acceptedAnswer": {"@type": "Answer", "text": "Whatever you can pay in cash by the time you shop. Add up gifts per person plus food, travel, decorations and wrapping, then divide what's left to save by your paydays. If that is more than about 15% of each paycheck, trim the list or the per-person amounts."}}, {"@type": "Question", "name": "How much should I spend per child at Christmas?", "acceptedAnswer": {"@type": "Answer", "text": "There is no standard amount. Pick one figure per child that fits your total, keep it equal between siblings, and count stocking stuffers inside it, not on top."}}, {"@type": "Question", "name": "How much should I save each month for Christmas?", "acceptedAnswer": {"@type": "Answer", "text": "Divide your Christmas total by the months left before you shop. Starting in January, a $1,250 Christmas is $104.17 a month."}}, {"@type": "Question", "name": "What costs do people forget in a Christmas budget?", "acceptedAnswer": {"@type": "Answer", "text": "Food and hosting, travel, wrapping paper, cards and postage, stocking stuffers, outfits for parties, and gifts for teachers, coworkers and neighbors. Give each one its own line."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Christmas budget calculator", "item": "https://rudracodeshere.github.io/profit-calculator/christmas-budget-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Christmas budget calculator</h1>
+<p class="lead">Add up the whole season, not just the gifts: a budget per person, plus food, travel, decorations and wrapping. Then see how much to set aside each payday so it's paid for before you shop.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="kids">Kids you buy for <small>(count x budget each)</small></label>
+      <div class="grid" style="gap:8px">
+        <div class="in"><input id="kids" type="number" inputmode="numeric" min="0" step="1" value="2"><span>kids</span></div>
+        <div class="in"><span>$</span><input id="perKid" type="number" inputmode="decimal" min="0" step="5" value="150"></div>
+      </div>
+      <label for="adults">Adults in the family</label>
+      <div class="grid" style="gap:8px">
+        <div class="in"><input id="adults" type="number" inputmode="numeric" min="0" step="1" value="4"><span>people</span></div>
+        <div class="in"><span>$</span><input id="perAdult" type="number" inputmode="decimal" min="0" step="5" value="75"></div>
+      </div>
+      <label for="others">Friends, coworkers, teachers, neighbors</label>
+      <div class="grid" style="gap:8px">
+        <div class="in"><input id="others" type="number" inputmode="numeric" min="0" step="1" value="5"><span>people</span></div>
+        <div class="in"><span>$</span><input id="perOther" type="number" inputmode="decimal" min="0" step="5" value="25"></div>
+      </div>
+      <label for="food">Food and hosting</label>
+      <div class="in"><span>$</span><input id="food" type="number" inputmode="decimal" min="0" step="10" value="250"></div>
+      <label for="travel">Holiday travel</label>
+      <div class="in"><span>$</span><input id="travel" type="number" inputmode="decimal" min="0" step="10" value="150"></div>
+      <label for="decor">Tree and decorations</label>
+      <div class="in"><span>$</span><input id="decor" type="number" inputmode="decimal" min="0" step="5" value="75"></div>
+      <label for="wrap">Wrapping, cards and postage</label>
+      <div class="in"><span>$</span><input id="wrap" type="number" inputmode="decimal" min="0" step="5" value="50"></div>
+      <label for="extra">Anything else <small>(outings, outfits, giving)</small></label>
+      <div class="in"><span>$</span><input id="extra" type="number" inputmode="decimal" min="0" step="5" value="0"></div>
+      <label for="saved">Already set aside</label>
+      <div class="in"><span>$</span><input id="saved" type="number" inputmode="decimal" min="0" step="10" value="300"></div>
+      <label for="weeks">Weeks until you shop <small>(filled in to Dec 15)</small></label>
+      <div class="in"><input id="weeks" type="number" inputmode="numeric" min="0" step="1" value=""><span>weeks</span></div>
+      <label for="freq">How often you get paid</label>
+      <select id="freq" class="full"><option value="1">Weekly</option><option value="2" selected>Every 2 weeks</option><option value="2.1667">Twice a month</option><option value="4.333">Monthly</option></select>
+      <label for="pay">Take-home pay per paycheck <small>(optional)</small></label>
+      <div class="in"><span>$</span><input id="pay" type="number" inputmode="decimal" min="0" step="50" value="1800"></div>
+    </div>
+    <div>
+      <div class="big"><span>Set aside each payday</span><b id="big"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+      <p class="note" style="margin-top:14px"><a href="christmas-budget-printable-letter.pdf">Free printable Christmas budget worksheet (PDF, US Letter)</a> &middot; <a href="christmas-budget-printable-a4.pdf">A4</a></p>
+    </div>
+  </div>
+  <p class="note">Paydays are counted from the weeks you enter: every 2 weeks = weeks / 2, twice a month = weeks / 2.17, monthly = weeks / 4.33, rounded down. Amounts stay in your browser; nothing is saved or sent.</p>
+</div>
+
+<div class="cta">
+  <h2>Track every gift and every payday</h2>
+  <p>The <strong>Christmas Budget Planner &amp; Gift Tracker</strong> keeps a budget per person, a gift list with status from idea to wrapped, every other holiday cost, and works out how much to set aside each payday. Google Sheets and Excel, with a filled-in demo and printable worksheets. One-time $5.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/christmas-budget-planner?utm_source=calculator&amp;utm_content=christmas-budget-calculator" rel="noopener">Get the Christmas Budget Planner</a>
+</div>
+<p class="dfy">Need a custom Excel or Google Sheets tracker built around how you work? I build them on Fiverr, from $5. <a href="https://www.fiverr.com/rudrasharma_in/build-a-custom-excel-or-google-sheets-tracker-with-formulas" rel="noopener">See the offer on Fiverr</a></p>
+
+<h2>How to set a Christmas budget</h2>
+<p>Most Christmas overspending isn't the big gifts. It's the costs nobody wrote down: the second trip to the store, the stocking stuffers, the extra groceries for hosting, the postage. So budget the <strong>whole season</strong>, in two parts:</p>
+<ul>
+<li><strong>Gifts, per person.</strong> Decide an amount for each person before you shop. Grouping helps: kids, close family, then a smaller amount for friends, coworkers, teachers and neighbors.</li>
+<li><strong>Everything else.</strong> Food and hosting, travel, the tree and decorations, wrapping, cards and postage, outings, outfits and giving.</li>
+</ul>
+<p class="formula">Christmas total = (people x budget each, per group) + food + travel + decorations + wrapping + other</p>
+<p>Then work backwards from the day you want to shop. Divide what's still to save by the paydays left, and set that aside every payday. Next year, divide the total by 12 and start in January.</p>
+<h2>Worked example</h2>
+<p>Two kids at <strong>$150</strong> each, four adults at <strong>$75</strong> and five friends and coworkers at <strong>$25</strong> come to $300 + $300 + $125 = <strong>$725</strong> in gifts. Add $250 for food, $150 for travel, $75 for the tree and decorations and $50 for wrapping and postage: <strong>$525</strong>. The season costs <strong>$1,250</strong>.</p>
+<p>With $300 already set aside and 8 weeks to go, $950 is left to save. Paid every 2 weeks, that is 4 paydays, so <strong>$237.50 a payday</strong> (about $118.75 a week). On an $1,800 paycheck that is 13.2%. Saving the same $1,250 from January would take <strong>$104.17 a month</strong>.</p>
+<h2>What do people actually spend?</h2>
+<p>In the National Retail Federation's 2025 holiday survey, US shoppers planned to spend <strong>$890.49</strong> on average: $627.93 on gifts and $262.56 on food, candy, decorations and cards. Gallup's October 2025 poll put planned gift spending at <strong>$1,007</strong>, and $651 for households earning under $50,000. Use these as a sanity check, not a target: the right budget is the one you can pay for in cash by December.</p>
+<h2>Keeping to it</h2>
+<p>Write every gift down as you buy it, with what you paid, and check it against that person's budget. When someone goes over, take it from another line on purpose instead of letting the total drift. Keep receipts and return-by dates for anything that might go back. A <a href="christmas-budget-printable-letter.pdf">printable worksheet</a> works; a spreadsheet does the adding up for you.</p>
+
+<h2>Questions</h2>
+<h3>How much should I spend on Christmas?</h3>
+<p>Whatever you can pay in cash by the time you shop. Add up gifts per person plus food, travel, decorations and wrapping, then divide what's left to save by your paydays. If that is more than about 15% of each paycheck, trim the list or the per-person amounts.</p>
+<h3>How much should I spend per child at Christmas?</h3>
+<p>There is no standard amount. Pick one figure per child that fits your total, keep it equal between siblings, and count stocking stuffers inside it, not on top.</p>
+<h3>How much should I save each month for Christmas?</h3>
+<p>Divide your Christmas total by the months left before you shop. Starting in January, a $1,250 Christmas is $104.17 a month.</p>
+<h3>What costs do people forget in a Christmas budget?</h3>
+<p>Food and hosting, travel, wrapping paper, cards and postage, stocking stuffers, outfits for parties, and gifts for teachers, coworkers and neighbors. Give each one its own line.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../break-even-calculator/">Break even calculator</a></li><li><a href="../invoice-late-fee-calculator/">Invoice late fee calculator</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+if(!$('weeks').value){var t=new Date(),y=t.getFullYear(),d=new Date(y,11,15);if(t>d)d=new Date(y+1,11,15);$('weeks').value=Math.max(0,Math.floor((d-t)/604800000))}
+function calc(){
+  var gifts=n('kids')*n('perKid')+n('adults')*n('perAdult')+n('others')*n('perOther');
+  var other=n('food')+n('travel')+n('decor')+n('wrap')+n('extra'),total=gifts+other,saved=n('saved'),need=Math.max(0,total-saved);
+  var w=Math.floor(n('weeks')),step=parseFloat($('freq').value)||2,pays=Math.max(1,Math.floor(w/step)),per=need/pays,pay=n('pay');
+  if(!total){$('big').textContent='-';setRows([]);verdict(false,'Add the people you buy for, or any holiday cost, to see your budget.');return}
+  $('big').textContent=m(per);
+  setRows([['Gifts',m(gifts)],['Food, travel, decorations and the rest',m(other)],['Christmas total',m(total),'total'],['Already set aside',m(saved)],
+    ['Still to set aside',m(need)],['Paydays left',w?pays:'1 (shopping now)'],['Each payday',m(per)],['Per week',m(w?need/w:need)],
+    ['Start in January next year',m(total/12)+' a month']]);
+  if(!need){verdict(true,'You have already set aside the full '+m(total)+'. Anything left over can start next year\'s fund.');return}
+  var line='Set aside '+m(per)+' each payday for '+(w?pays+' paydays':'this payday')+' to have '+m(total)+' ready by the time you shop.';
+  if(pay){var s=per/pay;verdict(s<=0.15,line+' That is '+pc(s)+' of each paycheck'+(s>0.15?', which is a lot. Trim the per-person amounts or the list, or swap some gifts for experiences.':'.'))}
+  else verdict(true,line);
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>

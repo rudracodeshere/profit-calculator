@@ -14,6 +14,9 @@ THEMES = [("#FBF7F0", "#1F3A5F", "#E8613A", "#FFFFFF"),
           ("#EEF4F1", "#173F35", "#2E8B6A", "#FFFFFF"),
           ("#F5F0FA", "#3A2A5C", "#8A5CD0", "#FFFFFF"),
           ("#1F3A5F", "#FFFFFF", "#F2B544", "#2A4A73")]
+# Named themes a pin can pick with "theme" in pins.json (seasonal pins); dark backgrounds use light text.
+NAMED = {"christmas": ("#1E5631", "#FFFFFF", "#C9A227", "#2A6B40")}
+DARK = {"#1F3A5F", "#1E5631"}
 
 
 def cta(slug):
@@ -41,7 +44,7 @@ def wrap(d, text, f, width):
 
 def draw(pin, theme, size=96):
     bg, ink, acc, card = theme
-    dark = bg == "#1F3A5F"
+    dark = bg in DARK
     im = Image.new("RGB", (1000, 1500), bg)
     d = ImageDraw.Draw(im)
     # kicker pill
@@ -49,7 +52,7 @@ def draw(pin, theme, size=96):
     k = pin["kicker"].upper()
     w = d.textlength(k, font=f)
     d.rounded_rectangle([80, 96, 80 + w + 56, 156], 30, fill=acc)
-    d.text((108, 126), k, fill="#FFFFFF" if not dark else "#1F3A5F", font=f, anchor="lm")
+    d.text((108, 126), k, fill="#FFFFFF" if not dark else bg, font=f, anchor="lm")
     # headline, shrink until it fits in 4 lines
     hf = font(size, "ExtraBold")
     lines = wrap(d, pin["head"], hf, 840)
@@ -72,7 +75,7 @@ def draw(pin, theme, size=96):
     # call to action
     cy = max(top + h + 60, 1150)
     d.rounded_rectangle([80, cy, 920, cy + 120], 60, fill=acc)
-    d.text((500, cy + 60), cta(pin["slug"]), fill="#FFFFFF" if not dark else "#1F3A5F", font=font(46, "Bold"), anchor="mm")
+    d.text((500, cy + 60), cta(pin["slug"]), fill="#FFFFFF" if not dark else bg, font=font(46, "Bold"), anchor="mm")
     if cy + 120 > 1370 and size > 64:  # too tall: retry with a smaller headline
         return draw(pin, theme, size - 8)
     d.text((500, 1420), "Quiet Profit Sheets  ·  rudracodeshere.github.io/profit-calculator", fill=ink, font=font(26, "Medium"), anchor="mm")
@@ -82,6 +85,10 @@ def draw(pin, theme, size=96):
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     pins = json.load(open(os.path.join(HERE, "pins.json")))
-    for i, p in enumerate(pins):
-        draw(p, THEMES[i % len(THEMES)]).save(os.path.join(OUT, name(p["slug"]) + ".png"), optimize=True)
+    k = 0  # rotation skips pins with a named theme, so adding one doesn't recolor the rest
+    for p in pins:
+        theme = NAMED.get(p.get("theme"))
+        if not theme:
+            theme, k = THEMES[k % len(THEMES)], k + 1
+        draw(p, theme).save(os.path.join(OUT, name(p["slug"]) + ".png"), optimize=True)
     print(len(pins), "pins ->", OUT)
