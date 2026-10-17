@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Printable Wall Art Size Calculator: Print Sizes, DPI and Pixels for Etsy</title>
+<meta name="description" content="Free print size and DPI calculator for Etsy printable wall art and print on demand. Enter your image&#x27;s pixels to see every frame size it prints sharp at, which ratios need a crop, and the pixels each size needs.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/printable-wall-art-size-calculator/">
+<meta property="og:title" content="Printable wall art size and DPI calculator">
+<meta property="og:description" content="Free print size and DPI calculator for Etsy printable wall art and print on demand. Enter your image&#x27;s pixels to see every frame size it prints sharp at, which ratios need a crop, and the pixels each size needs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/printable-wall-art-size-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-06.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+.dfy{margin:14px 0 0;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;background:#fff;font-size:.95rem}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Printable wall art size and DPI calculator", "url": "https://rudracodeshere.github.io/profit-calculator/printable-wall-art-size-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free print size and DPI calculator for Etsy printable wall art and print on demand. Enter your image's pixels to see every frame size it prints sharp at, which ratios need a crop, and the pixels each size needs."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What size should printable wall art be for Etsy?", "acceptedAnswer": {"@type": "Answer", "text": "Design at 300 DPI in a few master ratios rather than one file per size. A 2:3 file of 7,200 × 10,800 pixels covers 4x6 up to 24x36; add 3:4, 4:5, 11x14 and ISO files to cover the other common frames."}}, {"@type": "Question", "name": "How many pixels do I need for an 8x10 print?", "acceptedAnswer": {"@type": "Answer", "text": "2,400 × 3,000 pixels at 300 DPI, or 1,600 × 2,000 at 200 DPI."}}, {"@type": "Question", "name": "How many pixels for a 24x36 poster?", "acceptedAnswer": {"@type": "Answer", "text": "7,200 × 10,800 at 300 DPI. At 150 DPI, which works for a poster seen from a distance, it is 3,600 × 5,400."}}, {"@type": "Question", "name": "Is 300 DPI the same as 300 PPI?", "acceptedAnswer": {"@type": "Answer", "text": "For digital files, sellers use the terms the same way: how many image pixels land on each printed inch. The DPI number saved in a file's settings changes nothing on its own; only the pixel count matters."}}, {"@type": "Question", "name": "How many files can I upload to an Etsy digital listing?", "acceptedAnswer": {"@type": "Answer", "text": "Up to 5 files, each up to 20MB. A ZIP counts as one file."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Printable wall art size and DPI calculator", "item": "https://rudracodeshere.github.io/profit-calculator/printable-wall-art-size-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Printable wall art size and DPI calculator</h1>
+<p class="lead">Enter your artwork's pixel size, or pick the file. You'll see the largest sharp print, every standard frame size from 4x6 to 24x36 and A1, which ones need a crop, and how many pixels each size needs. Nothing leaves your browser.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="file">Pick an image <small>(optional, reads the pixel size only)</small></label>
+      <input id="file" type="file" accept="image/*" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit">
+      <label for="w">Width</label>
+      <div class="in"><input id="w" type="number" inputmode="numeric" min="1" step="1" value="1024"><span>px</span></div>
+      <label for="h">Height</label>
+      <div class="in"><input id="h" type="number" inputmode="numeric" min="1" step="1" value="1536"><span>px</span></div>
+      <label for="dpi">Minimum quality</label>
+      <select id="dpi" class="full">
+        <option value="300" selected>300 DPI: sharp up close (what buyers expect)</option>
+        <option value="200">200 DPI: fine on a wall</option>
+        <option value="150">150 DPI: large posters seen from a distance</option>
+      </select>
+    </div>
+    <div>
+      <div class="big"><span>Largest sharp print, no crop</span><b id="big"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+    </div>
+  </div>
+  <p class="note">Sizes in inches; A sizes are ISO 216 (A4 = 210 &times; 297 mm). "Sharp after crop" means the file covers that frame once trimmed to its ratio; the percentage is how much of the image gets cut. Etsy digital listings take up to 5 files of 20MB each (Etsy Help Center, October 2026).</p>
+</div>
+
+<div class="cta">
+  <h2>Selling printables? See which ones actually make money.</h2>
+  <p>The <strong>Seller Profit Sheet</strong> reads your Etsy sales export and shows what each listing kept after transaction fees, processing, listing renewals and Offsite Ads, so you can see which designs carry the shop and which ones to drop. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=printable-wall-art-size-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+<p class="dfy">Rather have someone rewrite your Etsy titles, 13 tags and descriptions for you? I do it on Fiverr, from $5. <a href="https://www.fiverr.com/rudrasharma_in/write-etsy-seo-titles-13-tags-and-descriptions-for-your-listings" rel="noopener">See the offer on Fiverr</a></p>
+
+<h3>Every standard size for your file</h3>
+<table class="wide"><thead><tr><th>Size (in)</th><th>Ratio</th><th>Pixels needed</th><th>Your file</th></tr></thead><tbody id="tbl"></tbody></table>
+<h2>How print size, pixels and DPI fit together</h2>
+<p>A printer lays down a fixed number of pixels per inch. Divide your image's pixels by that number and you get the largest print that stays sharp.</p>
+<p class="formula">Largest print (inches) = pixels &divide; DPI</p>
+<p class="formula">Pixels needed = print size (inches) &times; DPI</p>
+<p>300 DPI is the standard for prints people look at up close. 200 DPI usually looks fine on a wall, and big posters viewed from across a room get away with 150. Most buyers of printables print at home or at a print shop and expect 300.</p>
+<h2>Worked example: why AI art often fails as wall art</h2>
+<p>A typical AI image is 1024 &times; 1536 pixels, a 2:3 portrait. At 300 DPI that prints at only <strong>3.4 &times; 5.1 inches</strong>, smaller than a 4x6 photo. It prints none of the 24 standard sizes in the table sharply. Selling it as a 24x36 poster means the buyer gets a blurry print and you get a refund request or a bad review.</p>
+<p>To cover every 2:3 size up to 24x36 at 300 DPI, the master file needs <strong>7,200 &times; 10,800 pixels</strong>. Upscale first, check the detail at 100% zoom, then export.</p>
+<h2>Which files to put in an Etsy printable listing</h2>
+<p>Etsy lets a digital listing hold <strong>5 files of up to 20MB each</strong>. Five ratio files cover nearly every frame a buyer owns:</p>
+<table class="wide"><thead><tr><th>File</th><th>Covers</th><th>Pixels at 300 DPI</th></tr></thead><tbody>
+<tr><td>2:3</td><td>4x6, 8x12, 12x18, 16x24, 20x30, 24x36</td><td>7,200 &times; 10,800</td></tr>
+<tr><td>3:4</td><td>6x8, 9x12, 12x16, 18x24</td><td>5,400 &times; 7,200</td></tr>
+<tr><td>4:5</td><td>4x5, 8x10, 16x20, 24x30</td><td>7,200 &times; 9,000</td></tr>
+<tr><td>11x14</td><td>11x14</td><td>3,300 &times; 4,200</td></tr>
+<tr><td>ISO</td><td>A5, A4, A3, A2, A1</td><td>7,017 &times; 9,933</td></tr>
+</tbody></table>
+<p>A buyer prints a smaller size from the same file because the ratio is the same, so you don't need one file per size. Big 300 DPI files can pass 20MB as PNG; a high-quality JPG of the same image is usually far smaller. If you want to offer more than five files, a ZIP counts as one file but must also stay under 20MB.</p>
+<h2>Print on demand works the same way</h2>
+<p>Printify, Printful and Gelato all list a pixel size per product. A poster or canvas has the same math as a printable: inches &times; DPI. Shirts and mugs have their own print areas, so check the product's template, but the rule holds: if the file has fewer pixels than the print area needs, the print comes out soft.</p>
+
+<h2>Questions</h2>
+<h3>What size should printable wall art be for Etsy?</h3>
+<p>Design at 300 DPI in a few master ratios rather than one file per size. A 2:3 file of 7,200 &times; 10,800 pixels covers 4x6 up to 24x36; add 3:4, 4:5, 11x14 and ISO files to cover the other common frames.</p>
+<h3>How many pixels do I need for an 8x10 print?</h3>
+<p>2,400 &times; 3,000 pixels at 300 DPI, or 1,600 &times; 2,000 at 200 DPI.</p>
+<h3>How many pixels for a 24x36 poster?</h3>
+<p>7,200 &times; 10,800 at 300 DPI. At 150 DPI, which works for a poster seen from a distance, it is 3,600 &times; 5,400.</p>
+<h3>Is 300 DPI the same as 300 PPI?</h3>
+<p>For digital files, sellers use the terms the same way: how many image pixels land on each printed inch. The DPI number saved in a file's settings changes nothing on its own; only the pixel count matters.</p>
+<h3>How many files can I upload to an Etsy digital listing?</h3>
+<p>Up to 5 files, each up to 20MB. A ZIP counts as one file.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-digital-download-calculator/">Etsy digital download calculator</a></li><li><a href="../print-on-demand-profit-calculator/">Print on demand profit calculator</a></li><li><a href="../etsy-title-tag-checker/">Etsy title and tag checker</a></li><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../etsy-pricing-calculator/">Etsy pricing calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+var R=[[1,'1:1'],[1.25,'4:5'],[14/11,'11x14'],[4/3,'3:4'],[1.4,'5:7'],[Math.SQRT2,'ISO (A sizes)'],[1.5,'2:3'],[16/9,'16:9']];
+var S=[['4x6','2:3',4,6],['8x12','2:3',8,12],['12x18','2:3',12,18],['16x24','2:3',16,24],['20x30','2:3',20,30],['24x36','2:3',24,36],
+['6x8','3:4',6,8],['9x12','3:4',9,12],['12x16','3:4',12,16],['18x24','3:4',18,24],
+['4x5','4:5',4,5],['8x10','4:5',8,10],['16x20','4:5',16,20],['24x30','4:5',24,30],
+['5x7','5:7',5,7],['11x14','11x14',11,14],
+['A5','ISO (A sizes)',5.83,8.27],['A4','ISO (A sizes)',8.27,11.69],['A3','ISO (A sizes)',11.69,16.54],['A2','ISO (A sizes)',16.54,23.39],['A1','ISO (A sizes)',23.39,33.11],
+['8x8','1:1',8,8],['12x12','1:1',12,12],['20x20','1:1',20,20]];
+var f1=function(x){return (Math.floor(x*10)/10).toFixed(1)};
+var px=function(x){return Math.ceil(x-1e-9).toLocaleString('en-US')};
+function ratioName(w,h){var r=Math.max(w,h)/Math.min(w,h),best='';R.forEach(function(k){if(Math.abs(r/k[0]-1)<0.006)best=k[1]});return best||('1:'+r.toFixed(2))}
+function calc(){
+  var w=Math.round(n('w')),h=Math.round(n('h')),d=parseFloat($('dpi').value);
+  if(!w||!h){$('big').textContent='-';setRows([]);$('tbl').innerHTML='';verdict(false,'Enter the width and height in pixels, or pick the image file.');return}
+  var land=w>h,rn=ratioName(w,h),fam=null,ok=0,h2='';
+  S.forEach(function(s){
+    var a=Math.min(s[2],s[3]),b=Math.max(s[2],s[3]),iw=land?b:a,ih=land?a:b;
+    if(w==h&&s[1]!='1:1'){iw=a;ih=b}
+    var ach=Math.min(w/iw,h/ih),crop=1-(iw*ih*ach*ach)/(w*h),good=ach>=d-1e-9;
+    if(good)ok++;
+    if(s[1]==rn&&good)fam=s;
+    var st=good?(crop>0.01?'Sharp after '+pc(crop,0)+' crop':'Sharp')+' ('+Math.floor(ach)+' DPI)':'Too small ('+Math.floor(ach)+' DPI)';
+    h2+='<tr><td>'+s[0]+(land?' landscape':'')+'</td><td>'+s[1]+'</td><td>'+px(iw*d)+' &times; '+px(ih*d)+'</td><td style="color:'+(good?(crop>0.01?'#a15c00':'var(--green)'):'var(--red)')+'">'+st+'</td></tr>';
+  });
+  $('tbl').innerHTML=h2;
+  $('big').textContent=f1(w/d)+' \u00d7 '+f1(h/d)+' in';
+  var top=null;S.forEach(function(s){if(s[1]==rn&&(!top||s[3]>top[3]))top=s});
+  var r=[['Your file',w.toLocaleString('en-US')+' \u00d7 '+h.toLocaleString('en-US')+' px'],['Aspect ratio',rn+(w==h?' (square)':land?' (landscape)':' (portrait)')],['Largest print at '+d+' DPI',f1(w/d)+' \u00d7 '+f1(h/d)+' in ('+f1(w/d*2.54)+' \u00d7 '+f1(h/d*2.54)+' cm)'],['Standard sizes it prints sharp',ok+' of '+S.length]];
+  if(top){var tw=land?top[3]:top[2],th=land?top[2]:top[3];r.push(['Pixels for '+top[0]+' at '+d+' DPI',px(tw*d)+' \u00d7 '+px(th*d)+' px'])}
+  setRows(r);
+  if(!top)verdict(false,'This is not a standard frame ratio, so every frame size needs a crop. Resize the master file to 2:3, 3:4, 4:5, 11x14 or ISO first.');
+  else if(!fam||Math.max(fam[2],fam[3])<10)verdict(false,'Too small to sell as wall art: at '+d+' DPI it only prints '+f1(w/d)+' \u00d7 '+f1(h/d)+' in. Upscale it to at least '+px((land?top[3]:top[2])*d)+' \u00d7 '+px((land?top[2]:top[3])*d)+' px to offer every '+rn+' size up to '+top[0]+'.');
+  else if(fam!=top)verdict(true,'Prints sharp up to '+fam[0]+' in the '+rn+' ratio. For '+top[0]+' you need '+px((land?top[3]:top[2])*d)+' \u00d7 '+px((land?top[2]:top[3])*d)+' px.');
+  else verdict(true,'Big enough for every '+rn+' size up to '+top[0]+' at '+d+' DPI. Sizes in other ratios need a separate, re-cropped file.');
+}
+$('file').addEventListener('change',function(){var f=this.files&&this.files[0];if(!f)return;var u=URL.createObjectURL(f),i=new Image();i.onload=function(){$('w').value=i.naturalWidth;$('h').value=i.naturalHeight;URL.revokeObjectURL(u);calc()};i.src=u});
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
