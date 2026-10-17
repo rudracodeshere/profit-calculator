@@ -26,11 +26,12 @@ GUMROAD = "https://quietprofitsheets.gumroad.com/l/seller-profit-sheet"
 KIT = "https://quietprofitsheets.gumroad.com/l/get-paid-kit"
 TODAY = datetime.date.today().isoformat()
 FIVERR = "https://www.fiverr.com/rudrasharma_in"
-# Done-for-you offer under each tool: (link, line). A page spec can set gig: "seo" | "profit" | "sheet".
+# Done-for-you offer under each tool: (link, line). A page spec can set gig: "seo" | "profit" | "sheet" | "pod", or None for no line.
 GIGS = {
     "seo": (FIVERR + "/write-etsy-seo-titles-13-tags-and-descriptions-for-your-listings", "Rather have someone rewrite your Etsy titles, 13 tags and descriptions for you? I do it on Fiverr, from $5."),
     "profit": (FIVERR + "/write-etsy-seo-titles-13-tags-and-descriptions-for-your-listings", "Prices sorted? The next fix is getting found: I rewrite Etsy titles, 13 tags and descriptions on Fiverr, from $5."),
     "sheet": (FIVERR + "/build-a-custom-excel-or-google-sheets-tracker-with-formulas", "Need a custom Excel or Google Sheets tracker built around how you work? I build them on Fiverr, from $5."),
+    "pod": (FIVERR + "/find-which-of-your-etsy-products-lose-money-and-fix-your-prices", "Selling print on demand shirts or mugs on Etsy? I write the titles and 13 tags that get POD listings found, on Fiverr."),
 }
 CAT_GIG = {"Invoices & getting paid": "sheet"}
 
@@ -42,7 +43,7 @@ STATIC = [
     dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-17"),
     dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-15"),  # built from tools/about.html
 ]
-CATS = ["Platform fees", "Etsy tools", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid"]
+CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid"]
 
 CSS = """:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
 *{box-sizing:border-box}
@@ -145,7 +146,14 @@ def render(p, names):
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
     cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
-    gig_url, gig_line = GIGS[p.get("gig", CAT_GIG.get(p["cat"], "profit"))]
+    gig = p.get("gig", CAT_GIG.get(p["cat"], "profit"))
+    cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
+  <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
+  <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
+  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>
+</div>
+"""
+    dfy_html = "" if gig is None else '<p class="dfy">%s <a href="%s" rel="noopener">See the offer on Fiverr</a></p>\n' % (GIGS[gig][1], GIGS[gig][0])
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -183,13 +191,7 @@ def render(p, names):
   <p class="note">{p['note']}</p>
 </div>
 
-<div class="cta">
-  <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
-  <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
-  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>
-</div>
-<p class="dfy">{gig_line} <a href="{gig_url}" rel="noopener">See the offer on Fiverr</a></p>
-
+{cta_html}{dfy_html}
 {p['body']}
 
 <h2>Questions</h2>
