@@ -66,6 +66,7 @@ def _table():
 
 
 PAGE = dict(
+    cta_extra=["planner"],
     slug="holiday-order-cutoff-calculator",
     cat="Etsy tools",
     nav_name="Holiday order cutoff calculator",
