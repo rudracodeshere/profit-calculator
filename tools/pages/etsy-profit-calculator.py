@@ -1,4 +1,5 @@
 PAGE = dict(
+    cta_extra=["budget"],
     slug="etsy-profit-calculator",
     cat="Etsy tools",
     nav_name="Etsy monthly profit calculator",

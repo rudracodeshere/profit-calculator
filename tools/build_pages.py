@@ -12,6 +12,7 @@ Each spec module defines PAGE = dict(
   related,     # [slug, ...] 3-6 related pages
   cta_head, cta_text,   # optional overrides for the Seller Profit Sheet box
   cta_url, cta_btn,     # optional: point the box at another product (e.g. KIT)
+  cta_extra,   # optional: [key in EXTRAS] second product link(s) in the box; default by cat (CAT_EXTRA)
   og_image,    # optional, pin path
   tests,       # [{set:{id:val}, click:[id], expect:{id: substring or [substrings]}}] checked in Chromium
 )
@@ -34,6 +35,12 @@ GIGS = {
     "pod": (FIVERR + "/find-which-of-your-etsy-products-lose-money-and-fix-your-prices", "Selling print on demand shirts or mugs on Etsy? I write the titles and 13 tags that get POD listings found, on Fiverr."),
 }
 CAT_GIG = {"Invoices & getting paid": "sheet"}
+# Second "get the sheet" link inside the product box: key -> (url, link text, price line)
+EXTRAS = {
+    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9."),
+    "planner": ("https://quietprofitsheets.gumroad.com/l/christmas-budget-planner", "Christmas Budget Planner &amp; Gift Tracker", "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5."),
+}
+CAT_EXTRA = {"Platform fees": ["budget"]}
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
@@ -146,11 +153,13 @@ def render(p, names):
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
     cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
+    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][2] % f'<a href="{EXTRAS[k][0]}?utm_source=calculator&amp;utm_content={slug}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][1]}</a>')
+                    for k in p.get("cta_extra", CAT_EXTRA.get(p["cat"], [])))
     gig = p.get("gig", CAT_GIG.get(p["cat"], "profit"))
     cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
   <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
   <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
-  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>
+  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>{extra}
 </div>
 """
     dfy_html = "" if gig is None else '<p class="dfy">%s <a href="%s" rel="noopener">See the offer on Fiverr</a></p>\n' % (GIGS[gig][1], GIGS[gig][0])
