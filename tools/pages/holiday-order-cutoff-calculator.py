@@ -6,7 +6,7 @@ UPS_PAGE = "https://www.ups.com/us/en/support/shipping-support/shipping-services
 FEDEX_PDF = "https://www.fedex.com/content/dam/fedex/us-united-states/services/2026_Peak_Last_Day_to_ship.pdf"
 FEDEX_PAGE = "https://www.fedex.com/en-us/holiday/last-days-to-ship.html"
 ETSY_CUTOFF = "https://help.etsy.com/hc/en-us/articles/35656110566167-Understanding-Shipping-Carrier-Surcharges-Cutoff-Dates-for-the-Holidays"
-ETSY_SHIPBY = "https://help.etsy.com/hc/en-us/articles/115015588087-How-to-Set-Processing-Times-and-Ship-By-Dates"
+ETSY_SHIPBY = "https://help.etsy.com/hc/en-us/articles/115015588087-How-to-Set-Processing-Times-Processing-Profiles-and-Ship-By-Dates"
 CHECKED = "checked Oct 18, 2026"
 
 # id, carrier, service, ship-by date, routes (l48 = within the lower 48, off = to/from AK, HI, PR, territories, intl = US to other countries), target
