@@ -24,14 +24,16 @@ def released(now):
 
 
 def item(at, p):
-    img_name = (p["slug"] or "fee-calculator") + ".png"
+    # optional "img" (image name) + "link" (absolute URL) let a pin point off-site, e.g. at a Gumroad product
+    img_name = (p.get("img") or p["slug"] or "fee-calculator") + ".png"
     img = BASE + "pins/feed/" + img_name
-    link = BASE + (p["slug"] + "/" if p["slug"] else "")
+    page = BASE + (p["slug"] + "/" if p["slug"] else "")
+    link = p.get("link") or page  # guid below stays page-based, so changing a pin's link never re-posts it
     size = os.path.getsize(os.path.join(ROOT, "pins", "feed", img_name))
     return f"""  <item>
     <title>{escape(p["title"])}</title>
-    <link>{link}</link>
-    <guid isPermaLink="false">{link}#pin-1</guid>
+    <link>{escape(link)}</link>
+    <guid isPermaLink="false">{escape(link) + "#" + p["img"] if p.get("img") else page + "#pin-1"}</guid>
     <pubDate>{format_datetime(at)}</pubDate>
     <description><![CDATA[<p><img src="{img}" alt="{escape(p["head"])}"></p><p>{p["desc"]}</p>]]></description>
     <enclosure url="{img}" length="{size}" type="image/png"/>
