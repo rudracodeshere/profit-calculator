@@ -199,7 +199,7 @@ def render(p, names):
 <h2>Related calculators</h2>
 <ul class="related">{rel}</ul>
 
-<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="{p.get('store_url', 'https://quietprofitsheets.gumroad.com/?utm_source=calculator')}">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
 </main>
 <script>
 (function(){{
@@ -233,7 +233,7 @@ def render_about():
 <main>
 <nav><a href="../">&larr; All seller calculators</a></nav>
 {body}
-<footer>Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>.</footer>
+<footer>Made by <a href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=about">Quiet Profit Sheets</a>.</footer>
 </main>
 </body>
 </html>

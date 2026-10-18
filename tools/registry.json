@@ -61,8 +61,8 @@
   "slug": "dtf-transfer-size-chart",
   "cat": "Print & design sizes",
   "nav_name": "DTF transfer size chart and t-shirt design size calculator",
-  "lastmod": "2026-10-17",
-  "hash": "0ee0a253e06a"
+  "lastmod": "2026-10-18",
+  "hash": "921473ff1af1"
  },
  {
   "slug": "ebay-fee-calculator",
@@ -154,6 +154,13 @@
   "nav_name": "Handmade pricing calculator",
   "lastmod": "2026-10-17",
   "hash": "6d68748056f4"
+ },
+ {
+  "slug": "holiday-order-cutoff-calculator",
+  "cat": "Etsy tools",
+  "nav_name": "Holiday order cutoff calculator",
+  "lastmod": "2026-10-18",
+  "hash": "4b622654ad52"
  },
  {
   "slug": "invoice-late-fee-calculator",
