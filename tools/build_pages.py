@@ -37,7 +37,7 @@ GIGS = {
 CAT_GIG = {"Invoices & getting paid": "sheet"}
 # Second "get the sheet" link inside the product box: key -> (url, link text, price line)
 EXTRAS = {
-    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9."),
+    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Planner Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9."),
     "planner": ("https://quietprofitsheets.gumroad.com/l/christmas-budget-planner", "Christmas Budget Planner &amp; Gift Tracker", "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5."),
 }
 CAT_EXTRA = {"Platform fees": ["budget"]}
@@ -45,7 +45,7 @@ CAT_EXTRA = {"Platform fees": ["budget"]}
 PRODUCTS = {
     GUMROAD: ("Seller Profit Sheet", 14),
     KIT: ("Get Paid Kit", 9),
-    "https://quietprofitsheets.gumroad.com/l/printable-size-kit": ("Printable Size Guide Kit", 5),
+    "https://quietprofitsheets.gumroad.com/l/printable-size-kit": ("Etsy Print Size Guide Kit", 5),
     EXTRAS["planner"][0]: ("Christmas Budget Planner &amp; Gift Tracker", 5),
 }
 BUY_LINE = '<p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="%s?utm_source=calculator&amp;utm_medium=result&amp;utm_content=%s" rel="noopener" style="font-weight:700">%s</a>, $%d one-time.</p>'
