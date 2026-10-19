@@ -1,4 +1,5 @@
 PAGE = dict(
+    result_url=None,
     gig=None,
     cta_head=None,
     slug="kdp-cover-size-calculator",

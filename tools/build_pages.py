@@ -41,13 +41,25 @@ EXTRAS = {
     "planner": ("https://quietprofitsheets.gumroad.com/l/christmas-budget-planner", "Christmas Budget Planner &amp; Gift Tracker", "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5."),
 }
 CAT_EXTRA = {"Platform fees": ["budget"]}
+# One-line product link right under each result: url -> (name, price). A spec can set result_url, or result_url=None for none.
+PRODUCTS = {
+    GUMROAD: ("Seller Profit Sheet", 14),
+    KIT: ("Get Paid Kit", 9),
+    "https://quietprofitsheets.gumroad.com/l/printable-size-kit": ("Printable Size Guide Kit", 5),
+    EXTRAS["planner"][0]: ("Christmas Budget Planner &amp; Gift Tracker", 5),
+}
+BUY_LINE = '<p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="%s?utm_source=calculator&amp;utm_medium=result&amp;utm_content=%s" rel="noopener" style="font-weight:700">%s</a>, $%d one-time.</p>'
+
+
+def buy_line(url, slug):
+    return "" if url is None else BUY_LINE % (url, slug, PRODUCTS[url][0], PRODUCTS[url][1])
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
-    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-17"),
-    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-17"),
-    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-17"),
-    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-17"),
+    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-19"),
+    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-19"),
+    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-19"),
+    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-19"),
     dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-15"),  # built from tools/about.html
 ]
 CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid"]
@@ -195,6 +207,7 @@ def render(p, names):
     </div>
     <div>
       {p.get('out', DEFAULT_OUT)}
+      {buy_line(p.get('result_url', p.get('cta_url', GUMROAD)), slug)}
     </div>
   </div>
   <p class="note">{p['note']}</p>
