@@ -66,6 +66,7 @@ def _table():
 
 
 PAGE = dict(
+    result_url="https://quietprofitsheets.gumroad.com/l/christmas-budget-planner",
     cta_extra=["planner"],
     slug="holiday-order-cutoff-calculator",
     cat="Etsy tools",
