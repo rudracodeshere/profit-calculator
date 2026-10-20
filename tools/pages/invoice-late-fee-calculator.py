@@ -51,9 +51,9 @@ PAGE = dict(
     ],
     related=["payment-reminder-email-generator", "paypal-fee-calculator", "stripe-fee-calculator", "break-even-calculator", "profit-margin-calculator"],
     cta_head="Stop writing awkward payment chasers",
-    cta_text="The <strong>Get Paid Kit</strong> has 10 ready-to-send emails from the friendly reminder to the letter before action, payment terms and a late fee policy to add before the work starts, and the <strong>Invoice Chaser</strong> spreadsheet: it tracks every invoice, works out late fees, tells you who to chase today and writes the email with the client's name, amounts and dates filled in. Word, Google Docs, Excel and Google Sheets. One-time $9.",
+    cta_text="The <strong>Invoice Tracker Template Google Sheets + Excel, Payment Reminder Email Templates (Word + PDF)</strong> has 10 ready-to-send emails from the friendly reminder to the letter before action, payment terms and a late fee policy to add before the work starts, and the <strong>Invoice Chaser</strong> spreadsheet: it tracks every invoice, works out late fees, tells you who to chase today and writes the email with the client's name, amounts and dates filled in. Word, Google Docs, Excel and Google Sheets. One-time $9.",
     cta_url="https://quietprofitsheets.gumroad.com/l/get-paid-kit",
-    cta_btn="Get the Get Paid Kit",
+    cta_btn="Get the Invoice Tracker Template",
     tests=[
         {"expect": {"big": "$79.00", "rows": ["$54.00", "$25.00", "$2,479.00", "$1.20", "18.0%"], "verdict": ["45 days late", "$2,479.00"],
                     "clause": ["1.5% per month", "$25.00"]}},

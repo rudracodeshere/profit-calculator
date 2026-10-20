@@ -166,8 +166,8 @@
   "slug": "invoice-late-fee-calculator",
   "cat": "Invoices & getting paid",
   "nav_name": "Invoice late fee calculator",
-  "lastmod": "2026-10-19",
-  "hash": "eef04b758a29"
+  "lastmod": "2026-10-20",
+  "hash": "82f020eb4105"
  },
  {
   "slug": "jewelry-pricing-calculator",
@@ -194,8 +194,8 @@
   "slug": "payment-reminder-email-generator",
   "cat": "Invoices & getting paid",
   "nav_name": "Payment reminder email generator",
-  "lastmod": "2026-10-19",
-  "hash": "eb1b6a4d3624"
+  "lastmod": "2026-10-20",
+  "hash": "30ecfd46147f"
  },
  {
   "slug": "paypal-fee-calculator",

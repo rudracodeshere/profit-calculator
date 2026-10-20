@@ -44,7 +44,7 @@ CAT_EXTRA = {"Platform fees": ["budget"]}
 # One-line product link right under each result: url -> (name, price). A spec can set result_url, or result_url=None for none.
 PRODUCTS = {
     GUMROAD: ("Seller Profit Sheet", 14),
-    KIT: ("Get Paid Kit", 9),
+    KIT: ("Invoice Tracker Template Google Sheets + Excel, Payment Reminder Email Templates (Word + PDF)", 9),
     "https://quietprofitsheets.gumroad.com/l/printable-size-kit": ("Etsy Print Size Guide Kit", 5),
     EXTRAS["planner"][0]: ("Christmas Budget Planner &amp; Gift Tracker", 5),
 }
