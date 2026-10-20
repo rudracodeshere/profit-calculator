@@ -65,3 +65,18 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 [About and fee sources](https://rudracodeshere.github.io/profit-calculator/about/)
 
 Pages are generated from `tools/pages/*.py` by `tools/build_pages.py`; test with `tools/check_pages.js`.
+The pin feed is checked with `python3 tools/pins/test_feed.py` (valid XML, unique item guids).
+
+## Live smoke test
+
+Read-only check of the published site. It loads every page in the live sitemap and fails on any JavaScript console error or page error. Gumroad buy links are checked offline: every product slug must be one this site sells, and the FIRST10 discount may appear only on the Seller Profit Sheet, the Get Paid Kit, and the 2027 Budget Planner, with `?code=FIRST10` kept on the link. That mode does not request gumroad.com.
+
+```bash
+npm install --no-save playwright
+npx playwright install chromium
+node tools/smoke_live.js
+```
+
+Set `SMOKE_FETCH_GUMROAD=1` to also fetch each Gumroad product URL and require HTTP 200. GitHub Actions sets that only for a manual run. After a Pages deploy the check stays offline, so those runs do not count as Gumroad views.
+
+Pass a base URL to target a different host: `node tools/smoke_live.js https://rudracodeshere.github.io/profit-calculator/`. The script does not modify the repo or the site.
