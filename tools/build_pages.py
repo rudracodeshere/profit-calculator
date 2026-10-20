@@ -51,8 +51,18 @@ PRODUCTS = {
 BUY_LINE = '<p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="%s?utm_source=calculator&amp;utm_medium=result&amp;utm_content=%s" rel="noopener" style="font-weight:700">%s</a>, $%d one-time.</p>'
 
 
+# Launch code (Gumroad, 50% off, 10 uses): link applies it, line says so. Only products the code is confirmed on.
+LAUNCH = {GUMROAD, KIT}
+LAUNCH_LINE = ' <strong>Launch price: 50% off with FIRST10, first 10 buyers.</strong></p>'
+
+
 def buy_line(url, slug):
-    return "" if url is None else BUY_LINE % (url, slug, PRODUCTS[url][0], PRODUCTS[url][1])
+    if url is None:
+        return ""
+    line = BUY_LINE % (url, slug, PRODUCTS[url][0], PRODUCTS[url][1])
+    if url in LAUNCH:
+        line = line.replace("?utm_source", "?code=FIRST10&amp;utm_source", 1).replace("</p>", LAUNCH_LINE)
+    return line
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
