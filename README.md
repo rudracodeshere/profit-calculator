@@ -59,8 +59,13 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 
 ## Invoices & getting paid
 
+- [Invoice due date (Net 30) calculator](https://rudracodeshere.github.io/profit-calculator/invoice-due-date-calculator/)
 - [Invoice late fee calculator](https://rudracodeshere.github.io/profit-calculator/invoice-late-fee-calculator/)
 - [Payment reminder email generator](https://rudracodeshere.github.io/profit-calculator/payment-reminder-email-generator/)
+
+## Budgets & planning
+
+- [Christmas budget calculator](https://rudracodeshere.github.io/profit-calculator/christmas-budget-calculator/)
 
 [About and fee sources](https://rudracodeshere.github.io/profit-calculator/about/)
 
