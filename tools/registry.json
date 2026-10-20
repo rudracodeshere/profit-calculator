@@ -30,6 +30,13 @@
   "lastmod": "2026-10-15"
  },
  {
+  "slug": "1099-k-threshold-calculator",
+  "cat": "Seller taxes",
+  "nav_name": "1099-K threshold checker",
+  "lastmod": "2026-10-20",
+  "hash": "a3339588e64e"
+ },
+ {
   "slug": "amazon-fba-calculator",
   "cat": "Platform fees",
   "nav_name": "Amazon FBA calculator",
@@ -63,6 +70,13 @@
   "nav_name": "COGS calculator",
   "lastmod": "2026-10-20",
   "hash": "31302052d9b6"
+ },
+ {
+  "slug": "depop-fee-calculator",
+  "cat": "Platform fees",
+  "nav_name": "Depop fee calculator",
+  "lastmod": "2026-10-20",
+  "hash": "c33126bb2c3c"
  },
  {
   "slug": "dtf-transfer-size-chart",
@@ -149,6 +163,13 @@
   "hash": "8c3e652cdfe3"
  },
  {
+  "slug": "fiverr-fee-calculator",
+  "cat": "Platform fees",
+  "nav_name": "Fiverr fee calculator",
+  "lastmod": "2026-10-20",
+  "hash": "e81f89073b7e"
+ },
+ {
   "slug": "gumroad-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "Gumroad fee calculator",
@@ -196,6 +217,13 @@
   "nav_name": "Markup calculator",
   "lastmod": "2026-10-20",
   "hash": "ec1c578fb8ae"
+ },
+ {
+  "slug": "mercari-fee-calculator",
+  "cat": "Platform fees",
+  "nav_name": "Mercari fee calculator",
+  "lastmod": "2026-10-20",
+  "hash": "d0d625114893"
  },
  {
   "slug": "payment-reminder-email-generator",
@@ -266,6 +294,27 @@
   "nav_name": "Stripe fee calculator",
   "lastmod": "2026-10-20",
   "hash": "e73ea80513f3"
+ },
+ {
+  "slug": "tiktok-shop-fee-calculator",
+  "cat": "Platform fees",
+  "nav_name": "TikTok Shop fee calculator",
+  "lastmod": "2026-10-20",
+  "hash": "bca8624b064f"
+ },
+ {
+  "slug": "upwork-fee-calculator",
+  "cat": "Platform fees",
+  "nav_name": "Upwork fee calculator",
+  "lastmod": "2026-10-20",
+  "hash": "3c5d80d01053"
+ },
+ {
+  "slug": "whatnot-fee-calculator",
+  "cat": "Platform fees",
+  "nav_name": "Whatnot fee calculator",
+  "lastmod": "2026-10-20",
+  "hash": "f2ecf5152472"
  },
  {
   "slug": "wholesale-price-calculator",

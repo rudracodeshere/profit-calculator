@@ -7,13 +7,19 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 ## Platform fees
 
 - [Amazon FBA calculator](https://rudracodeshere.github.io/profit-calculator/amazon-fba-calculator/)
+- [Depop fee calculator](https://rudracodeshere.github.io/profit-calculator/depop-fee-calculator/)
 - [eBay fee calculator](https://rudracodeshere.github.io/profit-calculator/ebay-fee-calculator/)
 - [Etsy fee calculator](https://rudracodeshere.github.io/profit-calculator/etsy-fee-calculator/)
+- [Fiverr fee calculator](https://rudracodeshere.github.io/profit-calculator/fiverr-fee-calculator/)
 - [Gumroad fee calculator](https://rudracodeshere.github.io/profit-calculator/gumroad-fee-calculator/)
+- [Mercari fee calculator](https://rudracodeshere.github.io/profit-calculator/mercari-fee-calculator/)
 - [PayPal fee calculator](https://rudracodeshere.github.io/profit-calculator/paypal-fee-calculator/)
 - [Poshmark fee calculator](https://rudracodeshere.github.io/profit-calculator/poshmark-fee-calculator/)
 - [Shopify fee calculator](https://rudracodeshere.github.io/profit-calculator/shopify-fee-calculator/)
 - [Stripe fee calculator](https://rudracodeshere.github.io/profit-calculator/stripe-fee-calculator/)
+- [TikTok Shop fee calculator](https://rudracodeshere.github.io/profit-calculator/tiktok-shop-fee-calculator/)
+- [Upwork fee calculator](https://rudracodeshere.github.io/profit-calculator/upwork-fee-calculator/)
+- [Whatnot fee calculator](https://rudracodeshere.github.io/profit-calculator/whatnot-fee-calculator/)
 
 ## Etsy tools
 
@@ -65,6 +71,10 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 ## Holiday season
 
 - [Christmas budget calculator](https://rudracodeshere.github.io/profit-calculator/christmas-budget-calculator/)
+
+## Seller taxes
+
+- [1099-K threshold checker](https://rudracodeshere.github.io/profit-calculator/1099-k-threshold-calculator/)
 
 [About and fee sources](https://rudracodeshere.github.io/profit-calculator/about/)
 

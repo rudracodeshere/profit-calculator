@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1099-K Threshold Calculator 2026: Will I Get a 1099-K?</title>
+<meta name="description" content="Free 1099-K threshold checker for 2026. Test each platform against the IRS rule (over $20,000 and over 200 transactions) and your state&#x27;s rule, and see the gross you still report.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/1099-k-threshold-calculator/">
+<meta property="og:title" content="Will I get a 1099-K for 2026?">
+<meta property="og:description" content="Free 1099-K threshold checker for 2026. Test each platform against the IRS rule (over $20,000 and over 200 transactions) and your state&#x27;s rule, and see the gross you still report.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/1099-k-threshold-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-01.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+.dfy{margin:14px 0 0;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;background:#fff;font-size:.95rem}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Will I get a 1099-K for 2026?", "url": "https://rudracodeshere.github.io/profit-calculator/1099-k-threshold-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free 1099-K threshold checker for 2026. Test each platform against the IRS rule (over $20,000 and over 200 transactions) and your state's rule, and see the gross you still report."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the 1099-K threshold for 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Over $20,000 in payments AND over 200 transactions from one platform or payment app in the calendar year (IRS Publication 1099 (2026) and the Instructions for Form 1099-K). The One, Big, Beautiful Bill retroactively reinstated this test, so the $600 rule is gone. Forms for 2026 are due to you by January 31, 2027, which is a Sunday, so the deadline moves to Monday, February 1, 2027. Some states use a lower line."}}, {"@type": "Question", "name": "If I don't get a 1099-K, do I still report the income?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The IRS says \"All income, no matter the amount, is taxable unless the tax law says it isn't\", \"even if you don't get a Form 1099-K.\" Selling a used personal item for less than you paid is a separate case: the IRS says that sale does not add to your taxable income, though you should keep records of what you paid."}}, {"@type": "Question", "name": "Do my Etsy, eBay and PayPal sales add up toward $20,000?", "acceptedAnswer": {"@type": "Answer", "text": "No. Each platform files based only on what it paid you. $14,500 on Etsy plus $6,200 on eBay means no federal 1099-K from either, even though the total is $20,700.00. You still report all $20,700.00. Etsy does combine your Etsy shops under one SSN or EIN."}}, {"@type": "Question", "name": "Why did I get a 1099-K (or why is it so high) when I made less?", "acceptedAnswer": {"@type": "Answer", "text": "A lower state threshold, card payments taken through your own card processor (the IRS sets no threshold for these), or backup withholding at a platform such as PayPal or Venmo can each trigger a form. The amount is high because box 1a is gross, before fees, refunds and shipping. The IRS says you can deduct those items when you report the income, so subtract the costs you can document."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "1099-K threshold checker", "item": "https://rudracodeshere.github.io/profit-calculator/1099-k-threshold-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Will I get a 1099-K for 2026?</h1>
+<p class="lead">Enter each platform's gross sales for this year, before fees, and the number of transactions. The checker tests each one against the IRS rule (over $20,000 AND over 200 transactions) and your state's rule. It also shows the gross you still report either way.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <fieldset style="border:1px solid var(--line);border-radius:10px;padding:2px 12px 12px;margin:0 0 12px;min-width:0">
+      <legend class="note" style="padding:0 4px">Platform 1</legend>
+      <label for="n1" style="margin-top:4px">Name</label>
+      <div class="in"><input id="n1" type="text" value="Etsy" maxlength="40"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="min-width:0"><label for="g1">Gross sales in 2026</label>
+      <div class="in"><span>$</span><input id="g1" type="number" inputmode="decimal" min="0" step="0.01" value="14500"></div></div>
+      <div style="min-width:0"><label for="c1">Transactions</label>
+      <div class="in"><input id="c1" type="number" inputmode="numeric" min="0" step="1" value="240"></div></div>
+      </div>
+      </fieldset>
+      <fieldset style="border:1px solid var(--line);border-radius:10px;padding:2px 12px 12px;margin:0 0 12px;min-width:0">
+      <legend class="note" style="padding:0 4px">Platform 2</legend>
+      <label for="n2" style="margin-top:4px">Name</label>
+      <div class="in"><input id="n2" type="text" value="eBay" maxlength="40"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="min-width:0"><label for="g2">Gross sales in 2026</label>
+      <div class="in"><span>$</span><input id="g2" type="number" inputmode="decimal" min="0" step="0.01" value="6200"></div></div>
+      <div style="min-width:0"><label for="c2">Transactions</label>
+      <div class="in"><input id="c2" type="number" inputmode="numeric" min="0" step="1" value="85"></div></div>
+      </div>
+      </fieldset>
+      <fieldset style="border:1px solid var(--line);border-radius:10px;padding:2px 12px 12px;margin:0 0 12px;min-width:0">
+      <legend class="note" style="padding:0 4px">Platform 3 <small>(0 if none)</small></legend>
+      <label for="n3" style="margin-top:4px">Name</label>
+      <div class="in"><input id="n3" type="text" value="PayPal goods and services" maxlength="40"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="min-width:0"><label for="g3">Gross sales in 2026</label>
+      <div class="in"><span>$</span><input id="g3" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div></div>
+      <div style="min-width:0"><label for="c3">Transactions</label>
+      <div class="in"><input id="c3" type="number" inputmode="numeric" min="0" step="1" value="0"></div></div>
+      </div>
+      </fieldset>
+      <label for="costs">Costs you can document <small>(fees, refunds, shipping, cost of the items)</small></label>
+      <div class="in"><span>$</span><input id="costs" type="number" inputmode="decimal" min="0" step="0.01" value="9850"></div>
+      <label for="st">Your state's rule <small>(confirm with your state)</small></label>
+      <select id="st" class="full">
+        <option value="none" selected>None or not listed (federal rule only)</option>
+        <option value="il">Illinois: over $1,000 and 4+ transactions</option>
+        <option value="ma">Massachusetts: $600 or more</option>
+        <option value="md">Maryland: $600 or more (could be $2,000, see note)</option>
+        <option value="va">Virginia: $600 or more (could be $2,000, see note)</option>
+        <option value="vt">Vermont: $2,000 or more</option>
+        <option value="custom">Other state: set its rule below</option>
+      </select>
+      <details><summary class="note">Edit thresholds</summary>
+      <label for="fedAmt">Federal dollar line <small>(payments must be over this)</small></label>
+      <div class="in"><span>$</span><input id="fedAmt" type="number" min="0" step="1" value="20000"></div>
+      <label for="fedTx">Federal transaction line <small>(transactions must be over this)</small></label>
+      <div class="in"><input id="fedTx" type="number" min="0" step="1" value="200"><span>transactions</span></div>
+      <label for="stAmt">State dollar line <small>(0 = no state rule)</small></label>
+      <div class="in"><span>$</span><input id="stAmt" type="number" min="0" step="1" value="0"></div>
+      <label for="stCmp">State dollar test</label>
+      <select id="stCmp" class="full"><option value="ge" selected>At or over the line</option><option value="gt">Over the line</option></select>
+      <label for="stTx">State minimum transactions <small>(0 = any number)</small></label>
+      <div class="in"><input id="stTx" type="number" min="0" step="1" value="0"><span>transactions</span></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>Federal 1099-K expected?</span><b id="big"></b></div>
+      <div id="plat" aria-live="polite" style="overflow-wrap:anywhere"></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict" style="overflow-wrap:anywhere"></div>
+      <p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?code=FIRST10&amp;utm_source=calculator&amp;utm_medium=result&amp;utm_content=1099-k-threshold-calculator" rel="noopener" style="font-weight:700">Seller Profit Sheet</a>, $14 one-time. <strong>Launch price: 50% off with FIRST10, first 10 buyers.</strong></p>
+    </div>
+  </div>
+  <p class="note">Federal rule from the IRS Instructions for Form 1099-K (Rev. 12/2026), Publication 1099 (2026) and IRS Fact Sheet FS-2025-08 (Oct. 2025), checked October 20, 2026: a platform or payment app files a 1099-K only if it paid you over $20,000 AND you had over 200 transactions with it in the calendar year. Each platform tests only its own payments to you; Etsy combines all your shops under one SSN/EIN. The IRS says &quot;over&quot;; Etsy's help page says &quot;$20,000 or more&quot; and &quot;200 or more&quot;, so this checker uses the IRS wording. Your copy is due January 31; for 2026 forms that is a Sunday, so the deadline moves to Monday, February 1, 2027 (Publication 1099). State rules depend on your address, vary and are moving. Illinois (PUB-110, R-01/26) is over $1,000 and 4 or more transactions. Massachusetts is $600 or more, whatever the number of transactions (830 CMR 62C.8.1; Etsy and PayPal list the same). Vermont's Department of Taxes now says $2,000 or more, though Etsy's and PayPal's 2025 lists still say $600. Maryland's law (Tax-General 10-825) and Virginia Tax Bulletin 20-10 tie their lines to the federal 1099-MISC amount under IRC 6041(a), which rose from $600 to $2,000 for payments made after 2025 (Publication 1099 and FS-2025-08). We found no 2026 figure from either state, and Virginia Tax's 2021 page, Etsy and PayPal still say $600, so those presets use $600; set the state dollar line to 2000 under Edit thresholds to test the higher line. Etsy's help page also lists Arkansas $2,500, DC $600 and New Jersey $1,000 for the forms Etsy sends; we found no state page confirming these, so pick Other state and enter them if they apply to you. Confirm with your state's revenue department. This is math, not tax advice.</p>
+</div>
+
+<div class="cta">
+  <h2>A 1099-K shows what you were paid. What did you keep?</h2>
+  <p>A 1099-K reports gross payments, not profit. The <strong>Seller Profit Sheet</strong> works out net profit per product after fees, labels, discounts, returns and ad spend. Paste your Etsy or Shopify sales export, or type in Amazon and eBay sales, and you can see what you really made before you sit down with your tax numbers. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=1099-k-threshold-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+</div>
+<p class="dfy">Need a custom Excel or Google Sheets tracker built around how you work? I build them on Fiverr, from $5. <a href="https://www.fiverr.com/rudrasharma_in/build-a-custom-excel-or-google-sheets-tracker-with-formulas" rel="noopener">See the offer on Fiverr</a></p>
+
+<h2>How the 2026 1099-K test works</h2>
+<p>Payment apps and online marketplaces (the IRS calls them third party settlement organizations) have to file a Form 1099-K for you only if, in one calendar year, they paid you <strong>over $20,000</strong> for goods or services <strong>and</strong> you had <strong>over 200 transactions</strong> with them. Both conditions must be met, and both say &quot;over&quot;: exactly $20,000.00, or exactly 200 transactions, is not enough.</p>
+<p>The test runs separately at each platform. Etsy looks only at what Etsy paid you, eBay only at what eBay paid you. Your sales do not add up across platforms for the 1099-K, even though they all count on your tax return.</p>
+<p class="formula">Federal 1099-K from a platform = what it paid you &gt; $20,000 AND your transactions on it &gt; 200</p>
+<h2>Worked example</h2>
+<p>You sell on Etsy and eBay and live in a state with no lower rule. Etsy paid you <strong>$14,500</strong> for <strong>240</strong> sales in 2026. 240 is over 200, but $14,500 is not over $20,000, so Etsy files no federal 1099-K. It would take <strong>$5,500.01</strong> more to go over the line.</p>
+<p>eBay paid you <strong>$6,200</strong> for <strong>85</strong> sales. Both tests fail: <strong>$13,800.01</strong> more needed to go over $20,000, and <strong>116</strong> more transactions needed to go over 200.</p>
+<p>Combined, that is <strong>$20,700.00</strong> across <strong>325</strong> transactions. The total is over $20,000, yet no federal 1099-K arrives, because each platform is tested on its own. You can document <strong>$9,850</strong> of fees, refunds, shipping and item costs, so you report the full $20,700 and subtract those costs: $20,700 minus $9,850 = <strong>$10,850.00</strong> before any other deductions.</p>
+<p>Now pick Massachusetts ($600 or more): both platforms would likely send a 1099-K under the state rule. Vermont ($2,000 or more) gives the same result.</p>
+<h2>What changed, and where $600 and $2,000 come from</h2>
+<p><strong>$600 is gone at the federal level.</strong> The American Rescue Plan Act of 2021 lowered the line to more than $600 with no transaction count, and the IRS delayed it with transition relief (Notices 2023-10, 2023-74 and 2024-85). The One, Big, Beautiful Bill then retroactively reinstated the old test of over $20,000 and over 200 transactions (IRS Fact Sheet FS-2025-08). Posts that say the 1099-K line &quot;dropped to $600 in 2026&quot; are wrong.</p>
+<p><strong>$2,000 is a different form.</strong> Starting with 2026, the federal minimum for certain other information returns, such as Form 1099-NEC for contractor pay and parts of Form 1099-MISC, rose from $600 to $2,000 (IRS Publication 1099). It does not change the 1099-K test. Some states tie their own 1099-K line to that amount, which is why Vermont now says $2,000. Maryland and Virginia use the same link, so their lines may move from $600 to $2,000 as well.</p>
+<h2>Why you might still get a 1099-K below $20,000</h2>
+<p><strong>Your state has a lower line.</strong> Platforms send a form to payees in states such as Illinois, Massachusetts, Maryland, Virginia and Vermont at much lower amounts. The IRS says a state rule &quot;could result in you receiving a Form 1099-K, even if the total gross payments and transactions did not exceed the federal reporting threshold.&quot;</p>
+<p><strong>Card payments through your own processor.</strong> The IRS sets no threshold for payment card transactions: if you received even $0.01 of payment card payments, it says you should get a 1099-K. Processors do not all follow this in practice (Square, for one, says it uses the $20,000 and 200 test), so check your processor's help page.</p>
+<p><strong>Backup withholding.</strong> A platform that withheld tax from your payouts (usually because your tax ID was missing or wrong) must file a 1099-K for you whatever the totals. PayPal and Venmo say they issue one for anyone subject to backup withholding.</p>
+<p><strong>The platform chose to.</strong> The IRS notes that a platform may still send a 1099-K for amounts under the federal line.</p>
+<h2>Why the 1099-K number is bigger than your profit</h2>
+<p>Box 1a is the gross amount paid. The IRS says it &quot;doesn't include adjustments for fees, credits, refunds, shipping, cash equivalents or discounts,&quot; and that you can deduct those items when you report the income. It also ignores what the items cost you.</p>
+<p>Platforms do not all count gross the same way. Etsy says its gross may include shipping, refunds, card processing fees, sales tax applied with its sales tax tool and canceled orders. Mercari includes buyer-paid shipping and sales tax but leaves out the buyer's service and payment processing fees and canceled or refunded transactions. PayPal counts only goods and services payments, not payments between friends and family. So two sellers with the same sales can see different 1099-K totals, and neither number is your profit.</p>
+<p>Whether or not a form arrives, the income goes on your return. Keep your sales exports, fee statements and receipts so you can get from the gross figure down to what you actually made.</p>
+
+<h2>Questions</h2>
+<h3>What is the 1099-K threshold for 2026?</h3>
+<p>Over $20,000 in payments AND over 200 transactions from one platform or payment app in the calendar year (IRS Publication 1099 (2026) and the Instructions for Form 1099-K). The One, Big, Beautiful Bill retroactively reinstated this test, so the $600 rule is gone. Forms for 2026 are due to you by January 31, 2027, which is a Sunday, so the deadline moves to Monday, February 1, 2027. Some states use a lower line.</p>
+<h3>If I don't get a 1099-K, do I still report the income?</h3>
+<p>Yes. The IRS says &quot;All income, no matter the amount, is taxable unless the tax law says it isn't&quot;, &quot;even if you don't get a Form 1099-K.&quot; Selling a used personal item for less than you paid is a separate case: the IRS says that sale does not add to your taxable income, though you should keep records of what you paid.</p>
+<h3>Do my Etsy, eBay and PayPal sales add up toward $20,000?</h3>
+<p>No. Each platform files based only on what it paid you. $14,500 on Etsy plus $6,200 on eBay means no federal 1099-K from either, even though the total is $20,700.00. You still report all $20,700.00. Etsy does combine your Etsy shops under one SSN or EIN.</p>
+<h3>Why did I get a 1099-K (or why is it so high) when I made less?</h3>
+<p>A lower state threshold, card payments taken through your own card processor (the IRS sets no threshold for these), or backup withholding at a platform such as PayPal or Venmo can each trigger a form. The amount is high because box 1a is gross, before fees, refunds and shipping. The IRS says you can deduct those items when you report the income, so subtract the costs you can document.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../etsy-fee-calculator/">Etsy fee calculator</a></li><li><a href="../ebay-fee-calculator/">eBay fee calculator</a></li><li><a href="../paypal-fee-calculator/">PayPal fee calculator</a></li><li><a href="../poshmark-fee-calculator/">Poshmark fee calculator</a></li><li><a href="../cogs-calculator/">COGS calculator</a></li><li><a href="../etsy-profit-calculator/">Etsy monthly profit calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+var PRE={none:['',0,0,'ge'],il:['Illinois',1000,4,'gt'],ma:['Massachusetts',600,0,'ge'],md:['Maryland',600,0,'ge'],va:['Virginia',600,0,'ge'],vt:['Vermont',2000,0,'ge']};
+$('st').addEventListener('change',function(){var p=PRE[this.value];if(p){$('stAmt').value=p[1];$('stTx').value=p[2];$('stCmp').value=p[3]}});
+['stAmt','stTx','stCmp'].forEach(function(id){$(id).addEventListener('input',function(){$('st').value='custom'})});
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function cnt(k){return k.toLocaleString('en-US')}
+function tx(k){return cnt(k)+' transaction'+(k===1?'':'s')}
+function list(a){return a.length<2?a.join(''):a.slice(0,-1).join(', ')+' and '+a[a.length-1]}
+function calc(){
+  var FA=n('fedAmt'),FT=Math.floor(n('fedTx')),SA=n('stAmt'),ST=Math.floor(n('stTx')),gt=$('stCmp').value==='gt';
+  var sv=$('st').value,sname=(PRE[sv]&&PRE[sv][0])||'Your state';
+  var ps=[],G=0,C=0,costs=n('costs');
+  for(var i=1;i<=3;i++){var g=n('g'+i),c=Math.floor(n('c'+i));if(g||c){ps.push({name:$('n'+i).value.trim()||('Platform '+i),g:g,c:c});G+=g;C+=c}}
+  if(!ps.length){$('big').textContent='-';$('plat').innerHTML='';setRows([]);verdict(false,'Enter what at least one platform paid you for goods and services in 2026, and how many sales that was.');return}
+  var fed=[],sta=[],h='',srule=(gt?'over '+m(SA):m(SA)+' or more')+(ST>0?' and at least '+tx(ST):'');
+  ps.forEach(function(p){
+    var dA=p.g>FA,dT=p.c>FT,yes=dA&&dT,need=FT+1-p.c,dn=(Math.round(FA*100)-Math.round(p.g*100)+1)/100;
+    if(yes)fed.push(p.name);
+    var s='<p style="margin:0;padding:8px 0;border-bottom:1px solid var(--line)"><strong>'+esc(p.name)+'</strong>: '+(yes?'federal 1099-K likely.':'no federal 1099-K.')+'<br>';
+    s+=dA?m(p.g)+' paid, over '+m(FA)+'. ':(p.g===FA?m(p.g)+' paid, which is not over '+m(FA)+'. It has to be more, even by a cent. ':m(p.g)+' paid, so '+m(dn)+' more needed to go over '+m(FA)+'. ');
+    s+=dT?tx(p.c)+', over '+cnt(FT)+'.':tx(p.c)+', so '+cnt(need)+' more transaction'+(need===1?'':'s')+' needed to go over '+cnt(FT)+'.';
+    if(SA>0){
+      var sA=gt?p.g>SA:p.g>=SA,sT=p.c>=ST,why=[],sn=(Math.round(SA*100)-Math.round(p.g*100)+(gt?1:0))/100;
+      if(sA&&sT)sta.push(p.name);
+      if(!sA)why.push(gt&&p.g===SA?'not over '+m(SA):m(sn)+' more needed'+(gt?' to go over '+m(SA):''));
+      if(!sT)why.push(cnt(ST-p.c)+' more transaction'+(ST-p.c===1?'':'s')+' needed');
+      s+='<br>'+esc(sname)+' rule ('+srule+'): '+(sA&&sT?'state 1099-K likely.':'no state 1099-K ('+why.join(', ')+').');
+    }
+    h+=s+'</p>';
+  });
+  $('plat').innerHTML=h;
+  $('big').textContent=fed.length?'Yes, from '+fed.length+' platform'+(fed.length===1?'':'s'):'No';
+  setRows([['Platforms over the federal line',fed.length+' of '+ps.length],['Combined gross from all platforms',m(G)],['Combined transactions',cnt(C)],
+    ['Costs you can document',m(-costs)],['Gross minus documented costs',m(G-costs),'total']]);
+  var v,only=sta.filter(function(x){return fed.indexOf(x)<0});
+  if(!fed.length){
+    v='No federal 1099-K expected from any platform'+(ps.length>1&&G>FA?', even though your combined '+m(G)+' is over '+m(FA)+', because each platform is tested on its own':'')+'.';
+    if(sta.length)v+=' Under the '+sname+' rule, '+list(sta)+' will likely send a state 1099-K.';
+    v+=' Either way, you still report the '+m(G)+' you were paid.';
+  }else{
+    v=list(fed)+' will likely send a federal 1099-K by February 1, 2027 (January 31 falls on a Sunday). Box 1a shows gross payments, before fees, refunds and shipping, so keep records of your costs.';
+    if(only.length)v+=' Under the '+sname+' rule, '+list(only)+' will likely send one too.';
+  }
+  verdict(true,v);
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
