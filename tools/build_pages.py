@@ -72,7 +72,7 @@ STATIC = [
     dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-19"),
     dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-15"),  # built from tools/about.html
 ]
-CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid"]
+CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid", "Budgets & planning"]
 
 CSS = """:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
 *{box-sizing:border-box}
