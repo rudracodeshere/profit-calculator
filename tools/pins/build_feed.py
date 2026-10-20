@@ -16,8 +16,12 @@ PER_DAY = 2
 def released(now):
     pins = json.load(open(os.path.join(HERE, "pins.json")))
     out = []
-    for i, p in enumerate(pins):
-        at = START + dt.timedelta(days=i // PER_DAY, hours=8 * (i % PER_DAY))
+    i = 0  # queue slot; a pin with its own "at" (ISO UTC time) goes out then and doesn't take a slot
+    for p in pins:
+        if "at" in p:
+            at = dt.datetime.fromisoformat(p["at"].replace("Z", "+00:00"))
+        else:
+            at = START + dt.timedelta(days=i // PER_DAY, hours=8 * (i % PER_DAY)); i += 1
         if at <= now:
             out.append((at, p))
     return out
