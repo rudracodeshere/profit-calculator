@@ -37,7 +37,7 @@ GIGS = {
 CAT_GIG = {"Invoices & getting paid": "sheet"}
 # Second "get the sheet" link inside the product box: key -> (url, link text, price line)
 EXTRAS = {
-    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Planner Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9."),
+    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Planner Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9. Launch price: 50%% off with FIRST10, first 10 buyers."),
     "planner": ("https://quietprofitsheets.gumroad.com/l/christmas-budget-planner", "Christmas Budget Planner &amp; Gift Tracker", "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5."),
 }
 CAT_EXTRA = {"Platform fees": ["budget"]}
@@ -175,7 +175,7 @@ def render(p, names):
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
     cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
-    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][2] % f'<a href="{EXTRAS[k][0]}?utm_source=calculator&amp;utm_content={slug}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][1]}</a>')
+    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][2] % f'<a href="{EXTRAS[k][0]}?{"code=FIRST10&amp;" if k == "budget" else ""}utm_source=calculator&amp;utm_content={slug}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][1]}</a>')
                     for k in p.get("cta_extra", CAT_EXTRA.get(p["cat"], [])))
     gig = p.get("gig", CAT_GIG.get(p["cat"], "profit"))
     cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
