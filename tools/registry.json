@@ -59,10 +59,10 @@
  },
  {
   "slug": "christmas-budget-calculator",
-  "cat": "Holiday season",
+  "cat": "Budgets & planning",
   "nav_name": "Christmas budget calculator",
   "lastmod": "2026-10-20",
-  "hash": "bfc4a6c8c23a"
+  "hash": "0c649b6ef33c"
  },
  {
   "slug": "cogs-calculator",
@@ -189,6 +189,13 @@
   "nav_name": "Holiday order cutoff calculator",
   "lastmod": "2026-10-19",
   "hash": "a0c2824285ba"
+ },
+ {
+  "slug": "invoice-due-date-calculator",
+  "cat": "Invoices & getting paid",
+  "nav_name": "Invoice due date (Net 30) calculator",
+  "lastmod": "2026-10-20",
+  "hash": "e3d76e2dfa8f"
  },
  {
   "slug": "invoice-late-fee-calculator",
