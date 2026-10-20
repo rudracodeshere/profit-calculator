@@ -26,6 +26,7 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 - [Etsy monthly profit calculator](https://rudracodeshere.github.io/profit-calculator/etsy-profit-calculator/)
 - [Etsy sale & coupon calculator](https://rudracodeshere.github.io/profit-calculator/etsy-sale-calculator/)
 - [Etsy title and tag checker](https://rudracodeshere.github.io/profit-calculator/etsy-title-tag-checker/)
+- [Holiday order cutoff calculator](https://rudracodeshere.github.io/profit-calculator/holiday-order-cutoff-calculator/)
 
 ## Print & design sizes
 
@@ -60,6 +61,10 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 
 - [Invoice late fee calculator](https://rudracodeshere.github.io/profit-calculator/invoice-late-fee-calculator/)
 - [Payment reminder email generator](https://rudracodeshere.github.io/profit-calculator/payment-reminder-email-generator/)
+
+## Holiday season
+
+- [Christmas budget calculator](https://rudracodeshere.github.io/profit-calculator/christmas-budget-calculator/)
 
 [About and fee sources](https://rudracodeshere.github.io/profit-calculator/about/)
 

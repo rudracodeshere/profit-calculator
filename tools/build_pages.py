@@ -12,6 +12,7 @@ Each spec module defines PAGE = dict(
   related,     # [slug, ...] 3-6 related pages
   cta_head, cta_text,   # optional overrides for the Seller Profit Sheet box
   cta_url, cta_btn,     # optional: point the box at another product (e.g. KIT)
+  cta_extra,   # optional: [key in EXTRAS] second product link(s) in the box; default by cat (CAT_EXTRA)
   og_image,    # optional, pin path
   tests,       # [{set:{id:val}, click:[id], expect:{id: substring or [substrings]}}] checked in Chromium
 )
@@ -34,13 +35,31 @@ GIGS = {
     "pod": (FIVERR + "/find-which-of-your-etsy-products-lose-money-and-fix-your-prices", "Selling print on demand shirts or mugs on Etsy? I write the titles and 13 tags that get POD listings found, on Fiverr."),
 }
 CAT_GIG = {"Invoices & getting paid": "sheet"}
+# Second "get the sheet" link inside the product box: key -> (url, link text, price line)
+EXTRAS = {
+    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Planner Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9."),
+    "planner": ("https://quietprofitsheets.gumroad.com/l/christmas-budget-planner", "Christmas Budget Planner &amp; Gift Tracker", "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5."),
+}
+CAT_EXTRA = {"Platform fees": ["budget"]}
+# One-line product link right under each result: url -> (name, price). A spec can set result_url, or result_url=None for none.
+PRODUCTS = {
+    GUMROAD: ("Seller Profit Sheet", 14),
+    KIT: ("Invoice Tracker Template Google Sheets + Excel, Payment Reminder Email Templates (Word + PDF)", 9),
+    "https://quietprofitsheets.gumroad.com/l/printable-size-kit": ("Etsy Print Size Guide Kit", 5),
+    EXTRAS["planner"][0]: ("Christmas Budget Planner &amp; Gift Tracker", 5),
+}
+BUY_LINE = '<p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="%s?utm_source=calculator&amp;utm_medium=result&amp;utm_content=%s" rel="noopener" style="font-weight:700">%s</a>, $%d one-time.</p>'
+
+
+def buy_line(url, slug):
+    return "" if url is None else BUY_LINE % (url, slug, PRODUCTS[url][0], PRODUCTS[url][1])
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
-    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-17"),
-    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-17"),
-    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-17"),
-    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-17"),
+    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-19"),
+    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-19"),
+    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-19"),
+    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-19"),
     dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-15"),  # built from tools/about.html
 ]
 CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid", "Holiday season", "Seller taxes"]
@@ -146,11 +165,13 @@ def render(p, names):
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
     cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
+    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][2] % f'<a href="{EXTRAS[k][0]}?utm_source=calculator&amp;utm_content={slug}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][1]}</a>')
+                    for k in p.get("cta_extra", CAT_EXTRA.get(p["cat"], [])))
     gig = p.get("gig", CAT_GIG.get(p["cat"], "profit"))
     cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
   <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
   <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
-  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>
+  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>{extra}
 </div>
 """
     dfy_html = "" if gig is None else '<p class="dfy">%s <a href="%s" rel="noopener">See the offer on Fiverr</a></p>\n' % (GIGS[gig][1], GIGS[gig][0])
@@ -186,6 +207,7 @@ def render(p, names):
     </div>
     <div>
       {p.get('out', DEFAULT_OUT)}
+      {buy_line(p.get('result_url', p.get('cta_url', GUMROAD)), slug)}
     </div>
   </div>
   <p class="note">{p['note']}</p>
@@ -199,7 +221,7 @@ def render(p, names):
 <h2>Related calculators</h2>
 <ul class="related">{rel}</ul>
 
-<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="{p.get('store_url', 'https://quietprofitsheets.gumroad.com/?utm_source=calculator')}">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
 </main>
 <script>
 (function(){{
@@ -233,7 +255,7 @@ def render_about():
 <main>
 <nav><a href="../">&larr; All seller calculators</a></nav>
 {body}
-<footer>Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>.</footer>
+<footer>Made by <a href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=about">Quiet Profit Sheets</a>.</footer>
 </main>
 </body>
 </html>

@@ -62,7 +62,7 @@ th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bott
 .wide td,.wide th{text-align:right;padding:6px 4px}
 .wide td:first-child,.wide th:first-child{text-align:left}
 </style>
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "PayPal fee calculator", "url": "https://rudracodeshere.github.io/profit-calculator/paypal-fee-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free PayPal fee calculator: what you receive after fees, or what to ask for to receive an exact amount. Goods & Services, Checkout, invoices, international."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the PayPal fee for $100?", "acceptedAnswer": {"@type": "Answer", "text": "For a US Goods & Services payment, $3.48 (2.99% + $0.49), so you receive $96.52. Through PayPal Checkout or an invoice it is $3.98."}}, {"@type": "Question", "name": "How much should I charge to receive $100 after PayPal fees?", "acceptedAnswer": {"@type": "Answer", "text": "$103.59 for a US Goods & Services payment. Add the $0.49 fixed fee to $100, divide by 1 minus 2.99%, and round up to the cent."}}, {"@type": "Question", "name": "What is the PayPal fee on $20?", "acceptedAnswer": {"@type": "Answer", "text": "$1.09 at 2.99% + $0.49, so you receive $18.91."}}, {"@type": "Question", "name": "Does PayPal charge more for international payments?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A payment from a buyer outside the US adds 1.5%, so Goods & Services becomes 4.49% + $0.49, or $4.98 on $100."}}, {"@type": "Question", "name": "Are Friends & Family payments free?", "acceptedAnswer": {"@type": "Answer", "text": "Sending money to friends and family from a bank or PayPal balance in the US has no fee, but those payments have no purchase protection and shouldn't be used for sales. Use Goods & Services for anything you sell."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "PayPal fee calculator", "item": "https://rudracodeshere.github.io/profit-calculator/paypal-fee-calculator/"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "PayPal fee calculator", "url": "https://rudracodeshere.github.io/profit-calculator/paypal-fee-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free PayPal fee calculator: what you receive after fees, or what to ask for to receive an exact amount. Goods & Services, Checkout, invoices, international."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the PayPal fee for $100?", "acceptedAnswer": {"@type": "Answer", "text": "For a US Goods & Services payment, $2.99 (2.99%, no fixed fee), so you receive $97.01. A card payment costs $3.48 (2.99% + $0.49). Through PayPal Checkout or an invoice it is $3.98."}}, {"@type": "Question", "name": "How much should I charge to receive $100 after PayPal fees?", "acceptedAnswer": {"@type": "Answer", "text": "$103.09 for a US Goods & Services payment: divide $100 by 1 minus 2.99% and round up to the cent. For a card payment, add the $0.49 fixed fee to $100 first, which gives $103.59."}}, {"@type": "Question", "name": "What is the PayPal fee on $20?", "acceptedAnswer": {"@type": "Answer", "text": "$0.60 as a Goods & Services payment (2.99%), so you receive $19.40. As a card payment it is $1.09 at 2.99% + $0.49, leaving $18.91."}}, {"@type": "Question", "name": "Does PayPal charge more for international payments?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A payment from a buyer outside the US adds 1.5%, so Goods & Services becomes 4.49%, or $4.49 on $100."}}, {"@type": "Question", "name": "Are Friends & Family payments free?", "acceptedAnswer": {"@type": "Answer", "text": "Sending money to friends and family from a bank or PayPal balance in the US has no fee, but those payments have no purchase protection and shouldn't be used for sales. Use Goods & Services for anything you sell."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "PayPal fee calculator", "item": "https://rudracodeshere.github.io/profit-calculator/paypal-fee-calculator/"}]}]</script>
 </head>
 <body>
 <main>
@@ -74,7 +74,7 @@ th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bott
   <div class="grid">
     <div>
       <label for="preset">Payment type</label>
-      <select id="preset" class="full"><option value="gs">Goods &amp; Services / card (2.99% + $0.49)</option><option value="co">PayPal Checkout / invoice (3.49% + $0.49)</option><option value="cu">Custom rate (set under Edit fee rates)</option></select>
+      <select id="preset" class="full"><option value="gs">Goods &amp; Services (2.99%, no fixed fee)</option><option value="cd">Card payment (2.99% + $0.49)</option><option value="co">PayPal Checkout / invoice (3.49% + $0.49)</option><option value="cu">Custom rate (set under Edit fee rates)</option></select>
       <label class="check"><input id="intl" type="checkbox"> Buyer is outside the US (international fee)</label>
       <label for="amt">Amount the buyer pays</label>
       <div class="in"><span>$</span><input id="amt" type="number" inputmode="decimal" min="0" step="0.01" value="100"></div>
@@ -93,38 +93,40 @@ th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bott
       <h3>Work backward</h3>
       <table><tbody id="rows2"></tbody></table>
       <div id="verdict" class="verdict"></div>
+      <p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_medium=result&amp;utm_content=paypal-fee-calculator" rel="noopener" style="font-weight:700">Seller Profit Sheet</a>, $14 one-time.</p>
     </div>
   </div>
-  <p class="note">US PayPal rates as of October 2026: Goods &amp; Services and standard card payments 2.99% + $0.49; PayPal Checkout and invoicing 3.49% + $0.49; international payments add 1.5%. The fixed fee differs when you're paid in another currency, and PayPal adjusts rates over time, so use the custom option to match your account's fee page. The backward calculation rounds up to the next cent so you never end up short.</p>
+  <p class="note">US PayPal rates as of October 2026: Goods &amp; Services payments 2.99% with no fixed fee; standard card payments 2.99% + $0.49; PayPal Checkout and invoicing 3.49% + $0.49; international payments add 1.5%. The fixed fee differs when you're paid in another currency, and PayPal adjusts rates over time, so use the custom option to match your account's fee page. The backward calculation rounds up to the next cent so you never end up short.</p>
 </div>
 
 <div class="cta">
   <h2>That's one product. Which of yours lose money?</h2>
   <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
   <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=paypal-fee-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+  <p style="margin:14px 0 0;font-size:.95rem">Planning next year's money too? The <a href="https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet?utm_source=calculator&amp;utm_content=paypal-fee-calculator" rel="noopener" style="color:#fff;font-weight:700">2027 Budget Planner Spreadsheet</a> plans income, bills and savings month by month, $9.</p>
 </div>
 <p class="dfy">Prices sorted? The next fix is getting found: I rewrite Etsy titles, 13 tags and descriptions on Fiverr, from $5. <a href="https://www.fiverr.com/rudrasharma_in/write-etsy-seo-titles-13-tags-and-descriptions-for-your-listings" rel="noopener">See the offer on Fiverr</a></p>
 
 <h2>How PayPal fees are worked out</h2>
-<p>Every commercial PayPal payment has two parts: a percentage of the amount and a fixed fee. For goods and services in the US that is 2.99% + $0.49. If the buyer pays through a PayPal Checkout button on your site or through a PayPal invoice, the rate is 3.49% + $0.49. Payments from buyers outside the US add another 1.5%.</p>
+<p>A commercial PayPal payment costs a percentage of the amount, and most payment types add a fixed fee too. PayPal's US fee table lists Goods &amp; Services payments at 2.99% with no fixed fee. Standard card payments are 2.99% + $0.49. If the buyer pays through a PayPal Checkout button on your site or through a PayPal invoice, the rate is 3.49% + $0.49. Payments from buyers outside the US add another 1.5%.</p>
 <p class="formula">You receive = amount - (amount x rate + fixed fee)</p>
-<p>Example: a $100 Goods &amp; Services payment costs $3.48 in fees, so you receive $96.52. The same payment through an invoice costs $3.98 and you receive $96.02. From an international buyer it costs $4.98, leaving $95.02.</p>
+<p>Example: a $100 Goods &amp; Services payment costs $2.99 in fees, so you receive $97.01. The same payment by card costs $3.48 ($96.52 left), and through an invoice it costs $3.98 ($96.02 left). As Goods &amp; Services from an international buyer it costs $4.49, leaving $95.51.</p>
 <h2>How much to charge so you receive a set amount</h2>
 <p>You can't just add 2.99% to your price, because the fee is also charged on the part you added. Divide instead:</p>
 <p class="formula">Amount to ask for = (amount you want + fixed fee) / (1 - rate)</p>
-<p>To receive $100 from a Goods &amp; Services payment, ask for $103.59. The fee on $103.59 is $3.59, which leaves exactly $100.00. For an international buyer you would ask for $105.22.</p>
+<p>To receive $100 from a Goods &amp; Services payment, ask for $103.09. The fee on $103.09 is $3.08, which leaves $100.01, because the amount is rounded up to the next cent so you never end up short. For an international buyer you would ask for $104.71. For a card payment, which adds the $0.49 fixed fee, ask for $103.59.</p>
 <h2>Small payments</h2>
-<p>The $0.49 fixed fee matters more the smaller the payment. On $100 it is under half a percent, but on a $20 payment the total fee is $1.09, more than 5% of the payment. If customers pay you small amounts often, collect them in one invoice.</p>
+<p>The $0.49 fixed fee on card, Checkout and invoice payments matters more the smaller the payment. On $100 it is under half a percent, but on a $20 card payment the total fee is $1.09, more than 5% of the payment. The same $20 as Goods &amp; Services costs $0.60. If customers pay you small amounts often, collect them in one invoice.</p>
 
 <h2>Questions</h2>
 <h3>What is the PayPal fee for $100?</h3>
-<p>For a US Goods &amp; Services payment, $3.48 (2.99% + $0.49), so you receive $96.52. Through PayPal Checkout or an invoice it is $3.98.</p>
+<p>For a US Goods &amp; Services payment, $2.99 (2.99%, no fixed fee), so you receive $97.01. A card payment costs $3.48 (2.99% + $0.49). Through PayPal Checkout or an invoice it is $3.98.</p>
 <h3>How much should I charge to receive $100 after PayPal fees?</h3>
-<p>$103.59 for a US Goods &amp; Services payment. Add the $0.49 fixed fee to $100, divide by 1 minus 2.99%, and round up to the cent.</p>
+<p>$103.09 for a US Goods &amp; Services payment: divide $100 by 1 minus 2.99% and round up to the cent. For a card payment, add the $0.49 fixed fee to $100 first, which gives $103.59.</p>
 <h3>What is the PayPal fee on $20?</h3>
-<p>$1.09 at 2.99% + $0.49, so you receive $18.91.</p>
+<p>$0.60 as a Goods &amp; Services payment (2.99%), so you receive $19.40. As a card payment it is $1.09 at 2.99% + $0.49, leaving $18.91.</p>
 <h3>Does PayPal charge more for international payments?</h3>
-<p>Yes. A payment from a buyer outside the US adds 1.5%, so Goods &amp; Services becomes 4.49% + $0.49, or $4.98 on $100.</p>
+<p>Yes. A payment from a buyer outside the US adds 1.5%, so Goods &amp; Services becomes 4.49%, or $4.49 on $100.</p>
 <h3>Are Friends &amp; Family payments free?</h3>
 <p>Sending money to friends and family from a bank or PayPal balance in the US has no fee, but those payments have no purchase protection and shouldn't be used for sales. Use Goods &amp; Services for anything you sell.</p>
 
@@ -143,9 +145,9 @@ function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' cla
 function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
 function calc(){
   var p=$('preset').value,pct,fix;
-  if(p==='gs'){pct=2.99;fix=0.49}else if(p==='co'){pct=3.49;fix=0.49}else{pct=n('cp');fix=n('cf')}
+  if(p==='gs'){pct=2.99;fix=0}else if(p==='cd'){pct=2.99;fix=0.49}else if(p==='co'){pct=3.49;fix=0.49}else{pct=n('cp');fix=n('cf')}
   if($('intl').checked)pct+=n('ip');
-  var r=pct/100,lab='PayPal fee ('+(+pct.toFixed(2))+'% + '+m(fix)+')';
+  var r=pct/100,lab='PayPal fee ('+(+pct.toFixed(2))+'%'+(fix?' + '+m(fix):'')+')';
   var A=n('amt'),fee=A?A*r+fix:0,got=A-fee;
   setRows([['Buyer pays',m(A)],[lab,m(-fee)],['You receive',m(got),'total'],['Fee as share of payment',A?pc(fee/A,2):'-']]);
   $('recv').textContent=m(got);

@@ -3,25 +3,25 @@
   "slug": "",
   "cat": "Platform fees",
   "nav_name": "Etsy, Shopify, Amazon & eBay fee calculator",
-  "lastmod": "2026-10-17"
+  "lastmod": "2026-10-19"
  },
  {
   "slug": "etsy-vs-shopify",
   "cat": "Compare platforms",
   "nav_name": "Etsy vs Shopify break-even",
-  "lastmod": "2026-10-17"
+  "lastmod": "2026-10-19"
  },
  {
   "slug": "etsy-pricing-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy pricing calculator",
-  "lastmod": "2026-10-17"
+  "lastmod": "2026-10-19"
  },
  {
   "slug": "etsy-offsite-ads-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy Offsite Ads calculator",
-  "lastmod": "2026-10-17"
+  "lastmod": "2026-10-19"
  },
  {
   "slug": "about",
@@ -33,231 +33,245 @@
   "slug": "amazon-fba-calculator",
   "cat": "Platform fees",
   "nav_name": "Amazon FBA calculator",
-  "lastmod": "2026-10-17",
-  "hash": "5deb0f41e218"
+  "lastmod": "2026-10-19",
+  "hash": "40e42ee39dd7"
  },
  {
   "slug": "break-even-calculator",
   "cat": "Pricing & margins",
   "nav_name": "Break-even calculator",
-  "lastmod": "2026-10-17",
-  "hash": "e546cf847774"
+  "lastmod": "2026-10-19",
+  "hash": "767541328f0a"
  },
  {
   "slug": "candle-pricing-calculator",
   "cat": "Maker pricing",
   "nav_name": "Candle pricing calculator",
-  "lastmod": "2026-10-17",
-  "hash": "254803a3f22b"
+  "lastmod": "2026-10-19",
+  "hash": "285bf9ad2746"
+ },
+ {
+  "slug": "christmas-budget-calculator",
+  "cat": "Holiday season",
+  "nav_name": "Christmas budget calculator",
+  "lastmod": "2026-10-20",
+  "hash": "103a0ee5ba33"
  },
  {
   "slug": "cogs-calculator",
   "cat": "Pricing & margins",
   "nav_name": "COGS calculator",
-  "lastmod": "2026-10-17",
-  "hash": "af92123a1ebd"
+  "lastmod": "2026-10-19",
+  "hash": "173e6a8e87bd"
  },
  {
   "slug": "dtf-transfer-size-chart",
   "cat": "Print & design sizes",
   "nav_name": "DTF transfer size chart and t-shirt design size calculator",
-  "lastmod": "2026-10-17",
-  "hash": "0ee0a253e06a"
+  "lastmod": "2026-10-19",
+  "hash": "5ce024e684e4"
  },
  {
   "slug": "ebay-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "eBay fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "084effb5825f"
+  "lastmod": "2026-10-19",
+  "hash": "1caf3675cc4d"
  },
  {
   "slug": "etsy-ads-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy Ads ROAS calculator",
-  "lastmod": "2026-10-17",
-  "hash": "fe59f60d49d4"
+  "lastmod": "2026-10-19",
+  "hash": "55db13e4d343"
  },
  {
   "slug": "etsy-digital-download-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy digital download calculator",
-  "lastmod": "2026-10-17",
-  "hash": "0e3768e53ed8"
+  "lastmod": "2026-10-19",
+  "hash": "7f7d3d720099"
  },
  {
   "slug": "etsy-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "Etsy fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "b47eb1088064"
+  "lastmod": "2026-10-19",
+  "hash": "ea2b47711d4e"
  },
  {
   "slug": "etsy-free-shipping-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy free shipping calculator",
-  "lastmod": "2026-10-17",
-  "hash": "ae50a6faa583"
+  "lastmod": "2026-10-19",
+  "hash": "fb11dd22baf9"
  },
  {
   "slug": "etsy-hourly-wage-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy hourly wage calculator",
-  "lastmod": "2026-10-17",
-  "hash": "2e2a90b5154a"
+  "lastmod": "2026-10-19",
+  "hash": "aa886992494e"
  },
  {
   "slug": "etsy-profit-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy monthly profit calculator",
-  "lastmod": "2026-10-17",
-  "hash": "152e8a29bec0"
+  "lastmod": "2026-10-19",
+  "hash": "613d9ca7f5b1"
  },
  {
   "slug": "etsy-sale-calculator",
   "cat": "Etsy tools",
   "nav_name": "Etsy sale & coupon calculator",
-  "lastmod": "2026-10-17",
-  "hash": "15881db577ae"
+  "lastmod": "2026-10-19",
+  "hash": "9fbfedc275a2"
  },
  {
   "slug": "etsy-title-tag-checker",
   "cat": "Etsy tools",
   "nav_name": "Etsy title and tag checker",
-  "lastmod": "2026-10-17",
-  "hash": "2a8ff8df421d"
+  "lastmod": "2026-10-19",
+  "hash": "9d4c12d717ec"
  },
  {
   "slug": "etsy-vs-amazon-handmade",
   "cat": "Compare platforms",
   "nav_name": "Etsy vs Amazon Handmade",
-  "lastmod": "2026-10-17",
-  "hash": "b39c4eb09d82"
+  "lastmod": "2026-10-19",
+  "hash": "a4a3e0a115a2"
  },
  {
   "slug": "etsy-vs-ebay",
   "cat": "Compare platforms",
   "nav_name": "Etsy vs eBay fees",
-  "lastmod": "2026-10-17",
-  "hash": "0be5b5f49a6f"
+  "lastmod": "2026-10-19",
+  "hash": "f7b9b8e94560"
  },
  {
   "slug": "gumroad-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "Gumroad fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "a8441fbb76a7"
+  "lastmod": "2026-10-19",
+  "hash": "2b40d6c1acca"
  },
  {
   "slug": "handmade-pricing-calculator",
   "cat": "Maker pricing",
   "nav_name": "Handmade pricing calculator",
-  "lastmod": "2026-10-17",
-  "hash": "6d68748056f4"
+  "lastmod": "2026-10-19",
+  "hash": "6f4a28f0784e"
+ },
+ {
+  "slug": "holiday-order-cutoff-calculator",
+  "cat": "Etsy tools",
+  "nav_name": "Holiday order cutoff calculator",
+  "lastmod": "2026-10-19",
+  "hash": "a0c2824285ba"
  },
  {
   "slug": "invoice-late-fee-calculator",
   "cat": "Invoices & getting paid",
   "nav_name": "Invoice late fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "4f474f32ed84"
+  "lastmod": "2026-10-20",
+  "hash": "82f020eb4105"
  },
  {
   "slug": "jewelry-pricing-calculator",
   "cat": "Maker pricing",
   "nav_name": "Jewelry pricing calculator",
-  "lastmod": "2026-10-17",
-  "hash": "da0c08c7804e"
+  "lastmod": "2026-10-19",
+  "hash": "01511c5ea3da"
  },
  {
   "slug": "kdp-cover-size-calculator",
   "cat": "Print & design sizes",
   "nav_name": "KDP cover size and spine width calculator",
-  "lastmod": "2026-10-17",
-  "hash": "e4664f166bd3"
+  "lastmod": "2026-10-19",
+  "hash": "70fabc422bc0"
  },
  {
   "slug": "markup-calculator",
   "cat": "Pricing & margins",
   "nav_name": "Markup calculator",
-  "lastmod": "2026-10-17",
-  "hash": "ed2dbfd51ddf"
+  "lastmod": "2026-10-19",
+  "hash": "bca89027330b"
  },
  {
   "slug": "payment-reminder-email-generator",
   "cat": "Invoices & getting paid",
   "nav_name": "Payment reminder email generator",
-  "lastmod": "2026-10-17",
-  "hash": "e618ad72ac33"
+  "lastmod": "2026-10-20",
+  "hash": "30ecfd46147f"
  },
  {
   "slug": "paypal-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "PayPal fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "a6f8f9e1b8aa"
+  "lastmod": "2026-10-19",
+  "hash": "84b697fd6831"
  },
  {
   "slug": "poshmark-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "Poshmark fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "ccb5d05aaec3"
+  "lastmod": "2026-10-19",
+  "hash": "292b8f1e10f2"
  },
  {
   "slug": "price-increase-calculator",
   "cat": "Pricing & margins",
   "nav_name": "Price increase calculator",
-  "lastmod": "2026-10-17",
-  "hash": "19ecd05ef353"
+  "lastmod": "2026-10-19",
+  "hash": "6442ec85914c"
  },
  {
   "slug": "print-on-demand-profit-calculator",
   "cat": "Maker pricing",
   "nav_name": "Print on demand profit calculator",
-  "lastmod": "2026-10-17",
-  "hash": "31976f01103b"
+  "lastmod": "2026-10-19",
+  "hash": "815f62c76256"
  },
  {
   "slug": "printable-wall-art-size-calculator",
   "cat": "Print & design sizes",
   "nav_name": "Printable wall art size and DPI calculator",
-  "lastmod": "2026-10-17",
-  "hash": "4ae79439628d"
+  "lastmod": "2026-10-19",
+  "hash": "bb604db8a9a9"
  },
  {
   "slug": "profit-margin-calculator",
   "cat": "Pricing & margins",
   "nav_name": "Profit margin calculator",
-  "lastmod": "2026-10-17",
-  "hash": "31419b5e1cb1"
+  "lastmod": "2026-10-19",
+  "hash": "e31ba02dbd37"
  },
  {
   "slug": "roas-calculator",
   "cat": "Pricing & margins",
   "nav_name": "ROAS calculator",
-  "lastmod": "2026-10-17",
-  "hash": "3e51a8295910"
+  "lastmod": "2026-10-19",
+  "hash": "29083a5e5789"
  },
  {
   "slug": "shopify-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "Shopify fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "f161a6aa8f6e"
+  "lastmod": "2026-10-19",
+  "hash": "a23443eab56e"
  },
  {
   "slug": "stripe-fee-calculator",
   "cat": "Platform fees",
   "nav_name": "Stripe fee calculator",
-  "lastmod": "2026-10-17",
-  "hash": "6587ae6b08fe"
+  "lastmod": "2026-10-19",
+  "hash": "1f25e732972d"
  },
  {
   "slug": "wholesale-price-calculator",
   "cat": "Maker pricing",
   "nav_name": "Wholesale price calculator",
-  "lastmod": "2026-10-17",
-  "hash": "9df1d92b98ec"
+  "lastmod": "2026-10-19",
+  "hash": "5ad6d3b78028"
  }
 ]

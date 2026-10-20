@@ -86,6 +86,7 @@ function calc(){
     cta_text="The <strong>Christmas Budget Planner &amp; Gift Tracker</strong> keeps a budget per person, a gift list with status from idea to wrapped, every other holiday cost, and works out how much to set aside each payday. Google Sheets and Excel, with a filled-in demo and printable worksheets. One-time $5.",
     cta_url="https://quietprofitsheets.gumroad.com/l/christmas-budget-planner",
     cta_btn="Get the Christmas Budget Planner",
+    cta_extra=["budget"],
     og_image="pins/feed/christmas-budget-calculator.png",
     tests=[
         {"set": {"weeks": "8"}, "expect": {"big": "$237.50", "rows": ["$725.00", "$525.00", "$1,250.00", "$950.00", "$118.75", "$104.17"], "verdict": ["13.2%", "4 paydays"]}},
