@@ -2,7 +2,9 @@
 # This repo publishes from the main branch (legacy Pages). Each publish
 # records a github-pages deployment; run once that deployment succeeds.
 # workflow_dispatch reruns the same check without waiting for a deploy.
-# The job only sends GET requests and does not modify the repo.
+# Deploy runs check Gumroad buy links offline and do not request gumroad.com.
+# A manual run sets SMOKE_FETCH_GUMROAD=1 and also requires HTTP 200.
+# The job does not modify the repo.
 name: Live smoke test
 on:
   deployment_status:
@@ -27,4 +29,6 @@ jobs:
         env:
           PW: ${{ runner.temp }}/pw/node_modules/playwright
           SMOKE_BASE: ${{ github.event.deployment_status.environment_url || 'https://rudracodeshere.github.io/profit-calculator/' }}
+          # 1 only on a manual run. Absent on a Pages deploy, so buy links stay offline.
+          SMOKE_FETCH_GUMROAD: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: node tools/smoke_live.js

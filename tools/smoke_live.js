@@ -1,28 +1,44 @@
 #!/usr/bin/env node
 // Read-only smoke test of the published site.
-// Loads every page in the live sitemap, fails on JS console errors or page
-// errors, checks every Gumroad buy link returns HTTP 200, and checks that
-// links carrying the FIRST10 discount keep ?code=FIRST10 and point only at
-// the Seller Profit Sheet, the Get Paid Kit, and the 2027 Budget Planner.
+// Loads every page in the live sitemap and fails on JS console errors or page
+// errors. Gumroad buy links are checked offline: each product slug must be one
+// this site sells, and FIRST10 may appear only on the three launch products
+// with ?code=FIRST10 intact. This mode does not request gumroad.com.
+//
+// Set SMOKE_FETCH_GUMROAD=1 to also GET each product URL and require HTTP 200.
+// GitHub Actions sets that only for a manual workflow_dispatch run.
 //
 //   npm install --no-save playwright
 //   npx playwright install chromium
 //   node tools/smoke_live.js [baseURL]
 //
-// GET requests only. Does not write to the repo or the site.
+// Does not write to the repo or the site.
 'use strict';
 
 const fs = require('fs');
 const { chromium, request } = require(process.env.PW || 'playwright');
 
 const DEFAULT_BASE = 'https://rudracodeshere.github.io/profit-calculator/';
-// Product URLs from tools/build_pages.py (GUMROAD, KIT, EXTRAS.budget).
-const FIRST10_HOST = 'quietprofitsheets.gumroad.com';
+const STORE_HOST = 'quietprofitsheets.gumroad.com';
+// Product slugs linked from this site. From tools/build_pages.py
+// (GUMROAD, KIT, EXTRAS, PRODUCTS).
+const KNOWN_SLUGS = new Set([
+  'seller-profit-sheet',
+  'get-paid-kit',
+  '2027-budget-spreadsheet',
+  'christmas-budget-planner',
+  'printable-size-kit',
+]);
+// Launch code (50% off) is only on these three.
 const FIRST10_SLUGS = new Set([
   'seller-profit-sheet',
   'get-paid-kit',
   '2027-budget-spreadsheet',
 ]);
+
+function fetchGumroadEnabled() {
+  return process.env.SMOKE_FETCH_GUMROAD === '1';
+}
 
 function baseUrl() {
   const raw = process.argv[2] || process.env.SMOKE_BASE || DEFAULT_BASE;
@@ -72,10 +88,21 @@ function first10Problems(href) {
   if (url.searchParams.get('code') !== 'FIRST10') problems.push('missing ?code=FIRST10');
   const parts = url.pathname.split('/').filter(Boolean);
   const slug = parts[0] === 'l' ? parts[1] : '';
-  if (url.hostname.toLowerCase() !== FIRST10_HOST || !FIRST10_SLUGS.has(slug)) {
+  if (url.hostname.toLowerCase() !== STORE_HOST || !FIRST10_SLUGS.has(slug)) {
     problems.push(`points at ${url.hostname}${url.pathname}, not the seller sheet, get paid kit, or 2027 budget`);
   }
   return problems;
+}
+
+function slugProblems(link) {
+  const problems = [];
+  if (link.host !== STORE_HOST) problems.push(`host ${link.host} is not ${STORE_HOST}`);
+  if (!KNOWN_SLUGS.has(link.slug)) problems.push(`unknown product slug ${link.slug}`);
+  return problems;
+}
+
+function isGumroadHost(hostname) {
+  return /(^|\.)gumroad\.com$/i.test(hostname);
 }
 
 function sleep(ms) {
@@ -83,6 +110,9 @@ function sleep(ms) {
 }
 
 async function getStatus(api, url) {
+  if (isGumroadHost(new URL(url).hostname) && !fetchGumroadEnabled()) {
+    throw new Error('refusing to request gumroad.com without SMOKE_FETCH_GUMROAD=1');
+  }
   let lastError = null;
   for (let attempt = 1; attempt <= 4; attempt++) {
     try {
@@ -147,6 +177,7 @@ function writeSummary(markdown) {
 
 async function main() {
   const base = baseUrl();
+  const fetchGumroad = fetchGumroadEnabled();
   const api = await request.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
   });
@@ -155,12 +186,19 @@ async function main() {
   const pageResults = [];
   const buyOccurrences = [];
   const first10Occurrences = [];
+  const blockedGumroad = [];
   try {
     const pages = await listPages(api, base);
     console.log(`live smoke: ${pages.length} pages at ${base}`);
     for (const pageUrl of pages) {
       const label = pageLabel(pageUrl, base);
       const context = await browser.newContext();
+      // Stop the page itself from contacting Gumroad. Buy-link checks read the
+      // hrefs already in the DOM. Abort happens before the request is sent.
+      await context.route(url => isGumroadHost(url.hostname), route => {
+        blockedGumroad.push(route.request().url());
+        return route.abort();
+      });
       const page = await context.newPage();
       const errors = [];
       page.on('pageerror', err => errors.push('pageerror: ' + String(err)));
@@ -194,27 +232,55 @@ async function main() {
       await context.close();
     }
 
-    const buyByKey = new Map();
+    const buyBySlug = new Map();
     for (const link of buyOccurrences) {
-      const key = buyKey(link);
-      if (!buyByKey.has(key)) buyByKey.set(key, { ...link, key, pages: [], hrefs: [] });
-      const entry = buyByKey.get(key);
+      if (!buyBySlug.has(link.slug)) buyBySlug.set(link.slug, { slug: link.slug, pages: [], hrefs: [], problems: [] });
+      const entry = buyBySlug.get(link.slug);
       if (!entry.pages.includes(link.label)) entry.pages.push(link.label);
       if (!entry.hrefs.includes(link.href)) entry.hrefs.push(link.href);
-    }
-    const buyResults = [];
-    for (const link of buyByKey.values()) {
-      const got = await getStatus(api, link.href);
-      await sleep(400);
-      const ok = got.status === 200;
-      buyResults.push({ ...link, ...got, ok });
-      if (!ok) {
-        const detail = got.error ? `${got.error}` : `HTTP ${got.status}`;
-        failures.push({ kind: 'buy', label: link.key, detail: `${detail} (${link.hrefs.length} links, on ${link.pages.join(', ')})` });
-        console.log(`FAIL buy ${link.key} ${detail}`);
-      } else {
-        console.log(`ok   buy ${link.slug} ${link.key} (${link.hrefs.length} links)`);
+      for (const problem of slugProblems(link)) {
+        if (!entry.problems.includes(problem)) entry.problems.push(problem);
       }
+    }
+    for (const entry of [...buyBySlug.values()].sort((a, b) => a.slug.localeCompare(b.slug))) {
+      if (entry.problems.length) {
+        failures.push({ kind: 'buy', label: entry.slug, detail: `${entry.problems.join('; ')} (${entry.hrefs.length} links, on ${entry.pages.join(', ')})` });
+        console.log(`FAIL buy ${entry.slug}\n  ${entry.problems.join('\n  ')}`);
+      } else {
+        console.log(`ok   buy ${entry.slug} (${entry.hrefs.length} links, offline)`);
+      }
+    }
+
+    const buyByKey = new Map();
+    const buyFetches = [];
+    if (fetchGumroad) {
+      for (const link of buyOccurrences) {
+        const key = buyKey(link);
+        if (!buyByKey.has(key)) buyByKey.set(key, { ...link, key, pages: [], hrefs: [] });
+        const entry = buyByKey.get(key);
+        if (!entry.pages.includes(link.label)) entry.pages.push(link.label);
+        if (!entry.hrefs.includes(link.href)) entry.hrefs.push(link.href);
+      }
+      for (const link of buyByKey.values()) {
+        const got = await getStatus(api, link.href);
+        await sleep(400);
+        const ok = got.status === 200;
+        buyFetches.push({ ...link, ...got, ok });
+        if (!ok) {
+          const detail = got.error ? `${got.error}` : `HTTP ${got.status}`;
+          failures.push({ kind: 'buy', label: link.key, detail: `${detail} (${link.hrefs.length} links, on ${link.pages.join(', ')})` });
+          console.log(`FAIL buy ${link.key} ${detail}`);
+        } else {
+          console.log(`ok   buy ${link.slug} ${link.key} HTTP 200 (${link.hrefs.length} links)`);
+        }
+      }
+    } else if (!blockedGumroad.length) {
+      console.log('ok   buy links checked offline; no requests to gumroad.com');
+    }
+    if (blockedGumroad.length) {
+      const unique = [...new Set(blockedGumroad)];
+      failures.push({ kind: 'buy', label: 'gumroad.com', detail: `blocked ${unique.length} page request(s) before they were sent: ${unique.slice(0, 5).join(', ')}` });
+      console.log(`FAIL buy blocked ${unique.length} Gumroad page request(s)`);
     }
 
     for (const link of first10Occurrences) {
@@ -237,9 +303,13 @@ async function main() {
     lines.push('');
     lines.push(`- Pages checked: ${pageResults.length}`);
     lines.push(`- Page failures: ${pageResults.filter(item => item.errors.length).length}`);
-    lines.push(`- Gumroad buy links checked: ${buyOccurrences.length} (${buyResults.length} distinct product URLs fetched)`);
-    lines.push('- Each product path is fetched once, and once more with `?code=FIRST10` when a link carries that code. Tracking parameters are not separate pages.');
-    lines.push(`- Buy-link failures: ${buyResults.filter(item => !item.ok).length}`);
+    lines.push(`- Gumroad mode: ${fetchGumroad ? 'HTTP 200 fetches (SMOKE_FETCH_GUMROAD=1)' : 'offline (no requests to gumroad.com)'}`);
+    lines.push(`- Gumroad buy links checked: ${buyOccurrences.length}`);
+    if (fetchGumroad) {
+      lines.push(`- Distinct product URLs fetched: ${buyFetches.length}`);
+      lines.push(`- Buy-link HTTP failures: ${buyFetches.filter(item => !item.ok).length}`);
+    }
+    lines.push(`- Unknown product slugs: ${[...buyBySlug.values()].filter(item => item.problems.length).length}`);
     lines.push(`- FIRST10 links checked: ${first10Occurrences.length}`);
     lines.push(`- FIRST10 failures: ${first10Occurrences.filter(item => item.problems.length).length}`);
     lines.push('');
@@ -261,18 +331,19 @@ async function main() {
     lines.push('');
     lines.push('## Gumroad buy links');
     lines.push('');
-    const bySlug = new Map();
-    for (const item of buyResults) {
-      if (!bySlug.has(item.slug)) bySlug.set(item.slug, []);
-      bySlug.get(item.slug).push(item);
+    if (!buyBySlug.size) lines.push('No Gumroad product links found.');
+    for (const entry of [...buyBySlug.values()].sort((a, b) => a.slug.localeCompare(b.slug))) {
+      const mark = entry.problems.length ? entry.problems.join('; ') : 'known slug';
+      lines.push(`- \`${entry.slug}\`: ${entry.hrefs.length} link${entry.hrefs.length === 1 ? '' : 's'}, ${mark}`);
+      if (entry.problems.length) lines.push(`  - on ${entry.pages.join(', ')}`);
     }
-    for (const [slug, items] of [...bySlug.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
-      const bad = items.filter(item => !item.ok);
-      const covered = items.reduce((sum, item) => sum + item.hrefs.length, 0);
-      lines.push(`- \`${slug}\`: ${covered} link${covered === 1 ? '' : 's'}, ${items.length} URL${items.length === 1 ? '' : 's'} fetched, ${bad.length ? bad.length + ' failed' : 'all HTTP 200'}`);
-      for (const item of items) {
+    if (fetchGumroad) {
+      lines.push('');
+      lines.push('HTTP fetches (one per product path, and again when the link carries `?code=FIRST10`):');
+      lines.push('');
+      for (const item of buyFetches) {
         const mark = item.ok ? `HTTP ${item.status}` : `HTTP ${item.status || 'error'} ${item.error || 'not 200'}`;
-        lines.push(`  - ${mark} \`${item.key}\` (${item.hrefs.length} links, on ${item.pages.join(', ')})`);
+        lines.push(`- ${mark} \`${item.key}\` (${item.hrefs.length} links)`);
       }
     }
     lines.push('');
@@ -290,7 +361,7 @@ async function main() {
           return link.href;
         }
       }))].sort();
-      lines.push(`Allowed products: \`seller-profit-sheet\`, \`get-paid-kit\`, \`2027-budget-spreadsheet\` on \`${FIRST10_HOST}\`.`);
+      lines.push(`Allowed products: \`seller-profit-sheet\`, \`get-paid-kit\`, \`2027-budget-spreadsheet\` on \`${STORE_HOST}\`.`);
       lines.push('');
       lines.push(`Products linked with FIRST10: ${slugs.map(slug => '`' + slug + '`').join(', ') || '(none)'}.`);
       const bad = first10Occurrences.filter(link => link.problems.length);
