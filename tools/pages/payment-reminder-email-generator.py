@@ -88,9 +88,9 @@ $('copy').addEventListener('click',function(){var s='Subject: '+$('subj').textCo
     ],
     related=["invoice-late-fee-calculator", "paypal-fee-calculator", "stripe-fee-calculator", "profit-margin-calculator", "break-even-calculator"],
     cta_head="Never write a chaser from scratch again",
-    cta_text="The <strong>Get Paid Kit</strong> has all 10 emails (these 7 plus replies for &ldquo;we'll pay next week&rdquo;, a payment plan offer and a thank-you), payment terms and a late fee policy to add before the next project, and the <strong>Invoice Chaser</strong> spreadsheet that tracks every invoice, works out late fees, flags who to chase today and writes each email for you. Word, Google Docs, Excel and Google Sheets. One-time $9.",
+    cta_text="The <strong>Invoice Tracker Template Google Sheets + Excel, Payment Reminder Email Templates (Word + PDF)</strong> has all 10 emails (these 7 plus replies for &ldquo;we'll pay next week&rdquo;, a payment plan offer and a thank-you), payment terms and a late fee policy to add before the next project, and the <strong>Invoice Chaser</strong> spreadsheet that tracks every invoice, works out late fees, flags who to chase today and writes each email for you. Word, Google Docs, Excel and Google Sheets. One-time $9.",
     cta_url="https://quietprofitsheets.gumroad.com/l/get-paid-kit",
-    cta_btn="Get the Get Paid Kit",
+    cta_btn="Get the Invoice Tracker Template",
     tests=[
         {"expect": {"big": "4. Firm overdue", "subj": "Overdue: invoice 1042, 10 days past due", "body": ["Hi Northfield Dental", "$2,400.00", "late fee"], "when": "10 days late"}},
         {"set": {"due": "2020-01-01"}, "expect": {"big": "7. Letter before action", "body": ["Dear Northfield Dental", "collection agency", "[Your name]"]}},
