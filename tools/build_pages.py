@@ -281,7 +281,21 @@ def write_readme(reg):
         if items:
             lines += [f"## {c}", ""] + [f"- [{r['nav_name']}]({BASE}{r['slug']}/)" for r in items] + [""]
     lines += [f"[About and fee sources]({BASE}about/)", "",
-              "Pages are generated from `tools/pages/*.py` by `tools/build_pages.py`; test with `tools/check_pages.js`.", ""]
+              "Pages are generated from `tools/pages/*.py` by `tools/build_pages.py`; test with `tools/check_pages.js`.",
+              "The pin feed is checked with `python3 tools/pins/test_feed.py` (valid XML, unique item guids).",
+              "",
+              "## Live smoke test",
+              "",
+              "Read-only check of the published site. It loads every page in the live sitemap, fails on any JavaScript console error or page error, checks that every Gumroad buy link returns HTTP 200, and checks that links carrying the FIRST10 discount keep `?code=FIRST10` and point only at the Seller Profit Sheet, the Get Paid Kit, and the 2027 Budget Planner.",
+              "",
+              "```bash",
+              "npm install --no-save playwright",
+              "npx playwright install chromium",
+              "node tools/smoke_live.js",
+              "```",
+              "",
+              "Pass a base URL to target a different host: `node tools/smoke_live.js https://rudracodeshere.github.io/profit-calculator/`. The script only sends GET requests and does not modify the repo or the site. GitHub Actions runs it after a successful GitHub Pages deploy.",
+              ""]
     (ROOT / "README.md").write_text("\n".join(lines))
 
 
