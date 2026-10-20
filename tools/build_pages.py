@@ -37,7 +37,7 @@ GIGS = {
 CAT_GIG = {"Invoices & getting paid": "sheet"}
 # Second "get the sheet" link inside the product box: key -> (url, link text, price line)
 EXTRAS = {
-    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Planner Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9."),
+    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Planner Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9. Launch price: 50%% off with FIRST10, first 10 buyers."),
     "planner": ("https://quietprofitsheets.gumroad.com/l/christmas-budget-planner", "Christmas Budget Planner &amp; Gift Tracker", "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5."),
 }
 CAT_EXTRA = {"Platform fees": ["budget"]}
@@ -51,8 +51,18 @@ PRODUCTS = {
 BUY_LINE = '<p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="%s?utm_source=calculator&amp;utm_medium=result&amp;utm_content=%s" rel="noopener" style="font-weight:700">%s</a>, $%d one-time.</p>'
 
 
+# Launch code (Gumroad, 50% off, 10 uses): link applies it, line says so. Only products the code is confirmed on.
+LAUNCH = {GUMROAD, KIT}
+LAUNCH_LINE = ' <strong>Launch price: 50% off with FIRST10, first 10 buyers.</strong></p>'
+
+
 def buy_line(url, slug):
-    return "" if url is None else BUY_LINE % (url, slug, PRODUCTS[url][0], PRODUCTS[url][1])
+    if url is None:
+        return ""
+    line = BUY_LINE % (url, slug, PRODUCTS[url][0], PRODUCTS[url][1])
+    if url in LAUNCH:
+        line = line.replace("?utm_source", "?code=FIRST10&amp;utm_source", 1).replace("</p>", LAUNCH_LINE)
+    return line
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
@@ -165,7 +175,7 @@ def render(p, names):
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
     cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
-    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][2] % f'<a href="{EXTRAS[k][0]}?utm_source=calculator&amp;utm_content={slug}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][1]}</a>')
+    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][2] % f'<a href="{EXTRAS[k][0]}?{"code=FIRST10&amp;" if k == "budget" else ""}utm_source=calculator&amp;utm_content={slug}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][1]}</a>')
                     for k in p.get("cta_extra", CAT_EXTRA.get(p["cat"], [])))
     gig = p.get("gig", CAT_GIG.get(p["cat"], "profit"))
     cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
@@ -271,7 +281,23 @@ def write_readme(reg):
         if items:
             lines += [f"## {c}", ""] + [f"- [{r['nav_name']}]({BASE}{r['slug']}/)" for r in items] + [""]
     lines += [f"[About and fee sources]({BASE}about/)", "",
-              "Pages are generated from `tools/pages/*.py` by `tools/build_pages.py`; test with `tools/check_pages.js`.", ""]
+              "Pages are generated from `tools/pages/*.py` by `tools/build_pages.py`; test with `tools/check_pages.js`.",
+              "The pin feed is checked with `python3 tools/pins/test_feed.py` (valid XML, unique item guids).",
+              "",
+              "## Live smoke test",
+              "",
+              "Read-only check of the published site. It loads every page in the live sitemap and fails on any JavaScript console error or page error. Gumroad buy links are checked offline: every product slug must be one this site sells, and the FIRST10 discount may appear only on the Seller Profit Sheet, the Get Paid Kit, and the 2027 Budget Planner, with `?code=FIRST10` kept on the link. That mode does not request gumroad.com.",
+              "",
+              "```bash",
+              "npm install --no-save playwright",
+              "npx playwright install chromium",
+              "node tools/smoke_live.js",
+              "```",
+              "",
+              "Set `SMOKE_FETCH_GUMROAD=1` to also fetch each Gumroad product URL and require HTTP 200. GitHub Actions sets that only for a manual run. After a Pages deploy the check stays offline, so those runs do not count as Gumroad views.",
+              "",
+              "Pass a base URL to target a different host: `node tools/smoke_live.js https://rudracodeshere.github.io/profit-calculator/`. The script does not modify the repo or the site.",
+              ""]
     (ROOT / "README.md").write_text("\n".join(lines))
 
 

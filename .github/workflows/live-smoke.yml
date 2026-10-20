@@ -1,0 +1,34 @@
+# Read-only check of the published GitHub Pages site.
+# This repo publishes from the main branch (legacy Pages). Each publish
+# records a github-pages deployment; run once that deployment succeeds.
+# workflow_dispatch reruns the same check without waiting for a deploy.
+# Deploy runs check Gumroad buy links offline and do not request gumroad.com.
+# A manual run sets SMOKE_FETCH_GUMROAD=1 and also requires HTTP 200.
+# The job does not modify the repo.
+name: Live smoke test
+on:
+  deployment_status:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && (github.event.deployment.environment == 'github-pages' || github.event.deployment_status.environment == 'github-pages'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pw" playwright
+          ( cd "$RUNNER_TEMP/pw" && npx playwright install --with-deps chromium )
+      - name: Smoke test the live site
+        env:
+          PW: ${{ runner.temp }}/pw/node_modules/playwright
+          SMOKE_BASE: ${{ github.event.deployment_status.environment_url || 'https://rudracodeshere.github.io/profit-calculator/' }}
+          # 1 only on a manual run. Absent on a Pages deploy, so buy links stay offline.
+          SMOKE_FETCH_GUMROAD: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+        run: node tools/smoke_live.js

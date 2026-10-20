@@ -1,0 +1,28 @@
+# Runs the existing page tests and the pin-feed check.
+# Pull requests, and pushes to the default branch.
+name: PR checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pw" playwright
+          ( cd "$RUNNER_TEMP/pw" && npx playwright install --with-deps chromium )
+      - name: Pin feed
+        run: python3 tools/pins/test_feed.py
+      - name: Calculator page tests
+        env:
+          PW: ${{ runner.temp }}/pw/node_modules/playwright
+        run: python3 tools/build_pages.py --tests > "$RUNNER_TEMP/t.json" && node tools/check_pages.js "$RUNNER_TEMP/t.json"
