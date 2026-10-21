@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="etsy-sale-calculator",
-    cat="Etsy tools",
+    cat="Etsy tools", starter_line=True,
     nav_name="Etsy sale & coupon calculator",
     title="Etsy Sale Calculator: Profit After a Discount or Coupon",
     desc="See what an Etsy sale or coupon really costs: profit at full and sale price after fees, extra sales needed, and the biggest discount you can afford.",

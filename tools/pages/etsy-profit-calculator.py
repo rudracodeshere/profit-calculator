@@ -1,7 +1,7 @@
 PAGE = dict(
     cta_extra=["budget"],
     slug="etsy-profit-calculator",
-    cat="Etsy tools",
+    cat="Etsy tools", starter_line=True,
     nav_name="Etsy monthly profit calculator",
     title="Etsy Profit Calculator: Your Shop's Real Monthly Profit (2026)",
     desc="Work out your Etsy shop's monthly net profit: revenue, every Etsy fee, Etsy Ads, refunds, materials and labels, plus margin, profit per order and hourly pay.",

@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="handmade-pricing-calculator",
-    cat="Maker pricing",
+    cat="Maker pricing", starter_line=True,
     nav_name="Handmade pricing calculator",
     title="Handmade Pricing Calculator: Cost, Wholesale and Retail Price",
     desc="Price handmade items from materials, your time and overhead. Get base cost, wholesale and retail prices, then see what you keep after Etsy or Shopify fees.",

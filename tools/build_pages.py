@@ -12,6 +12,7 @@ Each spec module defines PAGE = dict(
   related,     # [slug, ...] 3-6 related pages
   cta_head, cta_text,   # optional overrides for the Seller Profit Sheet box
   cta_url, cta_btn,     # optional: point the box at another product (e.g. KIT)
+  starter_line, # optional: True adds the $3 Etsy Price Calculator Sheet line under the buy button
   cta_extra,   # optional: [key in EXTRAS] second product link(s) in the box; default by cat (CAT_EXTRA)
   og_image,    # optional, pin path
   tests,       # [{set:{id:val}, click:[id], expect:{id: substring or [substrings]}}] checked in Chromium
@@ -38,6 +39,7 @@ CAT_GIG = {"Invoices & getting paid": "sheet"}
 BUDGET = "https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet"
 PLANNER = "https://quietprofitsheets.gumroad.com/l/christmas-budget-planner"
 SIZEKIT = "https://quietprofitsheets.gumroad.com/l/printable-size-kit"
+STARTER = "https://quietprofitsheets.gumroad.com/l/etsy-price-calculator-sheet"  # $3, no FIRST10
 # Launch code (Gumroad, 50% off, 10 uses). Valid only on these three; never add it to the $5 products.
 LAUNCH = {GUMROAD: ("$7", "$14"), KIT: ("$4.50", "$9"), BUDGET: ("$4.50", "$9")}
 
@@ -89,6 +91,12 @@ def top_line(url, slug):
             f'<a href="{gum(url, "topline", slug)}" rel="noopener">{text}</a>.</p>\n')
 
 
+def starter_line(slug):
+    """One line under the buy button on Etsy pricing pages (spec: starter_line=True)."""
+    return (f'\n  <p style="margin:10px 0 0;font-size:.95rem">Just want the price math? <a href="{gum(STARTER, "starter-line", slug)}" '
+            f'rel="noopener" style="color:#fff;font-weight:700">Etsy Price Calculator Sheet, $3</a></p>')
+
+
 def cta_button(url, slug, text):
     if url not in LAUNCH:
         return f'<a class="btn" href="{gum(url, "button", slug)}" rel="noopener">{text}</a>'
@@ -100,7 +108,7 @@ def cta_button(url, slug, text):
 STATIC = [
     dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-21"),
     dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-21"),
-    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-21"),
+    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-22"),
     dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-21"),
     dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-21"),  # built from tools/about.html
 ]
@@ -213,7 +221,7 @@ def render(p, names):
     cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
   <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
   <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
-  {cta_button(p.get('cta_url', GUMROAD), slug, p.get('cta_btn', 'Get the Seller Profit Sheet'))}{extra}
+  {cta_button(p.get('cta_url', GUMROAD), slug, p.get('cta_btn', 'Get the Seller Profit Sheet'))}{starter_line(slug) if p.get('starter_line') else ''}{extra}
 </div>
 """
     dfy_html = "" if gig is None else '<p class="dfy">%s <a href="%s" rel="noopener">See the offer on Fiverr</a></p>\n' % (GIGS[gig][1], GIGS[gig][0])
