@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mercari Fee Calculator 2026: What You Earn After the 10% Fee and Shipping</title>
+<meta name="description" content="Free Mercari fee calculator for US sellers: the 10% fee on item price plus buyer-paid shipping, what you earn, your profit, and the price that earns a set amount.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/mercari-fee-calculator/">
+<meta property="og:title" content="Mercari fee calculator">
+<meta property="og:description" content="Free Mercari fee calculator for US sellers: the 10% fee on item price plus buyer-paid shipping, what you earn, your profit, and the price that earns a set amount.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/mercari-fee-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-01.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+.dfy{margin:14px 0 0;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;background:#fff;font-size:.95rem}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Mercari fee calculator", "url": "https://rudracodeshere.github.io/profit-calculator/mercari-fee-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free Mercari fee calculator for US sellers: the 10% fee on item price plus buyer-paid shipping, what you earn, your profit, and the price that earns a set amount."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Mercari take from a $40 sale?", "acceptedAnswer": {"@type": "Answer", "text": "10%, which is $4.00, if you offer free shipping. If the buyer pays $8 shipping, the fee is $4.80 because it also applies to that shipping, and you earn $35.20."}}, {"@type": "Question", "name": "Does Mercari charge its 10% fee on shipping?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, on shipping the buyer pays. Mercari's fee page sets the fee at 10% of the item price plus buyer-paid shipping, so with free shipping the fee is on the item price only and the label is taken out of your earnings instead."}}, {"@type": "Question", "name": "Is free shipping or buyer-paid shipping better on Mercari?", "acceptedAnswer": {"@type": "Answer", "text": "They earn the same if you add the label to your price. A $48 item with free shipping and a $40 item with $8 buyer-paid shipping both earn $35.20, and the buyer pays $49.73 either way. Free shipping only earns less if you don't raise the price."}}, {"@type": "Question", "name": "Does Mercari still charge a payment processing fee or a fee to cash out?", "acceptedAnswer": {"@type": "Answer", "text": "There is no separate processing fee on listings created or updated since January 6, 2025. Direct Deposit is free, with a $2 fee only if a deposit fails. Instant Pay costs $3 per cash-out, up to $600 a month."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Mercari fee calculator", "item": "https://rudracodeshere.github.io/profit-calculator/mercari-fee-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Mercari fee calculator</h1>
+<p class="lead">Enter one Mercari sale. The calculator takes the 10% selling fee on the item price plus any shipping the buyer pays, subtracts the label if you offer free shipping, then shows your profit and the lowest price that earns a set amount.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="price">Sold price of the item</label>
+      <div class="in"><span>$</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="40"></div>
+      <label for="who">Who pays shipping</label>
+      <select id="who" class="full">
+        <option value="buyer" selected>Buyer pays shipping (Mercari label)</option>
+        <option value="seller">I pay shipping (free shipping or ship on my own)</option>
+      </select>
+      <label for="label">Shipping label price <small>(Mercari's price for your weight and service, or your own postage)</small></label>
+      <div class="in"><span>$</span><input id="label" type="number" inputmode="decimal" min="0" step="0.01" value="8"></div>
+      <label for="cost">What the item cost you</label>
+      <div class="in"><span>$</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="12"></div>
+      <label for="want">Amount you want to earn <small>(after Mercari's fee and shipping)</small></label>
+      <div class="in"><span>$</span><input id="want" type="number" inputmode="decimal" min="0" step="0.01" value="30"></div>
+      <label class="check"><input id="ip" type="checkbox"> Cash out this sale with Instant Pay ($3 per cash-out)</label>
+      <details><summary class="note">Edit fee rates</summary>
+      <label for="pct">Mercari selling fee</label>
+      <div class="in"><input id="pct" type="number" min="0" step="0.1" value="10"><span>%</span></div>
+      <label for="ipf">Instant Pay fee per cash-out</label>
+      <div class="in"><span>$</span><input id="ipf" type="number" min="0" step="0.01" value="3"></div>
+      <label for="bp">Buyer Protection fee <small>(paid by the buyer)</small></label>
+      <div class="in"><input id="bp" type="number" min="0" step="0.1" value="3.6"><span>%</span></div>
+      </details>
+    </div>
+    <div>
+      <div class="big"><span>You earn</span><b id="earn"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+      <h3>What the buyer pays</h3>
+      <table><tbody id="buyer"></tbody></table>
+      <h3>Price needed to earn a set amount</h3>
+      <table><tbody id="rows2"></tbody></table>
+      <p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?code=FIRST10&amp;utm_source=calculator&amp;utm_medium=result&amp;utm_content=mercari-fee-calculator" rel="noopener" style="font-weight:700">Seller Profit Sheet</a>, $14 one-time. <strong>Launch price: 50% off with FIRST10, first 10 buyers.</strong></p>
+    </div>
+  </div>
+  <p class="note">US Mercari fees, checked October 20, 2026 on Mercari's own Help Center: "Fees on Mercari" (updated May 7, 2026), "FAQs about our new fee structure" and the shipping guide for sellers. Mercari charges a 10% selling fee on the item price plus any shipping the buyer pays, with no separate payment processing fee on listings created or updated since January 6, 2025. With free shipping the label comes out of your earnings. Mercari's fee pages put only buyer-paid shipping in the fee and don't mention free shipping, so with free shipping the fee here is 10% of the item price. Your Mercari Gross Sales Report shows the fee actually charged on each order. The 3.6% Buyer Protection fee is paid by the buyer. Direct Deposit is free ($2 if a deposit fails) and Instant Pay is $3 per cash-out, up to $600 a month. Mercari's label prices changed on October 19, 2026, so enter the price Mercari shows you. Fees are rounded to the nearest cent here and Mercari's figures may differ by a cent or two. Every rate is editable under Edit fee rates.</p>
+</div>
+
+<div class="cta">
+  <h2>That's one product. Which of yours lose money?</h2>
+  <p>The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=mercari-fee-calculator" rel="noopener">Get the Seller Profit Sheet</a>
+  <p style="margin:14px 0 0;font-size:.95rem">Planning next year's money too? The <a href="https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet?code=FIRST10&amp;utm_source=calculator&amp;utm_content=mercari-fee-calculator" rel="noopener" style="color:#fff;font-weight:700">2027 Budget Planner Spreadsheet</a> plans income, bills and savings month by month, $9. Launch price: 50% off with FIRST10, first 10 buyers.</p>
+</div>
+<p class="dfy">Prices sorted? The next fix is getting found: I rewrite Etsy titles, 13 tags and descriptions on Fiverr, from $5. <a href="https://www.fiverr.com/rudrasharma_in/write-etsy-seo-titles-13-tags-and-descriptions-for-your-listings" rel="noopener">See the offer on Fiverr</a></p>
+
+<h2>How Mercari fees work in 2026</h2>
+<p><strong>Selling fee.</strong> Since January 6, 2025, Mercari charges sellers a flat 10% of the item price plus any shipping the buyer pays, on new and updated listings. The fee comes out of your sale, so you never pay it separately.</p>
+<p><strong>No processing fee.</strong> Listings created or updated since that date carry no separate payment processing fee. The old 2.9% + $0.50 processing fee belongs to the previous fee structure, so it isn't in this calculator.</p>
+<p><strong>Buyer Protection fee.</strong> The buyer pays 3.6% of the item price plus buyer-paid shipping at checkout. It doesn't come out of your earnings, but it does raise the total your buyer sees, which is why the calculator shows it.</p>
+<p><strong>Cashing out.</strong> Direct Deposit to your bank is free. A deposit that fails costs $2. Instant Pay sends money to an eligible debit card in about 30 minutes for $3 per cash-out, up to $600 a month and once a day.</p>
+<h2>Buyer-paid shipping vs free shipping</h2>
+<p class="formula">Buyer pays shipping: you earn = price - 10% x (price + shipping)<br>Free shipping: you earn = price - 10% x price - label</p>
+<p>Worked example: you sell a <strong>$40</strong> item that cost you <strong>$12</strong>, and Mercari's label is <strong>$8</strong>.</p>
+<p><strong>Buyer pays shipping.</strong> The fee is 10% of $48, which is $4.80. You earn <strong>$35.20</strong> and your profit is <strong>$23.20</strong>. The buyer pays $48 plus a $1.73 Buyer Protection fee, $49.73 before sales tax.</p>
+<p><strong>Free shipping at the same $40.</strong> The fee drops to $4.00, but the $8.00 label comes out of your sale. You earn $28.00 and your profit is $16.00. The buyer pays $40 plus $1.44, which is $41.44.</p>
+<p><strong>Free shipping priced at $48.</strong> The fee is $4.80, the label is $8.00 and you earn $35.20, exactly the same as buyer-paid shipping. The buyer also pays the same $49.73. So free shipping doesn't cost you more in fees. It only costs you more if you don't add the label to your price.</p>
+<p>If you cash out that buyer-paid sale on its own with Instant Pay, your profit drops by $3.00 to $20.20.</p>
+<h2>Pricing backward from what you want to earn</h2>
+<p class="formula">Buyer pays shipping: price = (target + 10% x shipping) / 0.9<br>Free shipping: price = (target + label) / 0.9</p>
+<p>To earn $30 with an $8 label, list at <strong>$34.22</strong> with buyer-paid shipping: the fee is 10% of $42.22, which is $4.22, and $34.22 - $4.22 = $30.00. With free shipping, list at <strong>$42.22</strong>: the fee is $4.22, the label is $8.00 and you keep $30.00. The buyer pays $43.74 before sales tax either way. If you accept offers, list a little above this so an accepted offer still earns what you need.</p>
+<h2>Other costs to know</h2>
+<p><strong>Instant Pay is per cash-out, not per sale.</strong> $3 on a single sale that earns $35.20 is about 8.5% of it. Let a few sales build up, or use free Direct Deposit when you can wait.</p>
+<p><strong>Cheap items with free shipping.</strong> A $10 item with an $8 free-shipping label earns $1.00 after the $1.00 fee and the label. If the item cost you $5, you lose $4.00. Let the buyer pay shipping on small items, or bundle them.</p>
+<p><strong>Cancellations.</strong> If you cancel sales often, Mercari warns you first and then may charge a cancellation fee of 5% of the item price, up to $25.</p>
+<p><strong>Label problems.</strong> If a package is heavier or bigger than the label you bought, Mercari takes the overweight or oversize charge from your sales. USPS charges $50 when a non-hazardous item ships in a box that still has a visible HAZMAT label. For packages postmarked on or after September 1, 2026, Mercari splits that fee with you, so $25 comes out of your earnings.</p>
+<p><strong>Authentication.</strong> Mercari's fee page lists a $5 Mercari Authenticate fee, paid by the seller, for items over a set price that go through third-party authentication, and $10 for an Authenticate Certificate.</p>
+
+<h2>Questions</h2>
+<h3>How much does Mercari take from a $40 sale?</h3>
+<p>10%, which is $4.00, if you offer free shipping. If the buyer pays $8 shipping, the fee is $4.80 because it also applies to that shipping, and you earn $35.20.</p>
+<h3>Does Mercari charge its 10% fee on shipping?</h3>
+<p>Yes, on shipping the buyer pays. Mercari's fee page sets the fee at 10% of the item price plus buyer-paid shipping, so with free shipping the fee is on the item price only and the label is taken out of your earnings instead.</p>
+<h3>Is free shipping or buyer-paid shipping better on Mercari?</h3>
+<p>They earn the same if you add the label to your price. A $48 item with free shipping and a $40 item with $8 buyer-paid shipping both earn $35.20, and the buyer pays $49.73 either way. Free shipping only earns less if you don't raise the price.</p>
+<h3>Does Mercari still charge a payment processing fee or a fee to cash out?</h3>
+<p>There is no separate processing fee on listings created or updated since January 6, 2025. Direct Deposit is free, with a $2 fee only if a deposit fails. Instant Pay costs $3 per cash-out, up to $600 a month.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../poshmark-fee-calculator/">Poshmark fee calculator</a></li><li><a href="../ebay-fee-calculator/">eBay fee calculator</a></li><li><a href="../etsy-vs-ebay/">Etsy vs eBay fees</a></li><li><a href="../paypal-fee-calculator/">PayPal fee calculator</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li><li><a href="../markup-calculator/">Markup calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var r=n('pct')/100,bp=n('bp')/100,buy=$('who').value==='buyer';
+  var Pc=Math.round(n('price')*100),Sc=Math.round(n('label')*100),Cc=Math.round(n('cost')*100),Wc=Math.round(n('want')*100);
+  var ipc=$('ip').checked?Math.round(n('ipf')*100):0;
+  function rnd(x){return Math.round(+x.toFixed(6))}
+  function feeB(p){return rnd(r*(p+Sc))}
+  function feeS(p){return rnd(r*p)}
+  function earnB(p){return p-feeB(p)}
+  function earnS(p){return p-feeS(p)-Sc}
+  function lowest(f){
+    if(r>=1)return -1;
+    var lo=1,hi=Math.ceil((Wc+Sc+1)/(1-r))+2;
+    if(hi>1e11)return -1;
+    while(lo<hi){var mid=Math.floor((lo+hi)/2);if(f(mid)>=Wc)hi=mid;else lo=mid+1}
+    return f(lo)>=Wc?lo:-1;
+  }
+  if(!Wc)setRows([['Enter the amount you want to earn.','']],'rows2');
+  else{
+    var qb=lowest(earnB),qs=lowest(earnS);
+    if(qb<0||qs<0)setRows([['No price earns that with these rates.','']],'rows2');
+    else setRows([['To earn '+m(Wc/100)+' with buyer-paid shipping, list at',m(qb/100),'total'],['With free shipping, list at',m(qs/100),'total'],
+      ['Buyer pays either way, before sales tax',m((qs+rnd(qs*bp))/100)]],'rows2');
+  }
+  if(!Pc){$('earn').textContent='-';setRows([["Enter the sold price to see Mercari's fee.",'']]);setRows([['Enter the sold price.','']],'buyer');verdict(false,'No sale entered yet.');return}
+  var fee=buy?feeB(Pc):feeS(Pc),earn=buy?earnB(Pc):earnS(Pc),pr=earn-Cc-ipc;
+  var rows=[['Item price',m(Pc/100)]];
+  if(buy)rows.push(['Shipping the buyer pays',m(Sc/100)],["Mercari label, paid from the buyer's shipping",m(-Sc/100)]);
+  rows.push(['Mercari selling fee ('+n('pct')+'% of '+m((buy?Pc+Sc:Pc)/100)+')',m(-fee/100)]);
+  if(!buy)rows.push(['Shipping label you pay',m(-Sc/100)]);
+  rows.push(['You earn',m(earn/100)]);
+  if(ipc)rows.push(['Instant Pay fee (per cash-out)',m(-ipc/100)]);
+  rows.push(['What you paid for the item',m(-Cc/100)],['Profit',m(pr/100),'total']);
+  setRows(rows);
+  $('earn').textContent=m(earn/100);
+  var base=buy?Pc+Sc:Pc,bpc=rnd(base*bp);
+  setRows([[buy?'Item + shipping':'Item price (shipping included)',m(base/100)],['Buyer Protection fee ('+n('bp')+'%)',m(bpc/100)],['Buyer pays before sales tax',m((base+bpc)/100),'total']],'buyer');
+  if(pr<0)verdict(false,'This sale loses '+m(-pr/100)+' after '+(buy?'the fee':'the fee, the label')+(ipc?', Instant Pay':'')+' and what you paid for the item. Raise the price'+(buy?'.':' or let the buyer pay shipping.'));
+  else if(buy&&Sc)verdict(true,'You make '+m(pr/100)+' profit. With free shipping at this price you would earn '+m(earnS(Pc)/100)+'. Price it at '+m((Pc+Sc)/100)+' to earn the same '+m(earn/100)+'.');
+  else if(!buy&&Sc)verdict(true,'You make '+m(pr/100)+' profit. If the buyer paid the '+m(Sc/100)+' shipping instead, this price would earn '+m(earnB(Pc)/100)+'.');
+  else verdict(true,'You make '+m(pr/100)+' profit. Mercari keeps '+m(fee/100)+', '+pc(fee/Pc)+' of the price.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
