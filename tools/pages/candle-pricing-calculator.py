@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="candle-pricing-calculator",
-    cat="Maker pricing",
+    cat="Maker pricing", starter_line=True,
     nav_name="Candle pricing calculator",
     title="Candle Pricing Calculator: Cost per Candle and Retail Price",
     desc="Cost one candle from wax, fragrance load (as % of wax), wick, vessel, label and labor. Get a retail price, a wholesale check and a batch shopping list.",

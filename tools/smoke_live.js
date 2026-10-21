@@ -28,6 +28,7 @@ const KNOWN_SLUGS = new Set([
   '2027-budget-spreadsheet',
   'christmas-budget-planner',
   'printable-size-kit',
+  'etsy-price-calculator-sheet',
 ]);
 // Launch code (50% off) is only on these three.
 const FIRST10_SLUGS = new Set([

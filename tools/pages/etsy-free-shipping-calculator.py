@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="etsy-free-shipping-calculator",
-    cat="Etsy tools",
+    cat="Etsy tools", starter_line=True,
     nav_name="Etsy free shipping calculator",
     title="Etsy Free Shipping Calculator: New Price for the Same Profit",
     desc="Switching an Etsy listing to free shipping? See the price that keeps your profit the same, what you lose by absorbing part of the label, and the $35 rule.",

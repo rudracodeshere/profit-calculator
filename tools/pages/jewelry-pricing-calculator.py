@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="jewelry-pricing-calculator",
-    cat="Maker pricing",
+    cat="Maker pricing", starter_line=True,
     nav_name="Jewelry pricing calculator",
     title="Jewelry Pricing Calculator: Metal, Labor, Wholesale and Retail",
     desc="Price handmade jewelry from metal weight, stones, findings, labor and overhead. Get wholesale and retail prices and what you keep after Etsy or Shopify fees.",
