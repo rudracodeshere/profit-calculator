@@ -1,6 +1,11 @@
 PAGE = dict(
     slug="paypal-fee-calculator",
     cat="Platform fees",
+    cta_head="Sending invoices? Know who owes you, and what to send them.",
+    cta_text="The <strong>Invoice Tracker Template Google Sheets + Excel, Payment Reminder Email Templates (Word + PDF)</strong> includes the <strong>Invoice Chaser</strong> spreadsheet: it tracks every invoice and its due date, works out late fees, tells you who to chase today and writes the email with the client's name, amounts and dates filled in. Plus 10 ready-to-send payment reminder emails. Word, Google Docs, Excel and Google Sheets.",
+    cta_url="https://quietprofitsheets.gumroad.com/l/get-paid-kit",
+    cta_btn="Get the Invoice Tracker Template",
+    cta_extra=["seller"],
     nav_name="PayPal fee calculator",
     title="PayPal Fee Calculator 2026: What You Receive and What to Charge",
     desc="Free PayPal fee calculator: what you receive after fees, or what to ask for to receive an exact amount. Goods & Services, Checkout, invoices, international.",

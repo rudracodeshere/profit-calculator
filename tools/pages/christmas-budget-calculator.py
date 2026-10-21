@@ -89,9 +89,9 @@ function calc(){
     ],
     related=["holiday-order-cutoff-calculator", "price-increase-calculator", "break-even-calculator", "profit-margin-calculator"],
     cta_head="Track every gift, not just the total",
-    cta_text="The <strong>Christmas Budget Planner &amp; Gift Tracker</strong> keeps a budget per person, a gift list with prices, status and return-by dates, a season budget for food, decorations, travel and postage, and a savings plan that works out how much to put aside each payday. It flags anyone over budget and moves to next Christmas on its own. Excel and Google Sheets, plus printable PDF worksheets. One-time $5.",
+    cta_text="The <strong>Christmas Budget Spreadsheet + Gift Tracker</strong> keeps a budget per person, a gift list with prices, status and return-by dates, a season budget for food, decorations, travel and postage, and a savings plan that works out how much to put aside each payday. It flags anyone over budget and moves to next Christmas on its own. Excel and Google Sheets, plus printable PDF worksheets. One-time $5.",
     cta_url=PLANNER,
-    cta_btn="Get the Christmas Budget Planner",
+    cta_btn="Get the Christmas Budget Spreadsheet",
     cta_extra=["budget"],
     gig=None,
     tests=[

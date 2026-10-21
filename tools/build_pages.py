@@ -35,42 +35,74 @@ GIGS = {
     "pod": (FIVERR + "/find-which-of-your-etsy-products-lose-money-and-fix-your-prices", "Selling print on demand shirts or mugs on Etsy? I write the titles and 13 tags that get POD listings found, on Fiverr."),
 }
 CAT_GIG = {"Invoices & getting paid": "sheet"}
-# Second "get the sheet" link inside the product box: key -> (url, link text, price line)
+BUDGET = "https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet"
+PLANNER = "https://quietprofitsheets.gumroad.com/l/christmas-budget-planner"
+SIZEKIT = "https://quietprofitsheets.gumroad.com/l/printable-size-kit"
+# Launch code (Gumroad, 50% off, 10 uses). Valid only on these three; never add it to the $5 products.
+LAUNCH = {GUMROAD: ("$7", "$14"), KIT: ("$4.50", "$9"), BUDGET: ("$4.50", "$9")}
+
+
+def gum(url, medium, slug):
+    """Gumroad link with FIRST10 (launch products only) and utm tags."""
+    code = "code=FIRST10&amp;" if url in LAUNCH else ""
+    return f"{url}?{code}utm_source=calculator&amp;utm_medium={medium}&amp;utm_content={slug}"
+
+
+# Second product link inside the product box: key -> (url, line with %s for the link)
 EXTRAS = {
-    "budget": ("https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet", "2027 Budget Planner Spreadsheet", "Planning next year's money too? The %s plans income, bills and savings month by month, $9. Launch price: 50%% off with FIRST10, first 10 buyers."),
-    "planner": ("https://quietprofitsheets.gumroad.com/l/christmas-budget-planner", "Christmas Budget Planner &amp; Gift Tracker", "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5."),
+    "budget": (BUDGET, "Planning next year's money too? The %s plans income, bills and savings month by month: <strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers.", "2027 Budget Planner Spreadsheet"),
+    "planner": (PLANNER, "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5.", "Christmas Budget Spreadsheet + Gift Tracker"),
+    "sizekit": (SIZEKIT, "Sell printables? The %s gives you 8 \"sizes included\" listing images and a print guide for buyers, $5.", "Etsy Print Size Guide Kit"),
+    "seller": (GUMROAD, "Selling products too? The %s shows net profit per product after fees, shipping, discounts and ads: <strong>$7 with code FIRST10</strong> (normally $14), first 10 buyers.", "Seller Profit Sheet"),
 }
 CAT_EXTRA = {"Platform fees": ["budget"]}
-# One-line product link right under each result: url -> (name, price). A spec can set result_url, or result_url=None for none.
+# One-line product link right under each result (snippet A): url -> (lead-in, link text, price text). A spec can set result_url, or None for none.
 PRODUCTS = {
-    GUMROAD: ("Seller Profit Sheet", 14),
-    KIT: ("Invoice Tracker Template Google Sheets + Excel, Payment Reminder Email Templates (Word + PDF)", 9),
-    "https://quietprofitsheets.gumroad.com/l/printable-size-kit": ("Etsy Print Size Guide Kit", 5),
-    EXTRAS["planner"][0]: ("Christmas Budget Planner &amp; Gift Tracker", 5),
+    GUMROAD: ("See this for every product at once: the", "Seller Profit Sheet", "<strong>$7 with code FIRST10</strong> (normally $14), first 10 buyers. Excel + Google Sheets, one-time."),
+    KIT: ("Track every invoice and know who to chase today: the", "Invoice Tracker + 10 reminder emails", "<strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers."),
+    BUDGET: ("Plan all of 2027 in one sheet: the", "2027 Budget Planner Spreadsheet", "<strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers."),
+    PLANNER: ("Budget per person, gift list and how much to save each payday: the", "Christmas Budget Spreadsheet + Gift Tracker", "$5. Google Sheets, Excel and printable PDF."),
+    SIZEKIT: ("Ready-made \"sizes included\" images and a print guide for your buyers: the", "Etsy Print Size Guide Kit", "$5."),
 }
-BUY_LINE = '<p class="buy" style="margin:12px 0 0;font-size:.95rem">Get the <a href="%s?utm_source=calculator&amp;utm_medium=result&amp;utm_content=%s" rel="noopener" style="font-weight:700">%s</a>, $%d one-time.</p>'
+# One line under the intro, visible above the fold on mobile (snippet B): url -> (question, link text)
+TOPLINE = {
+    GUMROAD: ("Want it for every product at once?", "Seller Profit Sheet, $7 with FIRST10"),
+    KIT: ("Chasing more than one invoice?", "Invoice Tracker + 10 reminder emails, $4.50 with FIRST10"),
+    PLANNER: ("Want the gift list and per-person budgets too?", "Christmas Budget Spreadsheet, $5"),
+    SIZEKIT: ("Need the listing images too?", "Etsy Print Size Guide Kit, $5"),
+}
 
 
-# Launch code (Gumroad, 50% off, 10 uses): link applies it, line says so. Only products the code is confirmed on.
-LAUNCH = {GUMROAD, KIT}
-LAUNCH_LINE = ' <strong>Launch price: 50% off with FIRST10, first 10 buyers.</strong></p>'
-
-
-def buy_line(url, slug):
+def buy_line(url, slug, lead=None):
     if url is None:
         return ""
-    line = BUY_LINE % (url, slug, PRODUCTS[url][0], PRODUCTS[url][1])
-    if url in LAUNCH:
-        line = line.replace("?utm_source", "?code=FIRST10&amp;utm_source", 1).replace("</p>", LAUNCH_LINE)
-    return line
+    a, name, price = PRODUCTS[url]
+    return (f'<p class="buy" style="margin:12px 0 0;font-size:.95rem">{lead or a} <a href="{gum(url, "result", slug)}" rel="noopener" '
+            f'style="font-weight:700">{name}</a>{"." if url in LAUNCH else ","} {price}</p>')
+
+
+def top_line(url, slug):
+    if url not in TOPLINE:
+        return ""
+    q, text = TOPLINE[url]
+    return (f'<p class="topbuy" style="margin:6px 0 14px;font-size:.92rem">Free tool, no sign-up. {q} '
+            f'<a href="{gum(url, "topline", slug)}" rel="noopener">{text}</a>.</p>\n')
+
+
+def cta_button(url, slug, text):
+    if url not in LAUNCH:
+        return f'<a class="btn" href="{gum(url, "button", slug)}" rel="noopener">{text}</a>'
+    now, was = LAUNCH[url]
+    return (f'<a class="btn" href="{gum(url, "button", slug)}" rel="noopener">{text}: {now} with FIRST10</a>\n'
+            f'  <p style="margin:8px 0 0;font-size:.85rem">Code is already applied at checkout. Normally {was}. First 10 buyers only.</p>')
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
-    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-19"),
-    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-19"),
-    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-19"),
-    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-19"),
-    dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-15"),  # built from tools/about.html
+    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-21"),
+    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-21"),
+    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-21"),
+    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-21"),
+    dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-21"),  # built from tools/about.html
 ]
 CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid", "Budgets & planning"]
 
@@ -174,14 +206,14 @@ def render(p, names):
             {"@type": "ListItem", "position": 2, "name": p["nav_name"], "item": url}]},
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
-    cta_link = f"{p.get('cta_url', GUMROAD)}?utm_source=calculator&amp;utm_content={slug}"
-    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][2] % f'<a href="{EXTRAS[k][0]}?{"code=FIRST10&amp;" if k == "budget" else ""}utm_source=calculator&amp;utm_content={slug}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][1]}</a>')
+    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][1] % f'<a href="{gum(EXTRAS[k][0], "button", slug)}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][2]}</a>')
                     for k in p.get("cta_extra", CAT_EXTRA.get(p["cat"], [])))
+    result_url = p.get('result_url', p.get('cta_url', GUMROAD))
     gig = p.get("gig", CAT_GIG.get(p["cat"], "profit"))
     cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
   <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
   <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
-  <a class="btn" href="{cta_link}" rel="noopener">{p.get('cta_btn', 'Get the Seller Profit Sheet')}</a>{extra}
+  {cta_button(p.get('cta_url', GUMROAD), slug, p.get('cta_btn', 'Get the Seller Profit Sheet'))}{extra}
 </div>
 """
     dfy_html = "" if gig is None else '<p class="dfy">%s <a href="%s" rel="noopener">See the offer on Fiverr</a></p>\n' % (GIGS[gig][1], GIGS[gig][0])
@@ -209,7 +241,7 @@ def render(p, names):
 <nav><a href="../">&larr; All seller calculators</a></nav>
 <h1>{p['h1']}</h1>
 <p class="lead">{p['lead']}</p>
-
+{top_line(p.get('top_url', result_url), slug)}
 <div class="card">
   <div class="grid">
     <div>
@@ -217,7 +249,7 @@ def render(p, names):
     </div>
     <div>
       {p.get('out', DEFAULT_OUT)}
-      {buy_line(p.get('result_url', p.get('cta_url', GUMROAD)), slug)}
+      {buy_line(result_url, slug, p.get('buy_lead'))}
     </div>
   </div>
   <p class="note">{p['note']}</p>
@@ -265,7 +297,7 @@ def render_about():
 <main>
 <nav><a href="../">&larr; All seller calculators</a></nav>
 {body}
-<footer>Made by <a href="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=about">Quiet Profit Sheets</a>.</footer>
+<footer>Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator&amp;utm_content=about">Quiet Profit Sheets</a>.</footer>
 </main>
 </body>
 </html>
