@@ -1,7 +1,7 @@
 PAGE = dict(
     gig="pod",
     cta_head=None,
-    store_url="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?utm_source=calculator&amp;utm_content=dtf-transfer-size-chart",  # no product box on this page, so the footer link goes to a product
+    store_url="https://quietprofitsheets.gumroad.com/l/seller-profit-sheet?code=FIRST10&amp;utm_source=calculator&amp;utm_medium=footer&amp;utm_content=dtf-transfer-size-chart",  # no product box on this page, so the footer link goes to a product
     slug="dtf-transfer-size-chart",
     cat="Print & design sizes",
     nav_name="DTF transfer size chart and t-shirt design size calculator",

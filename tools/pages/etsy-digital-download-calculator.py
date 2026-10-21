@@ -1,6 +1,7 @@
 PAGE = dict(
     slug="etsy-digital-download-calculator",
     cat="Etsy tools",
+    cta_extra=["sizekit"],
     nav_name="Etsy digital download calculator",
     title="Etsy Digital Download Calculator: Fees, Profit and Sales Goal",
     desc="Selling printables, patterns or SVGs on Etsy? See the fees on each digital sale, what you keep, and how many sales a month it takes to reach your income goal.",

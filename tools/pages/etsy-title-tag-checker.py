@@ -2,6 +2,7 @@ PAGE = dict(
     gig="seo",
     slug="etsy-title-tag-checker",
     cat="Etsy tools",
+    cta_extra=["sizekit"],
     nav_name="Etsy title and tag checker",
     title="Etsy Title and Tag Checker: Character Counter for 13 Tags and 140-Character Titles",
     desc="Free Etsy title and tag checker. Paste a listing title and tags to count characters, catch tags over 20 characters, duplicates, banned symbols and wasted tag slots.",

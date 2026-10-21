@@ -1,5 +1,7 @@
 PAGE = dict(
-    result_url=None,
+    result_url="https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet",  # no product fits KDP authors well; soft budget link
+    buy_lead="Self-publishing on the side? Plan your 2027 income, bills and savings in one sheet: the",
+    top_url=None,
     gig=None,
     cta_head=None,
     slug="kdp-cover-size-calculator",
