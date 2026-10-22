@@ -40,6 +40,7 @@ BUDGET = "https://quietprofitsheets.gumroad.com/l/2027-budget-spreadsheet"
 PLANNER = "https://quietprofitsheets.gumroad.com/l/christmas-budget-planner"
 SIZEKIT = "https://quietprofitsheets.gumroad.com/l/printable-size-kit"
 STARTER = "https://quietprofitsheets.gumroad.com/l/etsy-price-calculator-sheet"  # $3, no FIRST10
+PETSIT = "https://quietprofitsheets.gumroad.com/l/pet-sitting-spreadsheet"  # $49, no FIRST10
 # Launch code (Gumroad, 50% off, 10 uses). Valid only on these three; never add it to the $5 products.
 LAUNCH = {GUMROAD: ("$7", "$14"), KIT: ("$4.50", "$9"), BUDGET: ("$4.50", "$9")}
 
@@ -64,6 +65,7 @@ PRODUCTS = {
     KIT: ("Track every invoice and know who to chase today: the", "Invoice Tracker + 10 reminder emails", "<strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers."),
     BUDGET: ("Plan all of 2027 in one sheet: the", "2027 Budget Planner Spreadsheet", "<strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers."),
     PLANNER: ("Budget per person, gift list and how much to save each payday: the", "Christmas Budget Spreadsheet + Gift Tracker", "$5. Google Sheets, Excel and printable PDF."),
+    PETSIT: ("Every booking priced for you, holiday rates included: the", "Pet Sitting Business Tracker", "$49. Excel + Google Sheets, one-time."),
     SIZEKIT: ("Ready-made \"sizes included\" images and a print guide for your buyers: the", "Etsy Print Size Guide Kit", "$5."),
 }
 # One line under the intro, visible above the fold on mobile (snippet B): url -> (question, link text)
@@ -71,6 +73,7 @@ TOPLINE = {
     GUMROAD: ("Want it for every product at once?", "Seller Profit Sheet, $7 with FIRST10"),
     KIT: ("Chasing more than one invoice?", "Invoice Tracker + 10 reminder emails, $4.50 with FIRST10"),
     PLANNER: ("Want the gift list and per-person budgets too?", "Christmas Budget Spreadsheet, $5"),
+    PETSIT: ("Want every booking priced for you?", "Pet Sitting Business Tracker, $49"),
     SIZEKIT: ("Need the listing images too?", "Etsy Print Size Guide Kit, $5"),
 }
 

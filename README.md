@@ -39,6 +39,7 @@ Every calculator runs in the browser, uses editable US fee rates, and has its wo
 - [Break-even calculator](https://rudracodeshere.github.io/profit-calculator/break-even-calculator/)
 - [COGS calculator](https://rudracodeshere.github.io/profit-calculator/cogs-calculator/)
 - [Markup calculator](https://rudracodeshere.github.io/profit-calculator/markup-calculator/)
+- [Pet sitter holiday rate calculator](https://rudracodeshere.github.io/profit-calculator/pet-sitter-holiday-rate-calculator/)
 - [Price increase calculator](https://rudracodeshere.github.io/profit-calculator/price-increase-calculator/)
 - [Profit margin calculator](https://rudracodeshere.github.io/profit-calculator/profit-margin-calculator/)
 - [ROAS calculator](https://rudracodeshere.github.io/profit-calculator/roas-calculator/)

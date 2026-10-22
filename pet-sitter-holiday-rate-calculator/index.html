@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pet Sitter Holiday Rate Calculator: Thanksgiving to New Year</title>
+<meta name="description" content="Free holiday rate calculator for pet sitters and dog walkers. Add a holiday surcharge as a percent or flat amount and see the holiday price and booking total.">
+<link rel="canonical" href="https://rudracodeshere.github.io/profit-calculator/pet-sitter-holiday-rate-calculator/">
+<meta property="og:title" content="Pet sitter holiday rate calculator">
+<meta property="og:description" content="Free holiday rate calculator for pet sitters and dog walkers. Add a holiday surcharge as a percent or flat amount and see the holiday price and booking total.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rudracodeshere.github.io/profit-calculator/pet-sitter-holiday-rate-calculator/">
+<meta property="og:image" content="https://rudracodeshere.github.io/profit-calculator/pins/pin-01.png">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dde3ea;--bg:#f6f8fb;--card:#fff;--navy:#1F3A5F;--red:#B00020;--redbg:#fbe9eb;--green:#1b7a3a;--greenbg:#e7f4ea;--accent:#e8613a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;color:var(--navy)}
+h2{font-size:1.3rem;margin:2em 0 .5em;color:var(--navy)}
+h3{font-size:1.05rem;margin:1.4em 0 .3em}
+p.lead{color:var(--muted);margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{flex:1;min-width:80px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+label{display:block;font-size:.9rem;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+.in{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.in span{padding:0 10px;color:var(--muted)}
+.in input,.in select{flex:1;border:0;padding:10px 10px 10px 0;font:inherit;background:transparent;min-width:0}
+.in input:first-child{padding-left:10px}
+select.full{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;padding-left:8px}
+tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
+.big{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;margin-bottom:10px}
+.big b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;color:var(--navy)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict:empty{display:none}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{color:#d6e0ee}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:var(--muted)}
+.formula{background:#fff;border-left:4px solid var(--navy);padding:10px 14px;border-radius:4px;font-weight:600}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:0;list-style:none}
+.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--navy);font-weight:600}
+.related a:hover{border-color:var(--navy)}
+nav{font-size:.9rem;margin-bottom:8px}
+.dfy{margin:14px 0 0;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;background:#fff;font-size:.95rem}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+th{text-align:left;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--line)}
+.wide td,.wide th{text-align:right;padding:6px 4px}
+.wide td:first-child,.wide th:first-child{text-align:left}
+</style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Pet sitter holiday rate calculator", "url": "https://rudracodeshere.github.io/profit-calculator/pet-sitter-holiday-rate-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free holiday rate calculator for pet sitters and dog walkers. Add a holiday surcharge as a percent or flat amount and see the holiday price and booking total."}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much should pet sitters charge on holidays?", "acceptedAnswer": {"@type": "Answer", "text": "Many sitters add a surcharge on holiday dates, either a percent of their normal price or a flat amount per visit or night. Use the numbers you would be happy working the holiday for; the calculator shows what each choice does to the quote."}}, {"@type": "Question", "name": "Which days count as holiday dates?", "acceptedAnswer": {"@type": "Answer", "text": "You decide. Some sitters charge holiday rates only on the day itself, others on the days around it, and others on a whole stretch such as December 20 to January 1. Tell clients your dates when they book."}}, {"@type": "Question", "name": "Does the surcharge apply to the whole booking?", "acceptedAnswer": {"@type": "Answer", "text": "Not in this calculator. Only the visits or nights on your holiday dates get the holiday price, and the rest stay at your normal price. In the example, 3 of 7 nights are on holiday dates, so the quote is $558.75 instead of $525."}}, {"@type": "Question", "name": "Can I use a flat holiday fee instead of a percent?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Set the percent to 0 and enter the flat extra. A $75 night with a $20 flat holiday extra becomes $95."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Seller calculators", "item": "https://rudracodeshere.github.io/profit-calculator/"}, {"@type": "ListItem", "position": 2, "name": "Pet sitter holiday rate calculator", "item": "https://rudracodeshere.github.io/profit-calculator/pet-sitter-holiday-rate-calculator/"}]}]</script>
+</head>
+<body>
+<main>
+<nav><a href="../">&larr; All seller calculators</a></nav>
+<h1>Pet sitter holiday rate calculator</h1>
+<p class="lead">Enter your normal price per visit or night, your holiday surcharge, and how much of the booking falls on holiday dates. You get the holiday price, the booking total to quote, and how much extra the holiday dates earn you.</p>
+<p class="topbuy" style="margin:6px 0 14px;font-size:.92rem">Free tool, no sign-up. Want every booking priced for you? <a href="https://quietprofitsheets.gumroad.com/l/pet-sitting-spreadsheet?utm_source=calculator&amp;utm_medium=topline&amp;utm_content=pet-sitter-holiday-rate-calculator" rel="noopener">Pet Sitting Business Tracker, $49</a>.</p>
+
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="rate">Your normal price per visit or night</label>
+      <div class="in"><span>$</span><input id="rate" type="number" inputmode="decimal" min="0" step="0.5" value="75"></div>
+      <label for="pct">Holiday surcharge</label>
+      <div class="in"><input id="pct" type="number" inputmode="decimal" min="0" step="1" value="15"><span>%</span></div>
+      <label for="flat">Or a flat extra per holiday visit or night <small>(0 if you only use a percent)</small></label>
+      <div class="in"><span>$</span><input id="flat" type="number" inputmode="decimal" min="0" step="1" value="0"></div>
+      <label for="total">Visits or nights in the booking</label>
+      <div class="in"><input id="total" type="number" inputmode="numeric" min="0" step="1" value="7"></div>
+      <label for="hol">How many of them are on holiday dates</label>
+      <div class="in"><input id="hol" type="number" inputmode="numeric" min="0" step="1" value="3"></div>
+    </div>
+    <div>
+      <div class="big"><span>Quote for this booking</span><b id="quote"></b></div>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>
+      <p class="buy" style="margin:12px 0 0;font-size:.95rem">Every booking priced for you, holiday rates included: the <a href="https://quietprofitsheets.gumroad.com/l/pet-sitting-spreadsheet?utm_source=calculator&amp;utm_medium=result&amp;utm_content=pet-sitter-holiday-rate-calculator" rel="noopener" style="font-weight:700">Pet Sitting Business Tracker</a>, $49. Excel + Google Sheets, one-time.</p>
+    </div>
+  </div>
+  <p class="note">The holiday price is your normal price plus the percent, plus any flat extra. Visits or nights outside your holiday dates stay at your normal price. Pick your own holiday dates: sitters use anything from just the day itself to the whole stretch from Thanksgiving through New Year.</p>
+</div>
+
+<div class="cta">
+  <h2>Track every booking, client and holiday rate in one sheet</h2>
+  <p>The <strong>Pet Sitting Business Tracker</strong> fills in each booking's price for you, applies your holiday rate on your holiday dates, keeps pets, meds and vet details in one place, and shows what you earned and what you're still owed each month. Excel and Google Sheets, one-time $49.</p>
+  <a class="btn" href="https://quietprofitsheets.gumroad.com/l/pet-sitting-spreadsheet?utm_source=calculator&amp;utm_medium=button&amp;utm_content=pet-sitter-holiday-rate-calculator" rel="noopener">Get the Pet Sitting Business Tracker</a>
+</div>
+
+<h2>How the holiday price is worked out</h2>
+<p class="formula">Holiday price = normal price &times; (1 + surcharge %) + flat extra</p>
+<p class="formula">Booking total = regular visits &times; normal price + holiday visits &times; holiday price</p>
+<p>Only the visits or nights that fall on your holiday dates get the higher price. That keeps a long booking that just touches Christmas from jumping in price for every day.</p>
+<h2>Worked example</h2>
+<p>An overnight sitter charges <strong>$75 a night</strong> and adds <strong>15%</strong> on holiday dates. A client books 7 nights, and 3 of them fall on the holiday dates.</p>
+<p>The holiday price is $75 &times; 1.15 = <strong>$86.25</strong>. The 4 regular nights come to $300 and the 3 holiday nights to $258.75, so the quote is <strong>$558.75</strong>. That's $33.75 more than 7 nights at the normal price.</p>
+<p>With a flat $20 per holiday night instead of a percent, the holiday price is $95 and the quote is $585.</p>
+<h2>Choosing your surcharge and dates</h2>
+<p><strong>Percent or flat.</strong> A percent grows with your price, so it works across drop-ins, walks and overnights. A flat amount is easier to explain to clients. You can use both.</p>
+<p><strong>Pick the dates once and write them down.</strong> Common windows are the holiday itself, the days around it, or a set stretch such as December 20 to January 1. Whatever you pick, tell clients when they book so the quote isn't a surprise.</p>
+<p><strong>New and existing clients.</strong> Some sitters charge regulars a smaller surcharge than new clients. Run the calculator once for each.</p>
+
+<h2>Questions</h2>
+<h3>How much should pet sitters charge on holidays?</h3>
+<p>Many sitters add a surcharge on holiday dates, either a percent of their normal price or a flat amount per visit or night. Use the numbers you would be happy working the holiday for; the calculator shows what each choice does to the quote.</p>
+<h3>Which days count as holiday dates?</h3>
+<p>You decide. Some sitters charge holiday rates only on the day itself, others on the days around it, and others on a whole stretch such as December 20 to January 1. Tell clients your dates when they book.</p>
+<h3>Does the surcharge apply to the whole booking?</h3>
+<p>Not in this calculator. Only the visits or nights on your holiday dates get the holiday price, and the rest stay at your normal price. In the example, 3 of 7 nights are on holiday dates, so the quote is $558.75 instead of $525.</p>
+<h3>Can I use a flat holiday fee instead of a percent?</h3>
+<p>Yes. Set the percent to 0 and enter the flat extra. A $75 night with a $20 flat holiday extra becomes $95.</p>
+
+<h2>Related calculators</h2>
+<ul class="related"><li><a href="../price-increase-calculator/">Price increase calculator</a></li><li><a href="../invoice-late-fee-calculator/">Invoice late fee calculator</a></li><li><a href="../markup-calculator/">Markup calculator</a></li><li><a href="../profit-margin-calculator/">Profit margin calculator</a></li></ul>
+
+<footer>Independent tool, not affiliated with any marketplace or payment company. Fee rates are US defaults and change over time; every rate above is editable. Made by <a href="https://quietprofitsheets.gumroad.com/?utm_source=calculator">Quiet Profit Sheets</a>. <a href="../#all">All calculators</a> &middot; <a href="../about/">About &amp; sources</a>.</footer>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var n=function(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0};
+var m=function(x){return (x<0?'-$':'$')+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+var pc=function(x,d){return (x*100).toFixed(d===undefined?1:d)+'%'};
+function setRows(rows,id){var h='';rows.forEach(function(r){h+='<tr'+(r[2]?' class="'+r[2]+'"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'});$(id||'rows').innerHTML=h}
+function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'ok':'bad');v.textContent=text}
+function calc(){
+  var r=n('rate'),p=n('pct'),f=n('flat'),t=Math.round(n('total')),h=Math.round(n('hol'));
+  if(!r||!t){$('quote').textContent='-';setRows([]);verdict(false,'Enter your normal price and how many visits or nights the booking has.');return}
+  if(h>t){$('quote').textContent='-';setRows([]);verdict(false,'Holiday visits or nights can\'t be more than the '+t+' in the booking.');return}
+  var hr=r*(1+p/100)+f,reg=t-h,q=reg*r+h*hr,extra=q-t*r;
+  $('quote').textContent=m(q);
+  setRows([['Holiday price per visit or night',m(hr)],['Regular: '+reg+' x '+m(r),m(reg*r)],['Holiday: '+h+' x '+m(hr),m(h*hr)],['Booking total',m(q),'total'],['Extra from the holiday dates',m(extra)],
+    ['At 10% surcharge',m(reg*r+h*(r*1.1+f))],['At 20% surcharge',m(reg*r+h*(r*1.2+f))],['At 25% surcharge',m(reg*r+h*(r*1.25+f))]]);
+  verdict(true,h?'Quote '+m(q)+'. The '+h+' holiday '+(h==1?'date adds ':'dates add ')+m(extra)+' to the normal '+m(t*r)+'.':'No holiday dates in this booking, so it\'s your normal '+m(q)+'.');
+}
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
