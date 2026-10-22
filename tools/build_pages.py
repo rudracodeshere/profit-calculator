@@ -69,14 +69,14 @@ TOPLINE = {
 }
 
 
-def buy_box(url, slug, lead=None, starter=False):
+def buy_box(url, slug, lead=None, starter=False, lite=False):
     """The one product box under the result: a plain line, a button, and (Etsy pricing pages) the $3 starter line."""
     if url is None:
         return ""
     a, name, price = PRODUCTS[url]
     btn = f"Get the {name}" + (f": {LAUNCH[url][0]} with FIRST10" if url in LAUNCH else "")
     return (f'<div class="buybox">\n        <p class="buy">{lead or a} <strong>{name}</strong>{"." if url in LAUNCH else ","} {price}</p>\n'
-            f'        <a class="btn" href="{gum(url, "result", slug)}" rel="noopener">{btn}</a>{starter_line(slug) if starter else ""}\n      </div>')
+            f'        <a class="btn" href="{gum(url, "result", slug)}" rel="noopener">{btn}</a>{starter_line(slug) if starter else ""}{lite_line(slug) if lite else ""}\n      </div>')
 
 
 def top_line(url, slug):
@@ -90,6 +90,15 @@ def top_line(url, slug):
 def pin_save(url, og, title):
     q = urllib.parse.urlencode({"url": url, "media": og, "description": title})
     return f'\n      <p class="note"><a href="https://www.pinterest.com/pin/create/button/?{html.escape(q)}" target="_blank" rel="noopener">Save this calculator to Pinterest</a></p>'
+
+
+LITE = "https://quietprofitsheets.gumroad.com/l/etsy-seller-sheet-lite"
+
+
+def lite_line(slug):
+    """Plain free-sheet line in the box (spec: lite_line=True); the paid button stays the main link."""
+    return (f'\n        <p style="margin:8px 0 0;font-size:.9rem">Or start free: the one-tab '
+            f'<a href="{gum(LITE, "lite-line", slug)}" rel="noopener">Etsy Seller Profit Sheet Lite</a></p>')
 
 
 def starter_line(slug):
@@ -240,7 +249,7 @@ def render(p, names):
     </div>
     <div>
       {p.get('out', DEFAULT_OUT)}
-      {buy_box(result_url, slug, p.get('buy_lead'), p.get('starter_line'))}{pin_save(url, og, p['title']) if p.get('pin_save') else ''}
+      {buy_box(result_url, slug, p.get('buy_lead'), p.get('starter_line'), p.get('lite_line'))}{pin_save(url, og, p['title']) if p.get('pin_save') else ''}
     </div>
   </div>
   <p class="note">{p['note']}</p>

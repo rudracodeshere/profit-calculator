@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="etsy-hourly-wage-calculator",
-    cat="Etsy tools", starter_line=True, pin_save=True,
+    cat="Etsy tools", starter_line=True, lite_line=True, pin_save=True,
     nav_name="Etsy hourly wage calculator",
     title="Etsy Hourly Wage Calculator: Are You Paying Yourself?",
     desc="Find your real hourly pay on Etsy after fees, materials and labels, counting time to make, pack and list. Then see the price that pays your target wage.",
