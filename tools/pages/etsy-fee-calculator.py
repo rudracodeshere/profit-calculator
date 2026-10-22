@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="etsy-fee-calculator",
-    cat="Platform fees", starter_line=True,
+    cat="Platform fees", starter_line=True, cta_extra=[],
     nav_name="Etsy fee calculator",
     title="Etsy Fee Calculator 2026: Every Fee on One Sale, and What You Keep",
     desc="Free Etsy fee calculator. Enter a sale and see the transaction fee, payment processing, listing fee, Offsite Ads and currency conversion, plus what you keep after costs.",
