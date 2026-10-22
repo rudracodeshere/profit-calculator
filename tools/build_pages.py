@@ -20,7 +20,7 @@ Each spec module defines PAGE = dict(
 Run: python3 tools/build_pages.py  (writes <slug>/index.html, sitemap.xml, tools/registry.json, homepage list)
 Test: python3 tools/build_pages.py --tests [slug ...] > t.json && node tools/check_pages.js t.json
 """
-import hashlib, html, importlib.util, json, pathlib, re, sys, datetime
+import hashlib, html, importlib.util, json, pathlib, re, sys, datetime, urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = "https://rudracodeshere.github.io/profit-calculator/"
@@ -92,6 +92,11 @@ def top_line(url, slug):
     q, text = TOPLINE[url]
     return (f'<p class="topbuy" style="margin:6px 0 14px;font-size:.92rem">Free tool, no sign-up. {q} '
             f'<a href="{gum(url, "topline", slug)}" rel="noopener">{text}</a>.</p>\n')
+
+
+def pin_save(url, og, title):
+    q = urllib.parse.urlencode({"url": url, "media": og, "description": title})
+    return f'\n      <p class="note"><a href="https://www.pinterest.com/pin/create/button/?{html.escape(q)}" target="_blank" rel="noopener">Save this calculator to Pinterest</a></p>'
 
 
 def starter_line(slug):
@@ -260,7 +265,7 @@ def render(p, names):
     </div>
     <div>
       {p.get('out', DEFAULT_OUT)}
-      {buy_line(result_url, slug, p.get('buy_lead'))}
+      {buy_line(result_url, slug, p.get('buy_lead'))}{pin_save(url, og, p['title']) if p.get('pin_save') else ''}
     </div>
   </div>
   <p class="note">{p['note']}</p>
