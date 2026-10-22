@@ -2,9 +2,9 @@ PAGE = dict(
     slug="pet-sitter-holiday-rate-calculator",
     cat="Pricing & margins",
     nav_name="Pet sitter holiday rate calculator",
-    title="Pet Sitter Holiday Rate Calculator: Thanksgiving to New Year",
-    desc="Free holiday rate calculator for pet sitters and dog walkers. Add a holiday surcharge as a percent or flat amount and see the holiday price and booking total.",
-    h1="Pet sitter holiday rate calculator",
+    title="Pet Sitter Holiday Rate Calculator: Overnight and Drop-In Quotes",
+    desc="Free holiday rate calculator for pet sitters. Add a holiday surcharge to your overnight or drop-in rate and get the holiday price and the full booking quote.",
+    h1="Pet sitter holiday rate calculator for overnights and visits",
     lead="Enter your normal price per visit or night, your holiday surcharge, and how much of the booking falls on holiday dates. You get the holiday price, the booking total to quote, and how much extra the holiday dates earn you.",
     form="""      <label for="rate">Your normal price per visit or night</label>
       <div class="in"><span>$</span><input id="rate" type="number" inputmode="decimal" min="0" step="0.5" value="75"></div>
