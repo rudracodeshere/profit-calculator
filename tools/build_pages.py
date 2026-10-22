@@ -97,8 +97,8 @@ LITE = "https://quietprofitsheets.gumroad.com/l/etsy-seller-sheet-lite"
 
 def lite_line(slug):
     """Plain free-sheet line in the box (spec: lite_line=True); the paid button stays the main link."""
-    return (f'\n        <p style="margin:8px 0 0;font-size:.9rem">Or start free: the one-tab '
-            f'<a href="{gum(LITE, "lite-line", slug)}" rel="noopener">Etsy Seller Profit Sheet Lite</a></p>')
+    return (f'\n        <p style="margin:8px 0 0;font-size:.9rem">Or start free: the '
+            f'<a href="{gum(LITE, "lite-line", slug)}" rel="noopener">Free Etsy Seller Spreadsheet</a></p>')
 
 
 def starter_line(slug):
