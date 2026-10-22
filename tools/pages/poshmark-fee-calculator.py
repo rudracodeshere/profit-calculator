@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="poshmark-fee-calculator",
-    cat="Platform fees",
+    cat="Platform fees", starter_line=True,
     nav_name="Poshmark fee calculator",
     title="Poshmark Fee Calculator 2026: Earnings, Profit and the $15 Trap",
     desc="Free Poshmark fee calculator. See your earnings after the $2.95 or 20% fee, your profit after cost, and the listing price you need to earn a set amount.",

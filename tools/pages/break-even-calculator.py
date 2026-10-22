@@ -1,6 +1,6 @@
 PAGE = dict(
     slug="break-even-calculator",
-    cat="Pricing & margins",
+    cat="Pricing & margins", starter_line=True,
     nav_name="Break-even calculator",
     title="Break-Even Calculator for Online Sellers: Units and Revenue",
     desc="Free break-even calculator for online shops. Enter monthly fixed costs, price, unit cost and fees to see sales needed to break even or hit a profit goal.",
