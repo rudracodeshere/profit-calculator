@@ -17,6 +17,15 @@ const specs = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
     const overflow = await pg.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
     const probs = [...errs];
     if (overflow) probs.push('horizontal overflow at 390px');
+    const box = await pg.evaluate(() => {
+      const bs = document.querySelectorAll('.buybox'), b = bs[0];
+      return { n: bs.length, cta: document.querySelectorAll('.cta').length, text: b ? b.innerText : '',
+        href: b ? b.querySelector('a.btn').href : '', inCard: b ? !!b.closest('.card') : true };
+    });
+    if (box.n > 1 || box.cta) probs.push(`expected at most one .buybox and no .cta, got ${box.n} / ${box.cta}`);
+    if (!box.inCard) probs.push('.buybox is not under the result');
+    const launch = /\/l\/(seller-profit-sheet|get-paid-kit|2027-budget-spreadsheet)\?code=FIRST10/.test(box.href);
+    if (/FIRST10/.test(box.text) !== launch) probs.push('FIRST10 text and link disagree: ' + box.href);
     if (/NaN|undefined|Infinity/.test(txt)) probs.push('bad value in output: ' + (txt.match(/.{0,40}(NaN|undefined|Infinity).{0,20}/) || [''])[0]);
     for (const [i, t] of (s.tests || []).entries()) {
       await pg.reload();

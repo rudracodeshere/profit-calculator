@@ -10,10 +10,9 @@ Each spec module defines PAGE = dict(
   body,        # HTML article: how it works, formula, worked example
   faqs,        # [(question, answer_html)]
   related,     # [slug, ...] 3-6 related pages
-  cta_head, cta_text,   # optional overrides for the Seller Profit Sheet box
-  cta_url, cta_btn,     # optional: point the box at another product (e.g. KIT)
-  starter_line, # optional: True adds the $3 Etsy Price Calculator Sheet line under the buy button
-  cta_extra,   # optional: [key in EXTRAS] second product link(s) in the box; default by cat (CAT_EXTRA)
+  result_url,  # optional: product in the one box under the result (default cta_url, then the Seller Profit Sheet); None = no box
+  buy_lead,    # optional: first words of the box line
+  starter_line, # optional: True adds the $3 Etsy Price Calculator Sheet line inside the box
   og_image,    # optional, pin path
   tests,       # [{set:{id:val}, click:[id], expect:{id: substring or [substrings]}}] checked in Chromium
 )
@@ -51,19 +50,11 @@ def gum(url, medium, slug):
     return f"{url}?{code}utm_source=calculator&amp;utm_medium={medium}&amp;utm_content={slug}"
 
 
-# Second product link inside the product box: key -> (url, line with %s for the link)
-EXTRAS = {
-    "budget": (BUDGET, "Planning next year's money too? The %s plans income, bills and savings month by month: <strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers.", "2027 Budget Planner Spreadsheet"),
-    "planner": (PLANNER, "Budgeting your own holidays? The %s keeps every gift and dollar in one sheet, $5.", "Christmas Budget Spreadsheet + Gift Tracker"),
-    "sizekit": (SIZEKIT, "Sell printables? The %s gives you 8 \"sizes included\" listing images and a print guide for buyers, $5.", "Etsy Print Size Guide Kit"),
-    "seller": (GUMROAD, "Selling products too? The %s shows net profit per product after fees, shipping, discounts and ads: <strong>$7 with code FIRST10</strong> (normally $14), first 10 buyers.", "Seller Profit Sheet"),
-}
-CAT_EXTRA = {"Platform fees": ["budget"]}
-# One-line product link right under each result (snippet A): url -> (lead-in, link text, price text). A spec can set result_url, or None for none.
+# The one product box right under each result: url -> (lead-in, product name, price text). A spec can set result_url, or None for no box.
 PRODUCTS = {
-    GUMROAD: ("See this for every product at once: the", "Seller Profit Sheet", "<strong>$7 with code FIRST10</strong> (normally $14), first 10 buyers. Excel + Google Sheets, one-time."),
-    KIT: ("Track every invoice and know who to chase today: the", "Invoice Tracker + 10 reminder emails", "<strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers."),
-    BUDGET: ("Plan all of 2027 in one sheet: the", "2027 Budget Planner Spreadsheet", "<strong>$4.50 with code FIRST10</strong> (normally $9), first 10 buyers."),
+    GUMROAD: ("See this for every product at once, net profit after fees, shipping and ads: the", "Seller Profit Sheet", "<strong>50% off with code FIRST10</strong>: $7 (normally $14), first 10 buyers. Excel + Google Sheets, one-time."),
+    KIT: ("Track every invoice and know who to chase today: the", "Invoice Tracker + 10 reminder emails", "<strong>50% off with code FIRST10</strong>: $4.50 (normally $9), first 10 buyers."),
+    BUDGET: ("Plan all of 2027 in one sheet: the", "2027 Budget Planner Spreadsheet", "<strong>50% off with code FIRST10</strong>: $4.50 (normally $9), first 10 buyers."),
     PLANNER: ("Budget per person, gift list and how much to save each payday: the", "Christmas Budget Spreadsheet + Gift Tracker", "$5. Google Sheets, Excel and printable PDF."),
     PETSIT: ("Every booking priced for you, holiday rates included: the", "Pet Sitting Business Tracker", "$49. Excel + Google Sheets, one-time."),
     SIZEKIT: ("Ready-made \"sizes included\" images and a print guide for your buyers: the", "Etsy Print Size Guide Kit", "$5."),
@@ -78,12 +69,14 @@ TOPLINE = {
 }
 
 
-def buy_line(url, slug, lead=None):
+def buy_box(url, slug, lead=None, starter=False, lite=False):
+    """The one product box under the result: a plain line, a button, and (Etsy pricing pages) the $3 starter line."""
     if url is None:
         return ""
     a, name, price = PRODUCTS[url]
-    return (f'<p class="buy" style="margin:12px 0 0;font-size:.95rem">{lead or a} <a href="{gum(url, "result", slug)}" rel="noopener" '
-            f'style="font-weight:700">{name}</a>{"." if url in LAUNCH else ","} {price}</p>')
+    btn = f"Get the {name}" + (f": {LAUNCH[url][0]} with FIRST10" if url in LAUNCH else "")
+    return (f'<div class="buybox">\n        <p class="buy">{lead or a} <strong>{name}</strong>{"." if url in LAUNCH else ","} {price}</p>\n'
+            f'        <a class="btn" href="{gum(url, "result", slug)}" rel="noopener">{btn}</a>{starter_line(slug) if starter else ""}{lite_line(slug) if lite else ""}\n      </div>')
 
 
 def top_line(url, slug):
@@ -99,25 +92,28 @@ def pin_save(url, og, title):
     return f'\n      <p class="note"><a href="https://www.pinterest.com/pin/create/button/?{html.escape(q)}" target="_blank" rel="noopener">Save this calculator to Pinterest</a></p>'
 
 
+LITE = "https://quietprofitsheets.gumroad.com/l/etsy-seller-sheet-lite"
+
+
+def lite_line(slug):
+    """Plain free-sheet line in the box (spec: lite_line=True); the paid button stays the main link."""
+    return (f'\n        <p style="margin:8px 0 0;font-size:.9rem">Or start free: the '
+            f'<a href="{gum(LITE, "lite-line", slug)}" rel="noopener">Free Etsy Seller Spreadsheet</a></p>')
+
+
 def starter_line(slug):
     """One line under the buy button on Etsy pricing pages (spec: starter_line=True)."""
-    return (f'\n  <p style="margin:10px 0 0;font-size:.95rem">Just want the price math? <a href="{gum(STARTER, "starter-line", slug)}" '
-            f'rel="noopener" style="color:#fff;font-weight:700">Etsy Price Calculator Sheet, $3</a></p>')
+    return (f'\n        <p style="margin:10px 0 0;font-size:.9rem">Just want the price math? <a href="{gum(STARTER, "starter-line", slug)}" '
+            f'rel="noopener" style="font-weight:700">Etsy Price Calculator Sheet, $3</a></p>')
 
 
-def cta_button(url, slug, text):
-    if url not in LAUNCH:
-        return f'<a class="btn" href="{gum(url, "button", slug)}" rel="noopener">{text}</a>'
-    now, was = LAUNCH[url]
-    return (f'<a class="btn" href="{gum(url, "button", slug)}" rel="noopener">{text}: {now} with FIRST10</a>\n'
-            f'  <p style="margin:8px 0 0;font-size:.85rem">Code is already applied at checkout. Normally {was}. First 10 buyers only.</p>')
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
-    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-21"),
-    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-21"),
-    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-22"),
-    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-21"),
+    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-23"),
+    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-23"),
+    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-23"),
+    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-23"),
     dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-21"),  # built from tools/about.html
 ]
 CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid", "Budgets & planning"]
@@ -154,9 +150,9 @@ tr.total td{font-weight:700;border-bottom:0;font-size:1.1rem;padding-top:12px}
 .verdict:empty{display:none}
 .verdict.bad{background:var(--redbg);color:var(--red)}
 .verdict.ok{background:var(--greenbg);color:var(--green)}
-.cta{margin-top:28px;background:var(--navy);color:#fff;border-radius:12px;padding:22px}
-.cta h2{color:#fff;margin-top:0}
-.cta p{color:#d6e0ee}
+.buybox{margin-top:14px;padding:14px 16px;border:2px solid var(--accent);border-radius:10px;background:#fff8f5}
+.buybox p.buy{margin:0 0 8px;font-size:.95rem}
+.buybox .btn{margin-top:0}
 .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px;margin-top:6px}
 .btn:hover{filter:brightness(1.05)}
 .note{font-size:.85rem;color:var(--muted)}
@@ -180,10 +176,6 @@ function verdict(ok,text,id){var v=$(id||'verdict');v.className='verdict '+(ok?'
 
 DEFAULT_OUT = '<table aria-live="polite"><tbody id="rows"></tbody></table>\n      <div id="verdict" class="verdict"></div>'
 
-DEFAULT_CTA_HEAD = "That's one product. Which of yours lose money?"
-DEFAULT_CTA_TEXT = ("The <strong>Seller Profit Sheet</strong> does this math for every product at once. Paste your Etsy or Shopify "
-    "sales export (or type in Amazon and eBay sales) and it shows net profit per product after fees, labels, discounts, returns "
-    "and ad spend, with a red LOSING MONEY flag on anything underwater. Excel and Google Sheets, one-time $14, no subscription.")
 
 
 def load_specs(only=None):
@@ -222,16 +214,8 @@ def render(p, names):
             {"@type": "ListItem", "position": 2, "name": p["nav_name"], "item": url}]},
     ]
     rel = "".join(f'<li><a href="../{s}/">{e(names[s])}</a></li>' for s in p["related"])
-    extra = "".join('\n  <p style="margin:14px 0 0;font-size:.95rem">%s</p>' % (EXTRAS[k][1] % f'<a href="{gum(EXTRAS[k][0], "button", slug)}" rel="noopener" style="color:#fff;font-weight:700">{EXTRAS[k][2]}</a>')
-                    for k in p.get("cta_extra", CAT_EXTRA.get(p["cat"], [])))
     result_url = p.get('result_url', p.get('cta_url', GUMROAD))
     gig = p.get("gig", CAT_GIG.get(p["cat"], "profit"))
-    cta_html = "" if p.get("cta_head", "") is None else f"""<div class="cta">
-  <h2>{p.get('cta_head', DEFAULT_CTA_HEAD)}</h2>
-  <p>{p.get('cta_text', DEFAULT_CTA_TEXT)}</p>
-  {cta_button(p.get('cta_url', GUMROAD), slug, p.get('cta_btn', 'Get the Seller Profit Sheet'))}{starter_line(slug) if p.get('starter_line') else ''}{extra}
-</div>
-"""
     dfy_html = "" if gig is None else '<p class="dfy">%s <a href="%s" rel="noopener">See the offer on Fiverr</a></p>\n' % (GIGS[gig][1], GIGS[gig][0])
     return f"""<!doctype html>
 <html lang="en">
@@ -265,13 +249,13 @@ def render(p, names):
     </div>
     <div>
       {p.get('out', DEFAULT_OUT)}
-      {buy_line(result_url, slug, p.get('buy_lead'))}{pin_save(url, og, p['title']) if p.get('pin_save') else ''}
+      {buy_box(result_url, slug, p.get('buy_lead'), p.get('starter_line'), p.get('lite_line'))}{pin_save(url, og, p['title']) if p.get('pin_save') else ''}
     </div>
   </div>
   <p class="note">{p['note']}</p>
 </div>
 
-{cta_html}{dfy_html}
+{dfy_html}
 {p['body']}
 
 <h2>Questions</h2>
