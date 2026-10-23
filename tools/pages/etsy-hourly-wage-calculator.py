@@ -33,6 +33,7 @@ PAGE = dict(
       <div class="in"><span>$</span><input id="lfee" type="number" min="0" step="0.01" value="0.20"></div>
       </details>""",
     out="""<div class="big"><span>Your real hourly wage</span><b id="wage"></b></div>
+<p class="resfree" style="margin:6px 0 10px;font-size:.92rem">Want this wage for every product, not just this one? Get the <a href="https://quietprofitsheets.gumroad.com/l/etsy-seller-sheet-lite?utm_source=calculator&amp;utm_medium=result-free&amp;utm_content=etsy-hourly-wage-calculator" rel="noopener">free Etsy Seller Spreadsheet</a>. It's $0, and it opens in Excel or Google Sheets.</p>
       <table aria-live="polite"><tbody id="rows"></tbody></table>
       <div id="verdict" class="verdict"></div>""",
     js="""function calc(){

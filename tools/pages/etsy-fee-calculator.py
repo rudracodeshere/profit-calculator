@@ -26,6 +26,9 @@ PAGE = dict(
       <label for="oa">Offsite Ads rate <small>(12% if your shop made over $10k last year)</small></label>
       <div class="in"><input id="oa" type="number" min="0" step="1" value="15"><span>%</span></div>
       </details>""",
+    out="""<p class="resfree" style="margin:6px 0 10px;font-size:.92rem">Want this fee for every product, not just this one? Get the <a href="https://quietprofitsheets.gumroad.com/l/etsy-seller-sheet-lite?utm_source=calculator&amp;utm_medium=result-free&amp;utm_content=etsy-fee-calculator" rel="noopener">free Etsy Seller Spreadsheet</a>. It's $0, and it opens in Excel or Google Sheets.</p>
+      <table aria-live="polite"><tbody id="rows"></tbody></table>
+      <div id="verdict" class="verdict"></div>""",
     js="""function calc(){
   var q=Math.max(1,Math.round(n('qty'))),t=n('price')*q+n('ship');
   var tx=t*n('tx')/100,pp=t*n('pp')/100+n('pf'),lf=0.20*q;
