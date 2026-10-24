@@ -6,7 +6,16 @@
   <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
   <language>en</language>
-  <lastBuildDate>Fri, 23 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 23 Oct 2026 20:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Etsy Title and Tag Checker: 13 Tags and 140-Character Titles</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/etsy-title-tag-checker/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/etsy-title-tag-checker/#pin-1</guid>
+    <pubDate>Fri, 23 Oct 2026 20:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/etsy-title-tag-checker.png" alt="Are you wasting your 13 Etsy tags?"></p><p>Free Etsy SEO title and tag checker. Paste a listing title and tags to count characters, catch tags over 20 characters, duplicate words, banned symbols and wasted tag slots before you publish.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/etsy-title-tag-checker.png" length="88675" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/etsy-title-tag-checker.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
   <item>
     <title>Handmade Pricing Calculator: Cost, Wholesale and Retail Price</title>
     <link>https://rudracodeshere.github.io/profit-calculator/handmade-pricing-calculator/</link>
