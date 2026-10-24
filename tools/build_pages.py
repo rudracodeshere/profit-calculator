@@ -23,6 +23,7 @@ import hashlib, html, importlib.util, json, pathlib, re, sys, datetime, urllib.p
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = "https://rudracodeshere.github.io/profit-calculator/"
+SHARE_IMG = BASE + "og.png"  # 1200x630 link preview (tools/make_og.py); og_image pins are still used for the Pinterest save button
 GUMROAD = "https://quietprofitsheets.gumroad.com/l/seller-profit-sheet"
 KIT = "https://quietprofitsheets.gumroad.com/l/get-paid-kit"
 TODAY = datetime.date.today().isoformat()
@@ -110,11 +111,11 @@ def starter_line(slug):
 
 # Hand-built pages that are not generated, so the registry and sitemap know them.
 STATIC = [
-    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-23"),
-    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-23"),
-    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-23"),
-    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-23"),
-    dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-21"),  # built from tools/about.html
+    dict(slug="", cat="Platform fees", nav_name="Etsy, Shopify, Amazon & eBay fee calculator", lastmod="2026-10-24"),
+    dict(slug="etsy-vs-shopify", cat="Compare platforms", nav_name="Etsy vs Shopify break-even", lastmod="2026-10-24"),
+    dict(slug="etsy-pricing-calculator", cat="Etsy tools", nav_name="Etsy pricing calculator", lastmod="2026-10-24"),
+    dict(slug="etsy-offsite-ads-calculator", cat="Etsy tools", nav_name="Etsy Offsite Ads calculator", lastmod="2026-10-24"),
+    dict(slug="about", cat="About", nav_name="About these calculators", lastmod="2026-10-24"),  # built from tools/about.html
 ]
 CATS = ["Platform fees", "Etsy tools", "Print & design sizes", "Pricing & margins", "Maker pricing", "Compare platforms", "Invoices & getting paid", "Budgets & planning"]
 
@@ -229,7 +230,10 @@ def render(p, names):
 <meta property="og:description" content="{e(p['desc'])}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{og}">
+<meta property="og:image" content="{SHARE_IMG}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../logo.png">
 <style>
 {CSS}
@@ -288,6 +292,13 @@ def render_about():
 <title>About: Free Seller Calculators by Quiet Profit Sheets</title>
 <meta name="description" content="Who makes these free seller calculators, how the math is checked, and where every fee rate comes from, with links to each platform's official fee page.">
 <link rel="canonical" href="{BASE}about/">
+<meta property="og:title" content="About these free seller calculators">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{BASE}about/">
+<meta property="og:image" content="{SHARE_IMG}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../logo.png">
 <style>
 {CSS}
