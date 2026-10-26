@@ -6,7 +6,16 @@
   <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
   <language>en</language>
-  <lastBuildDate>Sun, 25 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 25 Oct 2026 20:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Wholesale Price Calculator: Keystone, Margin and Consignment</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/wholesale-price-calculator/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/wholesale-price-calculator/#pin-1</guid>
+    <pubDate>Sun, 25 Oct 2026 20:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/wholesale-price-calculator.png" alt="Ready to sell wholesale to shops?"></p><p>Free wholesale price calculator for makers and small brands. Turn a retail price into a wholesale price (keystone or your own percentage), see your margin and minimum order value, and compare it with a consignment split.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/wholesale-price-calculator.png" length="83125" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/wholesale-price-calculator.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
   <item>
     <title>Etsy Sale Calculator: Profit After a Discount or Coupon</title>
     <link>https://rudracodeshere.github.io/profit-calculator/etsy-sale-calculator/</link>
