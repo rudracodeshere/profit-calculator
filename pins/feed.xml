@@ -6,7 +6,16 @@
   <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
   <language>en</language>
-  <lastBuildDate>Tue, 27 Oct 2026 20:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 28 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Profit Margin Calculator: Margin, Markup and Price From Cost</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/profit-margin-calculator/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/profit-margin-calculator/#pin-1</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/profit-margin-calculator.png" alt="Margin or markup? Get both in seconds"></p><p>Free profit margin calculator for online sellers and small businesses. Get gross profit, margin and markup from cost and price, the price you need for a target margin, or the most you can pay for an item.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/profit-margin-calculator.png" length="78941" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/profit-margin-calculator.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
   <item>
     <title>Etsy vs Shopify Fees: Break-Even Calculator</title>
     <link>https://rudracodeshere.github.io/profit-calculator/etsy-vs-shopify/</link>
