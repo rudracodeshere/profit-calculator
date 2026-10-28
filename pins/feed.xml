@@ -6,7 +6,16 @@
   <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
   <language>en</language>
-  <lastBuildDate>Tue, 27 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 27 Oct 2026 20:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Etsy vs Shopify Fees: Break-Even Calculator</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/etsy-vs-shopify/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/etsy-vs-shopify/#pin-1</guid>
+    <pubDate>Tue, 27 Oct 2026 20:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/etsy-vs-shopify.png" alt="When is Shopify cheaper than Etsy?"></p><p>Etsy or Shopify? This free calculator compares the fees on the same sale and finds how many orders a month you need before a Shopify plan is cheaper than selling on Etsy.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/etsy-vs-shopify.png" length="77137" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/etsy-vs-shopify.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
   <item>
     <title>Etsy Offsite Ads Calculator: Is the 15% Fee Costing You?</title>
     <link>https://rudracodeshere.github.io/profit-calculator/etsy-offsite-ads-calculator/</link>
