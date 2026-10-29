@@ -6,7 +6,16 @@
   <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
   <language>en</language>
-  <lastBuildDate>Wed, 28 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 28 Oct 2026 20:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Markup Calculator: Price From Cost, Plus Markup to Margin Table</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/markup-calculator/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/markup-calculator/#pin-1</guid>
+    <pubDate>Wed, 28 Oct 2026 20:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/markup-calculator.png" alt="Doubling your cost isn't a 50% profit"></p><p>Free markup calculator. Enter your cost and markup percentage to get the selling price and the real profit margin, with a markup to margin conversion table you can keep.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/markup-calculator.png" length="85310" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/markup-calculator.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
   <item>
     <title>Profit Margin Calculator: Margin, Markup and Price From Cost</title>
     <link>https://rudracodeshere.github.io/profit-calculator/profit-margin-calculator/</link>
