@@ -6,7 +6,16 @@
   <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
   <language>en</language>
-  <lastBuildDate>Wed, 28 Oct 2026 20:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 29 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Break-Even Calculator for Online Sellers: Units and Revenue</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/break-even-calculator/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/break-even-calculator/#pin-1</guid>
+    <pubDate>Thu, 29 Oct 2026 12:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/break-even-calculator.png" alt="How many sales to break even each month?"></p><p>Free break-even calculator for online shops. Enter monthly fixed costs, price, unit cost and fees to see the number of sales and revenue you need to break even or hit a profit goal.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/break-even-calculator.png" length="84169" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/break-even-calculator.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
   <item>
     <title>Markup Calculator: Price From Cost, Plus Markup to Margin Table</title>
     <link>https://rudracodeshere.github.io/profit-calculator/markup-calculator/</link>
