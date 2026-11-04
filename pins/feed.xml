@@ -6,7 +6,16 @@
   <atom:link href="https://rudracodeshere.github.io/profit-calculator/pins/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Free fee, pricing and profit calculators for Etsy, Shopify, print on demand and handmade sellers.</description>
   <language>en</language>
-  <lastBuildDate>Tue, 03 Nov 2026 20:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 04 Nov 2026 12:00:00 +0000</lastBuildDate>
+  <item>
+    <title>ROAS Calculator: Break-Even ROAS, Target ROAS and CPA</title>
+    <link>https://rudracodeshere.github.io/profit-calculator/roas-calculator/</link>
+    <guid isPermaLink="false">https://rudracodeshere.github.io/profit-calculator/roas-calculator/#pin-1</guid>
+    <pubDate>Wed, 04 Nov 2026 12:00:00 +0000</pubDate>
+    <description><![CDATA[<p><img src="https://rudracodeshere.github.io/profit-calculator/pins/feed/roas-calculator.png" alt="What ROAS do you need to make a profit?"></p><p>Free ROAS calculator for online sellers. See your return on ad spend, the break-even ROAS for your margin, the ROAS you need for a profit target, and your maximum cost per acquisition.</p>]]></description>
+    <enclosure url="https://rudracodeshere.github.io/profit-calculator/pins/feed/roas-calculator.png" length="92749" type="image/png"/>
+    <media:content url="https://rudracodeshere.github.io/profit-calculator/pins/feed/roas-calculator.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
   <item>
     <title>Stripe Fee Calculator 2026: Net Payout, Reverse and Monthly</title>
     <link>https://rudracodeshere.github.io/profit-calculator/stripe-fee-calculator/</link>
